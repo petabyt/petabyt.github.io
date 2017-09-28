@@ -1,0 +1,113 @@
+<!-- 
+APP STUDIO V0.1
+Made by Pufflegamerz
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>App Studio</title>
+    <link href="logo.png" id="favicon" rel="shortcut icon" type="image/png">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="javascript.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onbeforeunload="return leave()">
+<div id="application">
+</div>
+<div id="menu">
+	<center>
+	<br>
+		<div onclick="label()" id="element">
+			Label
+		</div>
+		<br>
+		<div onclick="button()" id="element">
+			Button
+		</div>
+		<br>
+		<div onclick="textbox()" id="element">
+			Textbox
+		</div>
+		<br>
+		<div onclick="image()" id="element">
+			Image
+		</div>
+	</center>
+	
+</div>
+<div id="other">
+<br>
+	<center>
+	<button class="btn1" onclick="exportapp()">Save As</button><button class="btn1" onclick="document.getElementById('fileInput').click()">Open</button>
+	    <button class="btn" onclick="settings()">App Settings</button>
+		<button class="btn" onclick="del()">Delete Element</button>
+		<button class="btn" onclick="addonc()">If Element Clicked</button>
+		<button class="btn" onclick="preview()">Preview</button>
+		<button class="btn" onclick="tutorials()">Tutorials</button>
+
+		
+	</center>
+	<br>
+	
+		<center style="">
+			<p style="font-size: 10px;">App Studio Version 0.1 - <a onclick="alert('App Studio is a free software where you can build custom Html5 applications instantly. You do not have to download or sign up.')" href="">About</a>
+			 - <a href="index.html">Home</a>
+
+			</p>
+		</center>
+	
+</div>
+</body>
+</html>
+<!-- Popup Divs -->
+<div id="onclickbox">
+	<button onclick="closeonclick()" style="float: right">X</button>
+	<br>
+	<hr>
+	<p>You can assign actions when an element is pressed. Click on one of the following actions to add.</p>
+
+	<hr>
+	<button onclick="addalert()">Alert</button>
+	<button onclick="addredirect()">Redirect</button>
+</div>
+<div id="settingsbox">
+	<button onclick="closesettings()" style="float: right">X</button>
+	<br>
+	<hr>
+	<p>Access your app's settings here.</p>
+	<hr>
+	 App Name <input type="text" id="projectname">
+	 <br><br>
+	 Version <input type="number" id="projectversion">
+	 <br><br>
+	 Background Color: <input type="color" value="#ffffff" id="bgcol"> <input type="submit" value="Set" onclick="setbgcol()">
+	 <br><br><br>
+	 <center>
+	 	<a onclick="resetapp()" href="">Reset App</a>
+	 </center>
+
+</div>
+<div id="exportbox">
+	<button onclick="closeexport()" style="float: right">X</button>
+	<br>
+	<hr>
+	<p>Save and Export here.</p>
+	<hr>
+    <button onclick="exporthtml()">Export as .html</button> - Regular Html file.
+	<br><br>
+	<button onclick="exporthta()">Export as .hta</button> - Windows application.
+	
+</div>
+
+<!-- Startup Logo -->
+<div id="logo">
+	<center>
+		<h1>App Studio</h1>
+		<p>Version 0.1</p>
+		<div class="loader"></div>
+
+	</center>
+</div>
+<!-- Open Dialog -->
+<input id="fileInput" multiple="false" accept=".html" type="file" style="display:none;" />
+

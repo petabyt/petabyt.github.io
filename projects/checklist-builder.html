@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CheckList Builder</title>
+</head>
+<body>
+<div id="toolbar">
+	<center>
+	<br><br>
+	<input value="My Checklist" type="text" id="title" id="title">
+<br>
+	<input class="submit_1" value="Change Title" type="submit" onclick="change_name()">
+	<br><br>
+		<input class="text" type="text" id="x">
+		<input class="submit" value="Add" type="submit" onclick="add_item()">
+	</center>
+</div>
+<br>
+<div id="preview">
+	<center>
+		<h1 id="title_preview">My Checklist</h1>
+	</center>
+</div>
+<br>
+
+<button onclick="html_embed()" class="footer_btn">Html / Embed</button>
+</body>
+<div id="message">
+	<button onclick="close1()" id="close2">X</button><button onclick="fullscreen()" id="close2">[ ]</button>
+	<br> 
+	<hr>
+	<center>
+		<h1 id="heading1"></h1>
+	<br>
+	<p id="text1"></p>
+	</center>
+	
+</div>
+<script type="text/javascript">
+	function add_item() {
+		document.getElementById('preview').innerHTML = document.getElementById('preview').innerHTML + 
+		"<center><input type=checkbox>"+document.getElementById('x').value+"</center>";
+	}
+	function change_name() {
+		document.getElementById('title_preview').innerHTML = document.getElementById('title').value;
+	}
+	function html_embed() {
+		prompt("Copy the following Html code. You can insert your checklist on your website via code.\n \n Ctrl + c or command + c",document.getElementById('preview').innerHTML);
+	}
+	function popup(popuptitle,popuptext) {
+document.getElementById('heading1').innerHTML = popuptitle;
+document.getElementById('text1').innerHTML = popuptext;
+		document.getElementById('message').style.visibility = "visible";
+	}
+function close1() {
+		document.getElementById('message').style.visibility = " hidden "; 
+		document.getElementById('message').style.top = "20px";
+	document.getElementById('message').style.left = "400px";
+	document.getElementById('message').style.width = "700px";
+	document.getElementById('message').style.height = "600px";
+	} 
+	function fullscreen() {
+	document.getElementById('message').style.top = "0px";
+	document.getElementById('message').style.left = "0px";
+	document.getElementById('message').style.width = "1363px";
+	document.getElementById('message').style.height = "660px";
+}
+</script>
+<style type="text/css">
+	#toolbar {
+		width: 1350px;
+		height: 200px;
+		border: 1px solid black;
+		background-color: white
+
+	}
+	#title {
+		border: transparent;
+font-size: 40px;
+text-align: center;
+font-family: Times New Roman;
+font-weight: bold;
+
+	}
+	.text {
+		width: 300px;
+		height: 30px;
+		border: 1px solid black;
+
+	}
+	.submit {
+		width: 100px;
+		height: 34px;
+		border: 1px solid black;
+	}
+	body {
+		background-color: lightgrey;
+	}
+	#preview {
+		width: 1350px;
+		height: 370px;
+		border: 1px solid black;
+		background-color: white;
+	}
+	.submit_1 {
+		width: 480px;
+		height: 50px;
+		border: 1px solid black;
+	}
+	.footer_btn {
+		width: 200px;
+		height: 30px;
+		border: 1px solid black;
+		border-radius: 5px;
+	}
+	#message {
+		width: 700px;
+		height: 600px;
+		border: 1px solid black;
+		background-color: #ffbb4f;
+		visibility: hidden;
+		position: absolute;
+		top: 20px;
+		right: 400px;
+	}
+	#close2 {
+		float: right;
+	}
+</style>
+</html>
+
+
+
+
+
+
+<!-- 
+APP STUDIO V0.1
+Made by Pufflegamerz
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>App Studio</title>
+    <link href="logo.png" id="favicon" rel="shortcut icon" type="image/png">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="javascript.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onbeforeunload="return leave()">
+<div id="application">
+</div>
+<div id="menu">
+	<center>
+	<br>
+		<div onclick="label()" id="element">
+			Label
+		</div>
+		<br>
+		<div onclick="button()" id="element">
+			Button
+		</div>
+		<br>
+		<div onclick="textbox()" id="element">
+			Textbox
+		</div>
+		<br>
+		<div onclick="image()" id="element">
+			Image
+		</div>
+	</center>
+	
+</div>
+<div id="other">
+<br>
+	<center>
+	<button class="btn1" onclick="exportapp()">Save As</button><button class="btn1" onclick="document.getElementById('fileInput').click()">Open</button>
+	    <button class="btn" onclick="settings()">App Settings</button>
+		<button class="btn" onclick="del()">Delete Element</button>
+		<button class="btn" onclick="addonc()">If Element Clicked</button>
+		<button class="btn" onclick="preview()">Preview</button>
+		<button class="btn" onclick="tutorials()">Tutorials</button>
+
+		
+	</center>
+	<br>
+	
+		<center style="">
+			<p style="font-size: 10px;">App Studio Version 0.1 - <a onclick="alert('App Studio is a free software where you can build custom Html5 applications instantly. You do not have to download or sign up.')" href="">About</a>
+			 - <a href="index.html">Home</a>
+
+			</p>
+		</center>
+	
+</div>
+</body>
+</html>
+<!-- Popup Divs -->
+<div id="onclickbox">
+	<button onclick="closeonclick()" style="float: right">X</button>
+	<br>
+	<hr>
+	<p>You can assign actions when an element is pressed. Click on one of the following actions to add.</p>
+
+	<hr>
+	<button onclick="addalert()">Alert</button>
+	<button onclick="addredirect()">Redirect</button>
+</div>
+<div id="settingsbox">
+	<button onclick="closesettings()" style="float: right">X</button>
+	<br>
+	<hr>
+	<p>Access your app's settings here.</p>
+	<hr>
+	 App Name <input type="text" id="projectname">
+	 <br><br>
+	 Version <input type="number" id="projectversion">
+	 <br><br>
+	 Background Color: <input type="color" value="#ffffff" id="bgcol"> <input type="submit" value="Set" onclick="setbgcol()">
+	 <br><br><br>
+	 <center>
+	 	<a onclick="resetapp()" href="">Reset App</a>
+	 </center>
+
+</div>
+<div id="exportbox">
+	<button onclick="closeexport()" style="float: right">X</button>
+	<br>
+	<hr>
+	<p>Save and Export here.</p>
+	<hr>
+    <button onclick="exporthtml()">Export as .html</button> - Regular Html file.
+	<br><br>
+	<button onclick="exporthta()">Export as .hta</button> - Windows application.
+	
+</div>
