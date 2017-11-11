@@ -1,1 +1,2 @@
-This is my website. I will put all my projects here.
+Copyright Pufflegamerz 2018
+EST 2016
