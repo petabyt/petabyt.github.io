@@ -1,0 +1,48 @@
+<HTA:APPLICATION ID="oHTA" APPLICATIONNAME="Coding Idea">
+<html>
+<head>
+	<title>Coding Idea</title>
+</head>
+<body>
+	<center>
+<p>You should make a...</p>
+<span id="idea"></span>
+<br><br>
+<button onclick="generate()">Nah</button>
+<br><br><br><br><br><br>
+<div>
+	<span>Made by </span><a href="#" onclick="pufflegamerz()" >Pufflegamerz</a><span>.</span>
+</div>
+</center>
+
+</body>
+<style type="text/css">
+	body {
+		overflow: hidden;
+		background-color: lightgrey;
+		font-family: arial;
+	}
+	button {
+width: 100px;
+height: 25px;
+border: transparent;
+background-color: lightgreen;
+font-family: arial;
+
+	}
+</style>
+<script type="text/javascript">
+	generate();
+	function generate() {
+		var ideas = ["Mobile Browser", "Text Editor", "Paint Program","Game Maker","Pig Latin Converter","Email Program","Weather Program","Video Editor","Online Games Website","Quiz Creator","Iframe Generator","Presentation/Slides Creator","OS (Operating System)","File Converter","Antivirus"," e-learning tool","Screen Recorder","Video Caller","Advertisement Video Creator","calculator","Social Media Site","Calendar","File Converter","Piano w/ Recorder"];
+		document.getElementById("idea").innerHTML = ideas[Math.floor(Math.random() * ideas.length) + 0  ]
+	}
+	 window.resizeTo(300,290);
+	 function pufflegamerz() {
+	 	// Open link in default browser
+	 	var shell = new ActiveXObject("WScript.Shell");
+      shell.run("https://pufflegamerz.github.io");
+	 }
+</script>
+
+</html>
