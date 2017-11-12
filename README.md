@@ -1,2 +1,2 @@
-Copyright Pufflegamerz 2018
-EST 2016
+# Mt Website
+I put my thingies here.
