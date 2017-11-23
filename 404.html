@@ -11,11 +11,21 @@
 </center>
 </body>
 <script>
-if (screen.innerHeight > screen.innerWidth) {
-    document.getElementById("chucknorris").style.background = "url('images/404-M.png')";
+applyOrientation();
+window.onresize = function (event) {
+  applyOrientation();
+}
+function applyOrientation() {
+  if (window.innerHeight > window.innerWidth) {
+   document.getElementById("chucknorris").style.background = "url('404-M.png')";
     document.getElementById("chucknorris").style.backgroundRepeat = "no-repeat";
     document.getElementById("chucknorris").style.backgroundSize = "contain";
+  } else {
+    document.getElementById("chucknorris").style.background = "url('404.png')";
+    document.getElementById("chucknorris").style.backgroundRepeat = "no-repeat";
+    document.getElementById("chucknorris").style.backgroundSize = "100% 100%";
 
+  }
 }
 </script>
 <style>
@@ -36,7 +46,7 @@ if (screen.innerHeight > screen.innerWidth) {
 		background-color: white;
 	}
 	#chucknorris {
-		background: url("images/404.png"); 
+		background: url("404.png"); 
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
 		width: 75%;
