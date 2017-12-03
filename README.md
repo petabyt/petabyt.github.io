@@ -1,2 +1,2 @@
 # Mt Website
-I put my thingies here.
+My Github pages site.
