@@ -1,2 +1,2 @@
-# Mt Website
-My Github pages site.
+# My Website
+I don't even bother to update this thing.
