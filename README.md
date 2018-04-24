@@ -1,2 +1,2 @@
 # My Website
-I don't even bother to update this thing.
+I FINNALY UPDATED IT! It's not ugly anymore!
