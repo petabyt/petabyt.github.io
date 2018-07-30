@@ -1,5 +1,5 @@
 ## My Website
-I put stuff here. I made it with Pingendo because It looks better than the one I wrote.
+I put stuff here. I was too lazy to make one so I made it with Pingendo.
 ## About Me
 
  - I'm a Christian
