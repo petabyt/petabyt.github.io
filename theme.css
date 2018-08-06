@@ -6099,9 +6099,7 @@ a.text-dark:hover, a.text-dark:focus {
   color: #fff; }
 
 html, body {
-  height: 100%;
-  max-width: 100%;
-  overflow-x: hidden; }
+  height: 100%; }
 
 .cover {
   min-height: 100%;
