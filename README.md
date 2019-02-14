@@ -1,5 +1,7 @@
 ## My Website
 I know my username is bad but I'm thinking of changing it soon.
+
+Blog: https://codingofthecosmos.blogspot.com/
 ## About Me
 
  - I'm a Christian
