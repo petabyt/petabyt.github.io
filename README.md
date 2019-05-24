@@ -1,5 +1,5 @@
 ## My Website
-I know my username is bad but I'm thinking of changing it soon.
+I know this is my Github page but I thought I'd put some thingies here.
 
 Blog: https://codingofthecosmos.blogspot.com/
 ## About Me
