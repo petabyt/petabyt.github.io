@@ -7,5 +7,5 @@ Blog: https://codingofthecosmos.blogspot.com/
  - I'm a Christian
  - I love fixing things (especially computers!)
  - I hate all Apple products.
- - I used X10Hosting before Github. (2016-2017)
+ - I used X10Hosting before Github.
 
