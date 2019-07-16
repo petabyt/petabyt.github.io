@@ -47,3 +47,11 @@ a {
 a:hover {
 	background: #DADADA;
 }
+
+.donate {
+	background: lightgreen;
+}
+
+.donate:hover {
+	background: #82d882;
+}
