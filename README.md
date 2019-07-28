@@ -11,6 +11,8 @@ If you are seeing this, then you should be here for 2 reasons: you are looking a
  - Before I got interested in tech, I was obsessed with legos. I built big cities and cool RVs.
  - I have been making Youtube videos for 3+ years [https://www.youtube.com/c/PetabyteStudios](https://www.youtube.com/c/PetabyteStudios)
  - My favorite game is BeamNG.Drive
+ - Other than programming, I am very interested in cryptology and server stuff
+ - I run a Minecraft Server
 
 ## Other stuff
 
