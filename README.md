@@ -16,4 +16,4 @@ If you are seeing this, then you should be here for 2 reasons: you are looking a
 
 ## Other stuff
 
-Pretty much everything I have ever made is on Github, so I don't get paid. I am also saving up to get a car (Jeep probably) so if you want to donate here: http://v.ht/2NpC
+Donate monies to me here: http://v.ht/ZLVSW
