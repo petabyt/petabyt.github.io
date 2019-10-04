@@ -1,7 +1,7 @@
 
 ## About Me
 
-If you are seeing this, then you should be here for 2 reasons: you are looking at the source code of my site, or you have scrolled down on the main website. I thought I would put some more things about me in case you're interested.
+If you are seeing this, then you should be here for 2 reasons: you are looking at the source code of my site, or you have scrolled down on the main website. I thought I would put some more things about me in case you're interested. Also, this is one of my oldest repositories, so expect to see a bunch of crap lying around in the source.
 
 ## Facts
 
