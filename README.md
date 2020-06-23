@@ -1,1 +1,1 @@
-My first Github repo. https://pufflegamerz.github.io/
+My first Github repo. http://petabyte.heb12.com/
