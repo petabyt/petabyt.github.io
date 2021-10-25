@@ -1,0 +1,17 @@
+<script src="https://petabyt.dev/status.php"></script>
+<script>
+if (c != undefined) {
+	document.write(
+		Math.floor(((c.mused / c.mtotal) * 100)) +
+		"% of memory is used (" + (c.mtotal / 1000) + "GB)<br>" + 
+		"I often set Java to have 2-4GB.<br>"
+	);
+
+	document.write(
+		Math.floor((c.dused / (c.dused + c.dtotal) * 100)) +
+		"% of disk is free (" + ((c.dused + c.dtotal) / 1000) + "GB)"
+	);
+} else {
+	document.write("Server appears to be down.");
+}
+</script>
