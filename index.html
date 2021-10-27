@@ -9,7 +9,7 @@ if (c != undefined) {
 
 	document.write(
 		Math.floor((c.dused / (c.dused + c.dtotal) * 100)) +
-		"% of disk is free (" + ((c.dused + c.dtotal) / 1000) + "GB)"
+		"% of disk is used (" + ((c.dused + c.dtotal) / 1000) + "GB)"
 	);
 } else {
 	document.write("Server appears to be down.");
