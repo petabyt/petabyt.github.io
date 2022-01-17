@@ -1,20 +1,4 @@
 <p>Jan 6 2021: Having ISP issues. Connection to ISP keeps dropping
 <br>out every 2 minutes. ISP said it's because of bad winds.</p>
 Getting status, trying to connect...<br>
-<script src="https://petabyt.dev/status.php"></script>
-<script>
-if (typeof c != "undefined") {
-	document.write(
-		Math.floor(((c.mused / c.mtotal) * 100)) +
-		"% of memory is used (" + (c.mtotal / 1000) + "GB)<br>" + 
-		"I often set Java to have 2-4GB.<br>"
-	);
-
-	document.write(
-		Math.floor((c.dused / (c.dused + c.dtotal) * 100)) +
-		"% of disk is used (" + ((c.dused + c.dtotal) / 1000) + "GB)"
-	);
-} else {
-	document.write("Server appears to be down.");
-}
-</script>
+<iframe src="https://petabyt.dev/ping.txt">...</iframe>
