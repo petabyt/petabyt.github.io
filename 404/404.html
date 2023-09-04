@@ -1,0 +1,60 @@
+<!--
+You are welcome for the
+best 404 page ever
+I made this 5 years ago, what a genius I was
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>404 - File Not Found</title>
+</head>
+<body>
+<div id="chucknorris" alt="404 - page not found"></div>
+	<a href="/"><b>Home Page</b></a>
+</body>
+<style>
+a {
+	display: block;
+	height: 10%;
+	width: 100%;
+	text-align: center;
+	background-color: lightgreen;
+	cursor: pointer;
+
+	padding: 20px;
+	box-sizing: border-box;
+	color: black;
+}
+
+a:hover {
+	background-color: green;
+}
+
+body, html {
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+	background-color: red;
+}
+
+#chucknorris {
+	background: url("/404/images/404.png");
+}
+
+@media only screen and (max-width: 600px) {
+	#chucknorris {
+		background: url("/404/images/404-M.png");
+	}
+}
+
+#chucknorris {
+	width: 100%;
+	height: 90%;
+	background-repeat: no-repeat;
+	background-position: top;
+}
+</style>
+</html>

@@ -1,0 +1,17 @@
+Windows PC:
+CPU       Intel i7 3770 4x 3.7Ghz
+MOBO      From Optiplex 9010
+CASE      Modified Optiplex 9010 case (with hammer)
+RAM       8GB DDR3
+PSU       1000 Watt Silverstone (from a dumpster at Syngenta)
+GPU       $30 AMD Radeon 7870 2GB GDDR5
+HDD       256GB SSD $30
+COST      (Optiplex 9010) $190 + (GPU) $30 + $30 SSD = $250
+
+Etc:
+DISPLAY   $20 2008 Samsung TV 1680x1050 60Hz
+KEYBOARD  $5 Standard dell USB workplace keyboard	
+MOUSE     Corsair M55 $25
+
+Laptop:
+Lenovo T490s 16gb 4x i5

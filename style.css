@@ -1,22 +1,33 @@
-body,html {
+body, html {
 	width: 100%;
 	height: 100%;
-	margin: 0;
+	margin: 0px;
 	overflow-x: hidden;
+	background-color: #242424;
+	font-family: sans-serif;
 }
 
 #main {
-	width: 110%;
-	height: 110%;
-	background-image: url(images/nightsky.JPG);
+	width: 100%;
+	height: 100%;
 	background-size: cover;
 	background-repeat: no-repeat;
-	margin-top: -300px;
+	background-image: url(images/nightsky.webp);
+	display: table;
+}
+
+#text {
+	display: table-cell;
+	vertical-align: middle;
+	color: white;
+	text-shadow: 3px 3px 1px black;	
+	text-align: center;
 }
 
 .title {
 	margin: 0;
 	font-size: 40px;
+	font-weight: normal;
 }
 
 .subtitle {
@@ -24,41 +35,58 @@ body,html {
 	font-size: 25px;
 }
 
-#text {
-	position: relative;
-	top: calc(50% - 150px);
-	left: calc(50% - (100%/2));
-	width: 100%;
-	height: 300px;
-	color: white;
-	font-family: arial;
-	text-shadow: 3px 3px 1px black;
+#buttons a.green {
+	background: #3f803f;
 }
 
-#text a {
-	color: black;
-	text-decoration: none;
-	text-shadow: none;
-	padding: 5px 5px;
-	background: #F0F0F0;
-	border: 1px solid grey;
-	border-radius: 4px;
+#buttons a.green:hover {
+	background: green;
 }
 
-#text a:hover {
-	background: #DADADA;
+#buttons a:hover {
+	background: #666565;
 }
 
-.donate {
-	background: lightgreen;
+#buttons {
+	width: 300px;
+	margin: auto;
 }
 
-.donate:hover {
-	background: #82d882;
+#buttons a {
+	display: inline-block;
+	margin-top: 5px;
 }
 
 #second {
 	height: 100%;
 	width: 90%;
 	padding: 30px 30px;
+	color: white;
+	font-family: sans-serif;
+}
+
+#second a {
+	color: lightblue;
+}
+
+#post {
+	background: darkgrey;
+	color: black;
+
+	text-align: center;
+	padding: 10px;
+	margin: auto;
+	margin-top: 20px;
+}
+
+#post p {
+	font-size: 20px;
+}
+
+#post hr {
+	display: none;
+}
+
+.email {
+	vertical-align: middle;
 }
