@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>What I learned after a year of reverse engineering</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body, html {
+			font-family: sans-serif;
+			color: white;
+			background-color: #2d2e2e;
+		}
+
+		a {color: #88c3bb;}
+		a:visited {color: #547b76;}
+
+		.post {
+			background-color: #474747;
+			padding: 5px 5px;
+			margin-bottom: 20px;
+			width: 70%;
+			margin: auto;
+			margin-bottom: 20px;
+		}
+		.post h1 { margin: 0px; }
+
+		@media only screen and (max-width: 600px) {
+			.post {
+				width: 100%;
+			}
+			
+			.ad {
+				width: 100%;
+			}
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		
+		.center {
+		    text-align: center;
+		}
+
+		.header h1 {
+			margin-bottom: 0px;
+		}
+
+		code {
+			background: #0b140b;
+			margin: 2px;
+			overflow-x: scroll;
+			padding: 3px;
+			white-space: break-spaces;
+		}
+
+		.long {
+			display: block;
+			padding: 10px;
+			margin: 10px;
+		}
+		
+		.back {
+			display: block;
+			width: 50px;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<a href="."><h1>Daniel's Stuff</h1></a>
+		<a href="rss.xml">RSS</a><br>
+		<div class="ad" id="amzn-assoc-ad-94172efa-e524-41ae-b714-e1722b66759e"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=94172efa-e524-41ae-b714-e1722b66759e"></script>
+	</div>
+	<div class='post' title='Post #43'><h1>What I learned after a year of reverse engineering</h1><p>Sept 5 2022</p><hr>
+See the <a href='https://danielc.dev/blog/hacking-the-fujifilm-digital-cameras'>previous post</a>.<br><br>In summer 2021, I started a <a href='https://github.com/fujihack/fujihack'>project</a> with a simple goal to hack Fujifilm cameras.
+Since then, it&#x27;s grown uncontrollably. It&#x27;s become my largest open source project,
+and gained some attention.<br><br>So, in the past year, what has been done?<br><br><h2>Firmware Patches</h2>
+After gaining custom code execution through the image saving process in summer 2021, I set out to
+obtain a RAM dump. My attempts to do it via writing files were unsuccessful, so I decided that
+<a href='https://en.wikipedia.org/wiki/Picture_Transfer_Protocol'>PTP/USB</a> was the way to go.<br><br><br>- My biggest issue was that <i>half</i> of the firmware update file is compressed (40%), and
+unusable for firmware injections. The other half is not compressed, and can be modified. The compressed
+region contains most of the important code, like PTP.<br><br><br>- I tried to see if I could toggle the LED and get a RAM dump over &quot;morse code&quot; <a href='https://chdk.fandom.com/wiki/Obtaining_a_firmware_dump?file=Blinker.jpg'>like CHDK</a>,
+but my attempts were unsuccessful.<br><br>From my basic code execution hack, I was able to brute force search through RAM and find these things:
+<br>- &quot;fujifilm.co.jp; &quot;, a string returned by GetDeviceInfo in PTP/USB
+<br>- the address of a memcpy() function<br><br>Therefore, here was my plan:
+<a href='https://eggnog.theres.life/f/57-sneev9dijeax76e74a4fbclitviq04.png'><img width='300' src='https://eggnog.theres.life/f/57-sneev9dijeax76e74a4fbclitviq04.png' alt='plan for memcpy syncing RAM dump' title='plan for memcpy syncing RAM dump'></a>
+A memcpy() + PTP/USB syncing memory dumper.<br><br>It took several days of testing, updating firmware, battery pulling, but eventually:
+<a href='https://diode.zone/w/t5qGaAkZVwZN4ChkFXcSNi'>https://diode.zone/w/t5qGaAkZVwZN4ChkFXcSNi</a><br><br>After getting a 200kb memory dump, I was able to find all the addresses of the PTP functions
+and hijack them, eventually leading to a custom firmware allowing me to run any code I want
+over PTP/USB:
+<a href='https://www.youtube.com/watch?v=aIswNirEsD4'>https://www.youtube.com/watch?v=aIswNirEsD4</a><br><br>This was a huge step forward, and it eventually allowed me to get a full 256mb RAM dump.<br><br><h2>Difficult Reverse Engineering</h2>
+After a full RAM dump, I was dissappointed by the lack of debug strings available.
+In most embedded devices, you&#x27;d expect to see a ton of error messages that would be
+printed to UART. For example, you might see a decompilation like this:
+<code class='long'>iVar1 = FUN_1234567(0x100);
+if (iVar1 == 0) {
+    FUN_45678943(&quot;Malloc Error&quot;);
+}
+</code>
+After seeing this in a decompiler, you would immediately know that <code>FUN_1234567</code> is your
+<code>malloc()</code> function, because of the error message. In Fujifilm&#x27;s firmware, there are next
+to none of these messages. Still, progress moves on slowly. Very slowly.<br><br><h2>Scripting Language</h2>
+The first thing I noticed when I started reverse engineering was a string, &quot;AUTO_ACT.SCR&quot;.
+This string appeared in almost all Fujifilm cameras since 2003-ish. I had tried to create the
+file on the SD card, but nothing happened when I turned the camera on.<br><br>It wasn&#x27;t until a year after the project started that I started to figure out how this
+scripting language worked. In most embedded devices, a hidden script interpreter will often
+report error messages like &quot;Syntax Error&quot;, or &quot;Invalid token&quot;. Fujifilm seems to be the outlier.<br><br>At first I started reverse engineering and running the <a href='https://en.wikipedia.org/wiki/Lexical_analysis'>lexer</a>. Took me a few days to figure out that it accepted
+Windows style line endings only. Unix style will make it crash and silently segfault.<br><br>After that, I was confident it was definitely a lexer for a scripting language. I was then able to
+reverse the string tables and jump tables for the interpreter, and slowly piece it together.<br><br>My first test was simple, and after calling the run_auto_act function, it crashed the camera:
+<code class='long'>LABEL foo
+jump foo
+</code>
+I dug around more, uncovering more code until I was able to create a &quot;count to 10&quot; script:
+<code class='long'>set x = 1
+LABEL lab
+    if x &gt;= 10 goto end
+    calc x = x + 1
+    jump lab
+LABEL end
+</code>
+Seems pretty basic. What struck me was how similar this was to the scripting language I designed many years ago.
+Here is the same program, but in <a href='https://corescript-lang.github.io/'>Corescript</a>:
+<code class='long'>var i = 0
+:countLoop
+    if i = 10:kill1
+    set i = [add i 1]
+    goto countLoop
+:kill1
+</code><br><br>Therefore, this is solid evidence that the scripting language was written by somebody who had never written an interpreter before.<br><br>The scripting language definitely has a unique purpose though. I haven&#x27;t been able to fully figure everything out yet.<br><br>
+Took some guesswork and time to figure out that this script is activated <i>only</i> when byte <code>0xA2</code> in EEPROM is set to <code>2</code>.
+See <a href='https://github.com/fujihack/fujihack/issues/13'>https://github.com/fujihack/fujihack/issues/13</a> for more on this.<br><br>I was able to set the EEPROM byte through my PTP/USB hack and confirmed it ran on startup.<br><br><h2>IO</h2>
+In terms of file writing, here&#x27;s what the code looks like:
+<code class='long'>char test[] = &quot;12345678912&quot;;
+char file[] = &quot;X:\\TEST.BIN&quot;;
+file[0] = fuji_drive();
+fuji_toggle();
+void *fp = fuji_fopen(FUJI_FOPEN_HANDLER, file, 1);
+fuji_toggle();
+fuji_zero();
+fuji_toggle();
+fuji_fwrite(FUJI_FWRITE_HANDLER, fp, 10, test);
+fuji_toggle();
+fuji_zero();
+fuji_toggle();
+fuji_fclose(FUJI_FCLOSE_HANDLER, fp, 0, (char*)0);
+fuji_toggle();
+fuji_zero();
+</code>
+<br>- Took me several months to figure that out, since I was not expecting such unusual code.
+<br>- I also figured out <a href='https://github.com/fujihack/fujihack/blob/a15934157293ffc20987ca5265a0d60c65ed634f/src/fujifilm.h#L26'>directory reading</a>.
+<br>- I figured out how to play beeps and light the LED, which I thought would have gotten me closer to UI code, but It didn&#x27;t lead me anywhere.<br><br>In terms of drawing to the screen, I&#x27;ve found 3 methods:
+<br>- <a href='https://github.com/fujihack/fujihack/blob/a15934157293ffc20987ca5265a0d60c65ed634f/src/fujifilm.h#L16'>fuji_screen_write</a>, which writes UTF8 rows to the screen
+<br>- Guessing screen buffer address and writing to it
+<br>- <a href='https://github.com/fujihack/fujihack/blob/a15934157293ffc20987ca5265a0d60c65ed634f/src/rst.h#L11'>Creating rasterizer objects</a><br><br><a href='https://eggnog.theres.life/f/59-b1jsff7nt7tiep1mngnur6nt4x2vxq.jpg'><img width='300' src='https://eggnog.theres.life/f/59-b1jsff7nt7tiep1mngnur6nt4x2vxq.jpg' alt='creating a transparent rst object' title='creating a transparent rst object'></a><br><br>As for button presses, I was able to figure out an IO table after reverse engineering some menu code. Seems to include a bunch of IO stuff, including accelerometer and gyroscope.<br><br>These findings led to the first ever custom &quot;menu&quot;:
+<a href='https://www.youtube.com/watch?v=E62S_GleN6M'>https://www.youtube.com/watch?v=E62S_GleN6M</a><br><br><h2>SQLite</h2>
+Ever since 2010, Fujifilm cameras have been shipped with SQLite. It&#x27;s probably used to store some camera settings, but I&#x27;m not entirely sure. It seems like SQLite doesn&#x27;t start up when the camera is turned on, but around 10 minutes later.<br><br>After reverse engineering the SQLite initialization process, I figured out how to start SQLite and execute some SQL:
+<a href='https://eggnog.theres.life/f/58-5w6nr77t4lpmjcno3oun2lxqgmw324.jpg'><img width='300' src='https://eggnog.theres.life/f/58-5w6nr77t4lpmjcno3oun2lxqgmw324.jpg' alt='image of basic SQL code running' title='image of basic SQL code running'></a><br><br><h2>Organization</h2>
+Eventually, I decided to rename the project to &quot;FujiHack&quot;, and made a quick logo in GIMP:
+<a href='https://eggnog.theres.life/f/56-mes2055fpsqga6cr0lt7h7a07h1txj.png'><img width='300' src='https://eggnog.theres.life/f/56-mes2055fpsqga6cr0lt7h7a07h1txj.png' alt='fujihack logo' title='fujihack logo'></a>
+I also created a <a href='https://fujihack.github.io/'>Wiki</a> packed with information, and wrote a basic <a href='https://fujihack.github.io/patcher/'>web based firmware patcher/unpacker</a> in Javascript.<br><br><h2>Conclusion</h2>
+In the past year, working on and off on this project, I&#x27;ve made a lot of progress.
+I&#x27;ve also learned a ton about linkers, ARM Assembly, makefiles, operating systems, SQLite, PTP/USB, SoCs...
+It&#x27;s been a great learning experience, and I don&#x27;t regret getting into it.<br><br>Moving on, here are some clear goals I have in mind:
+<br>- Stable firmware patch
+<br>- Dump ROM, study bootloader
+<br>- Figure out the &quot;IMFIDIX&quot; SREC files
+<br>- Make some video bit rate tweaks
+<br>- Remove 30 minute video timer
+</div><a class='back' href='.'>Back</a>
+	<p style='text-align: center;'>Contact me:<br><img src='../images/email.png'></p>
+</body>
+</html>

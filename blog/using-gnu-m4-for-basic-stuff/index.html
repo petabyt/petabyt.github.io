@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Using GNU m4 for basic stuff</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body, html {
+			font-family: sans-serif;
+			color: white;
+			background-color: #2d2e2e;
+		}
+
+		a {color: #88c3bb;}
+		a:visited {color: #547b76;}
+
+		.post {
+			background-color: #474747;
+			padding: 5px 5px;
+			margin-bottom: 20px;
+			width: 70%;
+			margin: auto;
+			margin-bottom: 20px;
+		}
+		.post h1 { margin: 0px; }
+
+		@media only screen and (max-width: 600px) {
+			.post {
+				width: 100%;
+			}
+			
+			.ad {
+				width: 100%;
+			}
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		
+		.center {
+		    text-align: center;
+		}
+
+		.header h1 {
+			margin-bottom: 0px;
+		}
+
+		code {
+			background: #0b140b;
+			margin: 2px;
+			overflow-x: scroll;
+			padding: 3px;
+			white-space: break-spaces;
+		}
+
+		.long {
+			display: block;
+			padding: 10px;
+			margin: 10px;
+		}
+		
+		.back {
+			display: block;
+			width: 50px;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<a href="."><h1>Daniel's Stuff</h1></a>
+		<a href="rss.xml">RSS</a><br>
+		<div class="ad" id="amzn-assoc-ad-94172efa-e524-41ae-b714-e1722b66759e"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=94172efa-e524-41ae-b714-e1722b66759e"></script>
+	</div>
+	<div class='post' title='Post #35'><h1>Using GNU m4 for basic stuff</h1><p>Dec 24 2021</p><hr><br><br><h2>How do I use ` normally??</h2>
+<code class='long'>define(&#96;LQ&#x27;,&#96;changequote(&lt;,&gt;)&#96;dnl&#x27;
+changequote&#96;&#x27;&#x27;)
+</code>
+Use <code>LQ()</code> to use it.<br><br><h2>How do I define stuff?</h2>
+Via cli, similar to cc. <code>-D FOO value</code>
+<code class='long'>define(MENU_ICON, &#96;assets/menu.png&#x27;)
+</code><br><br><h2>How do if ifdef?</h2>
+<code class='long'>ifdef(&#96;DESKTOP&#x27;, &#96;
+	define(MENU_ICON, &#96;assets/menu.png&#x27;)
+	define(CLOSE_ICON, &#96;assets/back.png&#x27;)
+&#x27;)
+</code><br><br><h2>How do I include?</h2>
+<code class='long'>include(main.css)
+</code><br><br><h2>So should I use m4?</h2>
+No. Don&#x27;t walk, <b>run</b> away from m4. It&#x27;s trash.
+</div><a class='back' href='.'>Back</a>
+	<p style='text-align: center;'>Contact me:<br><img src='../images/email.png'></p>
+</body>
+</html>

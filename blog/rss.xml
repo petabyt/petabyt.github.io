@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+        <channel>
+          <title>Daniel's Blog</title>
+            <link>https://petabyt.dev/blog</link>
+            <description>This is the place where I put stuff</description>
+            <generator>Tinyblog</generator>
+            <language>en</language>
+            <lastBuildDate>2023-09-08</lastBuildDate>
+    
+            <item>
+            <title>How to make money from open-source</title>
+            <pubDate>21 July 2023</pubDate>
+            <link>https://petabyt.dev/blog/monetize-open-source</link>
+            </item>
+            <item>
+            <title>2 Years of Fujihack</title>
+            <pubDate>July 10 2023</pubDate>
+            <link>https://petabyt.dev/blog/2-years-of-fujihack</link>
+            </item>
+            <item>
+            <title>Why open source sucks</title>
+            <pubDate>Jan 31 2023</pubDate>
+            <link>https://petabyt.dev/blog/why-open-source-sucks</link>
+            </item>
+            <item>
+            <title>What I learned after a year of reverse engineering</title>
+            <pubDate>Sept 5 2022</pubDate>
+            <link>https://petabyt.dev/blog/what-i-learned-after-a-year-of-reverse-engineering</link>
+            </item>
+            <item>
+            <title>Why I Don't Monetize my Software Projects</title>
+            <pubDate>July 2 2022</pubDate>
+            <link>https://petabyt.dev/blog/no-monetization</link>
+            </item>
+            <item>
+            <title>Announcement: Domain Switching</title>
+            <pubDate>June 24 2022</pubDate>
+            <link>https://petabyt.dev/blog/domain-update</link>
+            </item>
+            <item>
+            <title>Destroying an expensive camera for science</title>
+            <pubDate>March 12 2022</pubDate>
+            <link>https://petabyt.dev/blog/fujifilm-xf1-teardown</link>
+            </item>
+            <item>
+            <title>Writing TINY Desktop Apps in C and GTK3</title>
+            <pubDate>Jan 15 2022</pubDate>
+            <link>https://petabyt.dev/blog/tiny-windows-linux-gtk-apps</link>
+            </item>
+            <item>
+            <title>Using GNU m4 for basic stuff</title>
+            <pubDate>Dec 24 2021</pubDate>
+            <link>https://petabyt.dev/blog/using-gnu-m4-for-basic-stuff</link>
+            </item>
+            <item>
+            <title>I Hate Notifications</title>
+            <pubDate>Dec 9 2021</pubDate>
+            <link>https://petabyt.dev/blog/i-hate-notifications</link>
+            </item>
+            <item>
+            <title>The "Awakening" Argument</title>
+            <pubDate>Nov 22 2021</pubDate>
+            <link>https://petabyt.dev/blog/the-awakening-argument</link>
+            </item>
+            <item>
+            <title>Hacking the Fujifilm Digital Cameras</title>
+            <pubDate>Jul 30 2021</pubDate>
+            <link>https://petabyt.dev/blog/hacking-the-fujifilm-digital-cameras</link>
+            </item>
+            <item>
+            <title>Creating My Own Architecture, Operating System, Assembler</title>
+            <pubDate>Feb 4 2021</pubDate>
+            <link>https://petabyt.dev/blog/crypticos</link>
+            </item>
+            <item>
+            <title>Ditching Windows: 1 Year Later</title>
+            <pubDate>Dec 8 2020</pubDate>
+            <link>https://petabyt.dev/blog/ditching-windows</link>
+            </item>
+            <item>
+            <title>Dismantling a Roblox Scam</title>
+            <pubDate>September 21, 2020</pubDate>
+            <link>https://petabyt.dev/blog/roblox-scams</link>
+            </item>
+            <item>
+            <title>Tips from a 5 year YouTuber</title>
+            <pubDate>Aug 1 2020</pubDate>
+            <link>https://petabyt.dev/blog/video-tips</link>
+            </item>
+            <item>
+            <title>New Testing Post.</title>
+            <pubDate>April 23 2020</pubDate>
+            <link>https://petabyt.dev/blog/new-testing-post</link>
+            </item>
+            <item>
+            <title>Test post.</title>
+            <pubDate>April 23 2020</pubDate>
+            <link>https://petabyt.dev/blog/test-post</link>
+            </item>
+            <item>
+            <title>Past Usernames</title>
+            <pubDate>Monday, March 23, 2020</pubDate>
+            <link>https://petabyt.dev/blog/past-usernames</link>
+            </item>
+            <item>
+            <title>Only Screenshot of my old Doodlekit Website</title>
+            <pubDate>Sunday, December 29, 2019</pubDate>
+            <link>https://petabyt.dev/blog/doodlekit</link>
+            </item>
+            <item>
+            <title>What I Leaned from Working on a Programming Language for 3 Years</title>
+            <pubDate>Thursday, December 26, 2019</pubDate>
+            <link>https://petabyt.dev/blog/corescript-reflection</link>
+            </item>
+            <item>
+            <title>The Struggle of Moving to Linux</title>
+            <pubDate>October 17, 2019</pubDate>
+            <link>https://petabyt.dev/blog/linux-struggles</link>
+            </item>
+            <item>
+            <title>My First Line of Code</title>
+            <pubDate>October 13, 2019</pubDate>
+            <link>https://petabyt.dev/blog/my-first-line-of-code</link>
+            </item>
+            <item>
+            <title>3 Years on Roblox</title>
+            <pubDate>December 20, 2018</pubDate>
+            <link>https://petabyt.dev/blog/3-years-on-roblox</link>
+            </item>
+            <item>
+            <title>Homemade Computer Case</title>
+            <pubDate>June 15 2018</pubDate>
+            <link>https://petabyt.dev/blog/homemade-computer-case</link>
+            </item>
+            <item>
+            <title>My New PC</title>
+            <pubDate>March 31 2018</pubDate>
+            <link>https://petabyt.dev/blog/my-new-pc</link>
+            </item>
+            <item>
+            <title>Hello, World!</title>
+            <pubDate>March 1 2018</pubDate>
+            <link>https://petabyt.dev/blog/hello-world</link>
+            </item>
+            <item>
+            <title>ScratchFormat is on the Chrome Web Store</title>
+            <pubDate>December 2, 2017</pubDate>
+            <link>https://petabyt.dev/blog/scratchformat</link>
+            </item>
+            <item>
+            <title>No More Scratch Extensions</title>
+            <pubDate>November 30, 2017</pubDate>
+            <link>https://petabyt.dev/blog/no-more-scratch-extensions</link>
+            </item>
+            <item>
+            <title>Coding Ideas</title>
+            <pubDate>November 11, 2017</pubDate>
+            <link>https://petabyt.dev/blog/coding-ideas</link>
+            </item>
+            <item>
+            <title>vs.nut.cc</title>
+            <pubDate>November 11, 2017</pubDate>
+            <link>https://petabyt.dev/blog/vsnutcc</link>
+            </item>
+            <item>
+            <title>WebCraft</title>
+            <pubDate>November 11, 2017</pubDate>
+            <link>https://petabyt.dev/blog/webcraft</link>
+            </item>
+            <item>
+            <title>JScraft</title>
+            <pubDate>October 19, 2017</pubDate>
+            <link>https://petabyt.dev/blog/jscraft</link>
+            </item>
+            <item>
+            <title>Every Possible Command In Corescript</title>
+            <pubDate>October 10, 2017</pubDate>
+            <link>https://petabyt.dev/blog/every-possible-command-in-corescript</link>
+            </item>
+            <item>
+            <title>Corescript</title>
+            <pubDate>October 9, 2017</pubDate>
+            <link>https://petabyt.dev/blog/corescript</link>
+            </item>
+        </channel>
+    </rss>
+    

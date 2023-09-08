@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hacking the Fujifilm Digital Cameras</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body, html {
+			font-family: sans-serif;
+			color: white;
+			background-color: #2d2e2e;
+		}
+
+		a {color: #88c3bb;}
+		a:visited {color: #547b76;}
+
+		.post {
+			background-color: #474747;
+			padding: 5px 5px;
+			margin-bottom: 20px;
+			width: 70%;
+			margin: auto;
+			margin-bottom: 20px;
+		}
+		.post h1 { margin: 0px; }
+
+		@media only screen and (max-width: 600px) {
+			.post {
+				width: 100%;
+			}
+			
+			.ad {
+				width: 100%;
+			}
+		}
+
+		.header {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		
+		.center {
+		    text-align: center;
+		}
+
+		.header h1 {
+			margin-bottom: 0px;
+		}
+
+		code {
+			background: #0b140b;
+			margin: 2px;
+			overflow-x: scroll;
+			padding: 3px;
+			white-space: break-spaces;
+		}
+
+		.long {
+			display: block;
+			padding: 10px;
+			margin: 10px;
+		}
+		
+		.back {
+			display: block;
+			width: 50px;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<a href="."><h1>Daniel's Stuff</h1></a>
+		<a href="rss.xml">RSS</a><br>
+		<div class="ad" id="amzn-assoc-ad-94172efa-e524-41ae-b714-e1722b66759e"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=94172efa-e524-41ae-b714-e1722b66759e"></script>
+	</div>
+	<div class='post' title='Post #31'><h1>Hacking the Fujifilm Digital Cameras</h1><p>Jul 30 2021</p>I recently got my hands on a cheap Fujifilm HS20 EXR. It&#x27;s a pretty old camera (2012),
+but I thought it&#x27;d be a good way to practice my hacking skills.
+<hr>
+The first thing I did was update to the latest firmware. It&#x27;s pretty simple: just hold
+down the back button while powering up, and press a few buttons.
+After the update, the camera wouldn&#x27;t let me upgrade to the same version again.
+With that, I decided to dig into the firmware file contents.<br><br>In a hex editor, the file doesn&#x27;t look very interesting. No strings, and a weird
+looking header. Given that Fujifilm has made tons of different cameras, I decided
+to download as many different firmware files as I could and study them.<br><br>This is what I came up with:
+<code class='long'>Size in bytes  Description
+4              Hardware or OS version
+512            Model information
+8              Firmware version
+4              Firmware checksum
+4              ??? (always 1)
+...            Payload (bit flipped)
+</code>
+It appears that Fujifilm has been using the same firmware format since ~2005, and
+continue to use it on their latest cameras.<br><br>I noticed another different Fujifilm camera, the S-series, has another firmware
+format. These cameras have already been hacked by <a href='https://chdk.setepontos.com/index.php?topic=6484.0'>CHDK developers</a>.
+It has easy-to-access secret menus and built-in scripting.<br><br>Sadly, I didn&#x27;t have this type of camera, and I would be on my own this time.<br><br><h2>Creating a new firmware</h2>
+Given that I bought this camera specifically for hacking, I knew I <i>had</i> to try
+and increment the firmware version by 1 and see if the camera accepted it. It seems
+risky, but I was willing to do it since I bought the camera specifically for hacking.<br><br>Before I did that, I needed to do some testing. It appeared that the firmware
+version is printed in hex. Yep, that means when you download firmware version
+number &quot;1.22&quot;, you are getting 1.32 in base 10. I confirmed this with a simple
+&quot;1337&quot; test:<br><br><a href='https://eggnog.theres.life/f/30-8kzf51c2grdyawmk6lhc3rihfu91yf.png'><img width='300' src='https://eggnog.theres.life/f/30-8kzf51c2grdyawmk6lhc3rihfu91yf.png' alt='1337' title='1337'></a><br><br>After fully understanding how this worked, I changed the firmware version from 1.4 to 1.5
+and tried it. Amazingly, it installed perfectly. And a bonus: it doesn&#x27;t increment the system&#x27;s
+firmware version counter. Now, all I need to do is figure out the firmware payload.<br><br><a href='https://eggnog.theres.life/f/31-8kzf51c2grdyawmk6lhc3rihfu91yf.png'><img width='300' src='https://eggnog.theres.life/f/31-8kzf51c2grdyawmk6lhc3rihfu91yf.png' alt='binvis.io' title='binvis.io'></a><br><br>It doesn&#x27;t look encrypted or compressed, so this one should be relatively easy to
+solve. The <a href='https://chdk.setepontos.com/index.php?topic=6484.msg88507#msg88507'>people at CHDK have already gotten this far</a>: the firmware is XORed with 0xff.
+All I had to do was go write a program to go through the file and invert all the bits. Easy.<br><br>I was quickly able to get it disassembled in Ghidra, all the data references pointed
+to an empty area in the firmware file (a bunch of 0xff). Although the code was basically
+unreadable, the strings in the firmware were very interesting. It mentions SQLite,
+&quot;AUTO_ACT.SCR&quot; (automatically activated script?), and possibly a hidden menu.<br><br>After that, I decided to try and make my own firmware. The checksum looking number
+in the header worried me. Was it CRC32? Or was it some proprietary algorithm? How
+would I recreate it?<br><br>After a few <i>very</i> risky firmware update tests, it turns out it is just a simple case of &quot;add up
+all the bytes and make sure it equals X.&quot; I had confirmed this by reversing a word
+in the firmware.<br><br><a href='https://eggnog.theres.life/f/32-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG'><img width='300' src='https://eggnog.theres.life/f/32-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG' alt='backwards' title='backwards'></a><br><br>In order to inject my own custom text, all I had to do was subtract the checksum of
+both files and then change the header checksum accordingly.<br><br><a href='https://eggnog.theres.life/f/33-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG'><img width='300' src='https://eggnog.theres.life/f/33-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG' alt='hacked by dan' title='hacked by dan'></a><br><br><h2>Getting the Correct Disassembly</h2>
+Completely hacked right? Well, custom code injection would be nice. Since the strings
+won&#x27;t correctly reference to the code, I had no idea where a good place to
+inject my own code would be.
+Then, I remembered the SQLite strings in the firmware. Since SQLite is open-source,
+I could match up some of the source and my decompiled code, and calculate the offset
+of the string references.
+In other words, see how the code was compiled by matching it up with the source code.<br><br>I downloaded a <a href='https://github.com/sqlite/sqlite/tree/5d4feffe7d96893d6eb339818101615748618673'>2010 revision of SQLite source code</a> and searched for &quot;0x&quot;.
+The plan was to match up a number between my disassembly and the source code,
+and figure out function names and string offsets from that. Of course, I needed to find
+a number that was unique, but I also needed a string referenced near it.<br><br>The first thing I found was sqlite3Realloc(). I was quickly able to find it
+since it had the number <code>0x7fffff00</code> inside the function. Sadly, no string was
+referenced here, so I kept digging.<br><br>After finding an integer in sqlite3Realloc(), I was able to find several other allocation
+functions around it, such as sqlite3DbMallocZero(). The reason I mention that
+function is because in the source code, allocateIndexInfo() contains a call to sqlite3DbMallocZero()
+and a reference to the string &quot;out of memory&quot;.<br><br>Now, all I had to do was look at references to sqlite3DbMallocZero() and find
+a call that looked like this:
+<code class='long'>pIdxInfo = sqlite3DbMallocZero(pParse-&gt;db, sizeof(&#42;pIdxInfo)
+                       + (sizeof(&#42;pIdxCons) + sizeof(&#42;pUsage))&#42;nTerm
+                       + sizeof(&#42;pIdxOrderBy)&#42;nOrderBy + sizeof(&#42;pHidden) );
+if( pIdxInfo==0 ){
+  sqlite3ErrorMsg(pParse, &quot;out of memory&quot;);
+  return 0;
+}
+</code>
+Eventually, I found something in the Ghidra decompiler that looked like a worthy candidate:
+<code class='long'>FUN_0047e7e8(&#42;param_1, iVar32 &#42; 0x14 + 0x2c + iVar20 &#42; 8);
+</code>
+After a bit of poking around, everything seemed to match up. Now that I had the
+correct offset, I wrote a program to copy the strings over, and I finally got a
+usable disassembly.<br><br><h2>Code Injection</h2>
+Now, that I had the strings correctly referenced, I needed to pick a place to inject
+my code. My first idea was to hijack the image saving process. I opened up a JPEG image,
+and looked around for some interesting things I could possibly hijack.<br><br>The first thing I saw was &quot;PrintIM&quot;. I searched it in my disassembly, and went to its
+reference to one 200 byte function. After changing a few values and testing the resulting
+firmware file, I was confident this was a safe place to test my code.<br><br>And indeed, it was. Whenever I took a picture, I could run my own custom assembly
+and output 29 bytes of whatever I want. Here&#x27;s a screenshot where I tested how
+many bytes I could output:<br><br><a href='https://eggnog.theres.life/f/34-8kzf51c2grdyawmk6lhc3rihfu91yf.png'><img width='300' src='https://eggnog.theres.life/f/34-8kzf51c2grdyawmk6lhc3rihfu91yf.png' alt='hack' title='hack'></a><br><br><h2>A Conclusion</h2>
+So what&#x27;s next?<br><br>Of course, writing custom firmwares to ROM is very dangerous, especially
+with the risky version update hack. The only reason I did it was because I bought
+the camera purely for the joy of hacking.<br><br>In order to tweak and add useful modifications to the camera, it should be done in a
+non-permanent way, such as via a special <a href='https://github.com/petabyt/fujiptp'>USB/PTP</a> command, or uncovering anything
+else that could possibly allow code execution.<br><br>And as always, the code is completely open-source:
+<a href='https://github.com/petabyt/fujifilm'>https://github.com/petabyt/fujifilm</a><br><br></div><a class='back' href='.'>Back</a>
+	<p style='text-align: center;'>Contact me:<br><img src='../images/email.png'></p>
+</body>
+</html>
