@@ -15,3 +15,5 @@ MOUSE     Corsair M55 $25
 
 Laptop:
 Lenovo T490s 16gb 4x i5
+
+Last updated: April 2023
