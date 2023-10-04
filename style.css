@@ -5,6 +5,7 @@ body, html {
 	overflow-x: hidden;
 	background-color: #242424;
 	font-family: sans-serif;
+	color: white;
 }
 
 #main {
@@ -19,7 +20,6 @@ body, html {
 #text {
 	display: table-cell;
 	vertical-align: middle;
-	color: white;
 	text-shadow: 3px 3px 1px black;	
 	text-align: center;
 }
@@ -58,10 +58,7 @@ body, html {
 }
 
 #second {
-	height: 100%;
-	width: 90%;
 	padding: 30px 30px;
-	color: white;
 	font-family: sans-serif;
 }
 
