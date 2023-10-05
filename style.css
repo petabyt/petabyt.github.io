@@ -44,7 +44,7 @@ body, html {
 }
 
 #buttons a:hover {
-	background: #666565;
+	background: rgb(70, 70, 70, 0.9);
 }
 
 #buttons {
@@ -86,4 +86,10 @@ body, html {
 
 .email {
 	vertical-align: middle;
+}
+
+@media screen and (max-width: 992px) {
+	br {
+		display: none;
+	}
 }
