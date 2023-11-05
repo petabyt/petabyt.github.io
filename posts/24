@@ -1,0 +1,16 @@
+Test post.
+April 23 2020
+
+This is a test post for my new blog software. Or whatever you want to call it.
+It uses my own bare bones PHP markdown parser.
+---
+[Link test](https://example.com)
+![Image test](https://avatars0.githubusercontent.com/u/32369330?s=460&v=4)
+
+`print Hello, World! One line of code`
+
+```
+1
+2
+3
+```

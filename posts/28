@@ -1,0 +1,28 @@
+:ditching-windows
+Ditching Windows: 1 Year Later
+Dec 8 2020
+
+[check out the previous post](http://petabyte.heb12.com/blog/?post=19)
+
+A year ago, I wrote a post describing my experience moving from Windows 10 
+to Linux. Here, I will elaborate on my points.
+---
+
+Issue Solving:
+Obviously, since Windows is much more popular than Linux, there will be more
+people to answer forum questions. This doesn't mean that Windows is better than Linux, 
+but it's still an inconvenience when switching.
+
+Admin/User:
+"In Windows, you are a user. In Linux, you are the Admin"
+I looked at this from a software perspective. From a "[freedom](https://www.gnu.org/software/software.en.html)" perspective, this is very true.
+Windows does a lot of sneaky things in the background and doesn't let you disable
+them. Not to mention that Windows is completely closed-source.
+
+Here, I was talking about software design. To a person who has a lot of experience with
+Linux, I can see why they would say this is true. I still find the typical Linux
+permission system a bit annoying compared to Windows, making me feel less like an admin.
+
+I still have a Windows installation for running Windows only software, and boot
+into it often, but **switching to Linux was one of my decisions**, especially for
+software development.

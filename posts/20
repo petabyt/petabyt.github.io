@@ -1,0 +1,58 @@
+:corescript-reflection
+What I Leaned from Working on a Programming Language for 3 Years
+Thursday, December 26, 2019
+
+Corescript is a small "programming language" project I started in the summer of 2017. It was more of a hobby project that I made for fun rather than something somebody would seriously use. I worked on it until early 2019, abandoned it, then I started working on the Heb12 android app.
+The syntax for Corescript was meant to be very simple, and somewhat similar to MIT's Scratch.
+---
+This is a simple program:
+
+```
+var greeting = Good Morning
+input name = What's your name?
+
+print (greeting), (name)!
+```
+
+I thought this was the most simple way to write a program. 
+It took some syntax inspiration from BASIC and Microsoft Batch.
+
+
+Also, I had a very simple and easy way to interpret Corescript code. 
+The code "print Hello, World" would simply be interpreted with code like this psudocode:
+
+```
+if line starts with "print"
+   remove first 6 characters of line
+   return
+```
+
+I know, it wasn't very efficient, but I made it work for a while. I also ended up writing many 
+programs in Corescript, such as a text adventure, a calculator, etc. I have somehow not released these yet.
+
+In January of 2018 I decided to re-write Corescript, again. This time I wanted to make it much 
+more complex, with syntax highlighting, custom commands, and learn 
+from the mistakes of my previous versions. 
+Even now, over a year later, I still find it impressive.
+
+# New Plans For Corescript
+
+Over the past year, I have been thinking of ideas for a new Corescript. First, I want to completely redesign the parser. It would still be similar to the previous versions, but allow for more complex features, like functions.
+I also would like to design it to also parse different languages. For example, a Corescript Spanish program could look like this:
+
+```
+imprimir Buenos Dias!
+*Sorry about my bad Spanish
+```
+
+This program would simply print "Buenos Dias!". This could also work many different languages. 
+I could also have a program to translate the programs from different languages.
+
+I'm not sure when I will start working on this, but at the time I am busy maintaining Heb12 Mobile. 
+
+## Why Corescript?
+In 2017 I did a lot of searching to see if "Corescript" was taken. I couldn't find anything,
+with the exception of a Roblox CoreScript. But as far as I can tell, it just means a "Core" script.
+You could point to https://github.com/stephanbruny/corescript and say that I copied that, but that project
+started in February 2018, while my Corescript started in April 2017. If anything, they copied me (although I highly doubt it)
+

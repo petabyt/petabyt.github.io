@@ -1,0 +1,153 @@
+:tiny-windows-linux-gtk-apps
+Writing TINY Desktop Apps in C and GTK3
+Jan 15 2022
+---
+So you finish up your C/C++ backend, and open up the Electron.js
+documentation to figure out how to make a quick frontend...
+
+**NO!!**
+
+You'd better not *dare* write your desktop application in *HTML*.
+**What has this world come to???**
+
+![fat wojak](https://eggnog.theres.life/f/29-buegcdwi8nl2u71nuyi4h41i0kewj4.png)
+
+In this tutorial, I will show you how to write a proper GTK3
+app, like a **civilized being**, instead of shipping your
+"desktop app" as a website in a *web browser*.
+
+## Setting Up dev stuff
+```
+sudo apt install libgtk-3-dev
+```
+Yeah, that's it. Assuming you have a C compiler, you're golden.
+
+Now that everything is set up, let's make a real small test file:
+```
+#include <gtk/gtk.h>
+
+int main(int argc, char *argv[]) {
+	gtk_init(&argc, &argv);
+
+	GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+	gtk_window_set_title(GTK_WINDOW(window), "Test Window");
+	gtk_window_set_default_size(GTK_WINDOW(window), 300, 300);
+	g_signal_connect(window, "delete-event", G_CALLBACK(gtk_main_quit), NULL);
+	gtk_widget_show(window);
+	
+	GtkWidget *label = gtk_label_new("Hello World");
+	gtk_widget_set_hexpand(label, TRUE);
+	gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_CENTER);
+	gtk_container_add(GTK_CONTAINER(window), label);
+	gtk_widget_show(label);
+	
+	gtk_main();
+}
+```
+And to compile it:
+```
+gcc test.c \`pkg-config --libs gtk+-3.0 --cflags\`
+```
+Yay, you've made a *decent* application!
+
+Of course, you aren't going to write your UI in C, only an
+[idiot would do that](https://github.com/petabyt/mlinstall/blob/69ea49dbf5e9d9c4e2777729eafde21e7e4a9055/gtk.c#L383). Instead, you want to write it in
+some kind of markup language. Lucky for us, GTK has just that.
+```
+<?xml version="1.0"?>
+<interface>
+  <object class="GtkApplicationWindow" id="window">
+    <child>
+      <object class="GtkLabel">
+        <property name="label">This is a test</property>
+      </object>
+    </child>
+  </object>
+</interface>
+```
+And some loader code:
+```
+int main(int argc, char *argv[]) {
+	gtk_init(&argc, &argv);
+
+	GtkBuilder *builder = gtk_builder_new();
+	gtk_builder_add_from_file(builder, "test.ui", NULL)
+
+	GtkWidget *window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
+	g_signal_connect(window, "delete-event", G_CALLBACK(gtk_main_quit), NULL);
+	gtk_window_set_title(GTK_WINDOW(window), "Demo Window");
+	gtk_window_set_default_size(GTK_WINDOW(window), 300, 100);
+
+	gtk_widget_show_all(window);
+	gtk_main();
+	return 0;
+}
+```
+![screenshot of window](https://eggnog.theres.life/f/20-6olbfh531ymgav05lg5xusxekot305.png)
+When it comes to loading this binary in, you have a few options:
+1. Load a UI file in with linker trickery
+2. Convert the file to a C header with `xxd -i`, and load it in as a string
+3. Just load the file in via path
+
+I'm gonna go with xxd.
+```
+xxd -i test.ui > test.h
+```
+And some loader code:
+```
+#include <gtk/gtk.h>
+#include "test.h"
+
+static void function(GtkWidget *widget, gpointer data) {
+	puts("Hello, World");
+}
+
+int main(int argc, char **argv) {
+	gtk_init(&argc, &argv);
+
+	GtkBuilder *builder = gtk_builder_new();
+	gtk_builder_add_from_string(builder, test_ui, test_ui_len, NULL));
+
+	GtkWidget *window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
+	g_signal_connect(window, "delete-event", G_CALLBACK(gtk_main_quit), NULL);
+	gtk_window_set_title(GTK_WINDOW(window), "Demo Window");
+	gtk_window_set_default_size(GTK_WINDOW(window), 300, 300);
+
+	GtkWidget *button = GTK_WIDGET(gtk_builder_get_object(builder, "btn"));
+	g_signal_connect(button, "clicked", G_CALLBACK(function), NULL);
+
+	gtk_widget_show_all(window);
+	gtk_main();
+	return 0;
+}
+```
+The above code creates the same output as the first example.
+
+And now, for my final trick: **Easy cross compilation for Windows.**
+```
+CC=x86_64-w64-mingw32
+ZIP=win64-gtk-2021.zip
+
+output: test.exe
+	-rm -rf output; mkdir output
+	cp win32/lib/* output/
+	cp test.exe output/
+
+test.exe: win32
+	$(CC)-gcc main.c -Iwin32/include win32/lib/* -o test.exe
+
+win32:
+	wget -4 https://github.com/petabyt/windows-gtk/raw/master/$(ZIP)
+	unzip *.zip
+	rm -rf *.zip
+```
+No. That's not a joke. You literally just have to install MinGW
+(`sudo apt install gcc-mingw-w64-x86-64`), and you can *actually* compile this.
+
+Thanks to some archive scouring and msys2 ripping over at my [windows-gtk](https://github.com/petabyt/windows-gtk) repository,
+I figured out how to make GTK cross compilation actually *not* a nightmare.
+
+Here's a simple example you can use to try it out:
+[https://code.theres.life/p/gtk-cross](https://code.theres.life/p/gtk-cross)
+
+Good luck, and make sure to have the [GTK3 Docs](https://docs.gtk.org/gtk3/) handy at all times.

@@ -1,0 +1,11 @@
+Every Possible Command In Corescript
+October 10, 2017
+
+I have made a corescript program where I have put every single command there is in Corescript. You can see it here:
+
+https://corescript.neocities.org/editor/#var name=John@break@set name=Jimmy@break@print Hello, (name)!@break@// Hello!@break@input name=What's your name?@break@cls@break@msg Hello!@break@goto 8@break@stop@break@if name=John@break@not name=John@break@play http://www.sample-videos.com/audio/mp3/crowd-cheering.mp3
+
+( Since Wix says it is not a valid url, you will just have to copy + paste it into your url bar )
+
+Also, don't try running it, since Corescript does not like every single command used at once. :)
+

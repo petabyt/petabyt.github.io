@@ -1,0 +1,32 @@
+Using GNU m4 for basic stuff
+Dec 24 2021
+---
+
+## How do I use ` normally??
+```
+define(\`LQ',\`changequote(<,>)\`dnl'
+changequote\`'')
+```
+Use `LQ()` to use it.
+
+## How do I define stuff?
+Via cli, similar to cc. `-D FOO value`
+```
+define(MENU_ICON, \`assets/menu.png')
+```
+
+## How do if ifdef?
+```
+ifdef(\`DESKTOP', \`
+	define(MENU_ICON, \`assets/menu.png')
+	define(CLOSE_ICON, \`assets/back.png')
+')
+```
+
+## How do I include?
+```
+include(main.css)
+```
+
+## So should I use m4?
+No. Don't walk, **run** away from m4. It's trash.

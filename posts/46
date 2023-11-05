@@ -1,0 +1,42 @@
+:monetize-open-source
+How to make money from open-source
+21 July 2023
+---
+## DON’T
+If you’re reading this, you likely want to monetize your OSS, but I need to mention an important word of caution. **Some things should never be monetized**. Monetizing the wrong thing can lead to anxiety, stress, depression, and repeated burnout. **The general rule of thumb is to never monetize your hobby.** If code is your only hobby, *don’t monetize it*. If you paint to destress, don’t monetize it. If you write stories to relax, then *please*, don’t try to make money from it.
+
+And more importantly, don’t try and make money making something you hate. The thing will suck, and you’ll eventually end up burning out and being worse off. Instead, try to make money building something you're interested in, or doing something you're good at. If you end up selling something, you’re gonna have to work *hard*, and deal with crappy people. It’s rewarding in the end, but you're also gonna need a hobby (or a way to destress) while you're at it.
+
+I’ll go over the different funding models starting with the most ‘FLOSS-friendly’ to the models employed by startups and successful companies. We’ll start with donations, which I assume is obvious.
+
+## Accept user donations
+The easiest way of funding open-source is with user funding. This is ideal for libraries, programming languages, UI frameworks, and other software made for developers. Developers value open-source, and understand that the frameworks and libraries they use need money to keep moving. This can range from a few bucks to thousands of dollars.
+*For example, the [Zig programming language](https://ziglang.org/) is funded mostly by individual people, to the point where they can have an organization of paid developers working on the language.*
+
+## Accept corporate sponsorships
+This is similar to the model listed above, but can bring in a lot more money. If you make something that could be useful for a company, they are likely to want to support you working on it. This can range from a thousand to 100s of thousands of dollars.
+*For example, Linux is funded mostly by corporations like Intel, Red Hat, SUSE, Samsung, and IBM.*
+
+## Bounties
+Some open-source projects can use services to put a price on bugs or feature requests. For example, companies who depend on the software might want a particular feature so much that they are willing to invest money in it.
+
+## Dual License
+If you expect many companies to want your software, you can dual-license it. This involves setting up the LICENSE to be both under a free software license, and also offering a paid closed-source license for people who want to make commercial software with it. This requires a Contributor License Agreement (CLA), which is not ideal for projects with lots of contributors.
+*For example, [Cesanta’s Mongoose OS](https://github.com/cesanta/mongoose-os) is dual-licensed, along with its JSON library and JS engine.*
+
+## Open core
+Open core generally applies to paid cloud-based services that license their software as open-source. This is undoubtedly the most successful model, powering companies like Gitlab.
+It can also apply to software with an open-source core library (which could be a runtime, driver, etc) with a closed-source frontend (cross-platform UI).
+
+## Pay what you want
+This is similar to donations, but prompting the user to pay any amount before they can download the software. Some people might be willing to pay, or others might be guilted or tricked into thinking they need to pay. [Elementary OS](https://elementary.io/) does this, as well as their app store.
+
+## Paid Binaries
+Some open source software can manage to be successful by selling the binaries on app stores such as Google Play, or the Microsoft app store. Games for example, are generally targeted towards people who don’t know how to compile or write code, or don’t know how to manually install an APK (or whatever iOS uses). This model worked great for [Pixel Dungeon](https://store.steampowered.com/app/365900/Pixel_Dungeon/).
+
+## Closed-source
+Not making your code open-source is a valid option. You shouldn’t be under any pressure to keep it open-source, or work tirelessly to fulfill feature requests for companies or people who make money off your code. This has worked well for the thousands of titles in the game industry, as well as apps on app stores.
+
+## Conclusion
+At the end of the day, it’s your software, and you are responsible for choosing the best model to release that software. I don’t want this to sound like a ChatGPT article, but you really need to do your research, and weigh the pros and cons of each model before you run with it. There isn’t a ‘one size fits all’ business or funding model. Choose the right one carefully, and it will do you well.
+

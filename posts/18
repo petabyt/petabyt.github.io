@@ -1,0 +1,32 @@
+My First Line of Code
+October 13, 2019
+
+I remember writing my first few lines of code. Not only do I remember doing it, but I also have the exact file, untouched since the day I created it. It's not much, but pulling out a file I hadn't seen in years really made me want to share it.
+---
+At that time I had no idea what HTML meant, but the idea of writing actual code, (like a real hacker), really interested me. I was following a coding tutorial in a code book I got from the school fair. Here's the entire file, named as "goodgm.txt":
+
+```
+<html>
+<center>
+<body style='background-color:red'>
+<div style="width:400px;height:212px;border:1px solid #000;"><strong style='color:yellow'>SPEED OF NYAN CAT<strong>
+<center>Version 0.1 </center>
+<button style='width:400px;height:40px'onclick="startgame()">Start new game</button>
+<button style='width:400px;height:40px'onclick='alert("SPEED OF NYAN CAT was deleloped by Pufflegamerz Studios. Made using html and javascript.")' >Credits</button>
+<center><button style='width:400px;height:40px'onclick='alert("welcome to SPEED OF NYAN CAT in this game, it is just like flappy bird... but better!")' >help</button>
+<a href='http://pufflegamerzstudios.wix.com/home'><strong>visit my website<strong></a>
+
+<p id="demo"></p>
+
+<script>
+function startgame() {
+    document.getElementById("demo").innerHTML = "welcome to ";
+}
+```
+
+I remember starting writing out with <html>, and pretty much the rest of the file I borrowed stole from code help sites. The idea of this game was to make a Nyan Cat Flappy Bird clone. Obviously, I failed. I didn't even make it past a simple welcome menu.
+
+In conclusion, this is my first ever line of JavaScript:
+```
+alert("SPEED OF NYAN CAT was deleloped by Pufflegamerz Studios. Made using html and javascript.")
+```

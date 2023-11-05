@@ -1,0 +1,60 @@
+:crypticos
+Creating My Own Architecture, Operating System, Assembler
+Feb 4 2021
+---
+A BrainF\*ck operating system.
+
+Every programmer eventually writes a BrainFuck interpreter. I decided to
+do it in the most difficult way possible.
+
+I called it: "CrypticOS".
+
+First, some background knowledge. I named it CrypticOS after a Scratch OS project I helped out with in June of 2018. The main idea was a fully pen rendered system, with a built-in programming language. After the project died off in 2019, I went back to working on the Heb12 project. In August of 2020, I decided to pick up the name and use it for a new idea. 
+
+# The "Architecture"
+
+Within a few hours, I was easily able to get several BrainFuck instructions working in my bootable x86 prototype. I began to implement I/O, then pointer control, loops.
+
+Suddenly I began to notice a major problem: BrainFuck doesn’t have functions. Of course it doesn’t, since there is no goto command, only a basic while not zero loop. After considering this problem (and a few others), I decided to start designing my own version of BrainFuck.
+
+First, I had to scrap the [] loop, and implement an instruction that could be used to goto anywhere in the code. I couldn’t just make it jump to a specific character, as that would mean adding 1 character in the code would ruin everything. I eventually realized that a label could be its own “instruction”, and it could be jumped to by its occurrence.
+
+I implemented a goto and an “if equal, then goto” instruction. After a while, I realized that 2 values could not be easily compared without copying these values somewhere else. In BrainFuck, you could do it like this:
+
+```
+[->+>+<<]>>[-<<+>>]<<
+```
+
+Yeah, that’s great and all, but I ditched the handy [] loops. What now?
+
+Then I had the idea to implement a second pointer. If I did this, it would open up a ton of new possibilities. Recursive function calling, easily copying cells, function parameters…
+
+This second pointer would only require 4 extra instructions. Two to move it, and two to copy values back and forth.
+
+After this, I came down to a grand total of 16 instructions. A perfect amount. Double that of BrainFuck, while still having the bare minimalism in mind. I finalized it in September 2020.
+
+Of course it needed a name: CINS. Cryptic Instruction. The first programs were written directly in CINS. Here is the first program, counting A-Z.
+
+```
+!\*++^!!%\*+++>!\*\*\*\*\*\*\*\*>\*<.<.>>-?
+```
+
+# The Assembler
+
+Eventually, I realized how painful it was to write it that way. It hurt my head even more than BrainFuck. With that, I began to write an assembler that spits out CINS when given very basic NASM style code.
+*This proved to be a very difficult part of the project, it took almost a month to get the optimizations working.*
+
+I named the assembler CASM (Cryptic Assembly), and began writing programs in it. I started working on a kernel, pointer functionality, a graphics system, and even a program that translates CINS to x86 Assembly.
+
+**Why not Subleq?**
+Subleq was one of the things I considered before designing CINS. Besides the fact that there is already an operating system written in it (DawnOS), there are several reasons I never used it.
+- It isn’t really “one instruction”
+Sure, by definition, it is. But the thing is, the instructions are 32 bits wide, therefore having ~60 thousand possible combinations, while CINS instructions are 4 bits wide, giving 16 possible combinations (which happens to match up with the number of instructions).
+- User can’t type code in.
+In CINS, I can easily type in code using symbols.
+!%***.
+But in Subleq, you wouldn’t be able to do this without a special assembler. Sure, it would definitely be more flexible, but just not the same.
+
+**Why not BrainFuck?**
+Given the advantages that BrainFuck has over CINS, it still seems like a viable option. It has a large community around it, many complex programs written in it, and lots of neat algorithms. There may not be a decent BrainFuck OS, but there are tons of BrainFuck assemblers, emulators, and even compilers. I wanted to make something new, based on my own ideas.
+
