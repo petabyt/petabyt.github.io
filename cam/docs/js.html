@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Cam Docs</title>
+	<meta charset="UTF-8">
+	<link rel="icon" href="../favicon.ico">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="CamControl official documentation">
+	<meta name="author" content="Daniel Cook">
+</head>
+<body>
+<ul class="menu">
+	<li><a href="../"><img src="../camcontrol.png" width="40"></a></li>
+	</ul>
+	<div class="container">
+<h1 id="technical-info">Technical Info</h1>
+<p>The user interface for CamControl is written entirely in HTML/CSS/JS. Requests are made through a JS 'mutex' and routed
+to camlib bindings.</p>
+
+<p><a href="https://github.com/clutchlink/camlibjs">Source code for camlib.js</a></p>
+
+<p>The backend of CamControl is camlib, which is written in portable C. This is compiled into the Android app with JNI.
+camlib provides easy to access bindings, which can accept a limited set of parameters. Binding requests can also be sent
+in string form, as documented in the camlib docs. This allows commands to be sent over a GET request in the browser based version.</p>
+
+<p><a href="https://github.com/petabyt/camlib">Source code for camlib</a></p>
+
+<h1 id="the-ptp-api">The <code>ptp</code> API</h1>
+<p><a href="https://github.com/basedtech/camcontrolui/blob/master/ptp.js">Source code for the ptp object</a></p>
+<p>Each function returns a JSON object. The object will always have a <code>error</code> key with
+a CamLib error code. Use <code>ptp.throwErr(code)</code> to throw an error message for it.
+The object might have a <code>resp</code> key which could hold any type or structure which would
+be returned by the operation. A <code>code</code> parameter will sometimes be added for the operation
+response code.</p>
+<p>If the <code>error</code> key is not zero, an error will be thrown.</p>
+<p>Scripts <strong>must</strong> be run asynchronously, with the <code>await</code>/<code>async</code> keywords. For example:</p>
+<pre><code><span class="hljs-keyword">var</span> deviceInfo = (<span class="hljs-keyword">await</span> ptp.getDeviceInfo()).resp;
+</code></pre>
+
+<p>For scripts to be able to run in the background, the code must be a little more complex:</p>
+<pre><code>{
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"demo"</span>,
+    <span class="hljs-attr">init</span>: <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Test for demo task"</span>);
+    },
+
+    <span class="hljs-attr">loop</span>: <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This is run at 15fps by default"</span>)
+    },
+};
+</code></pre>
+
+<p><code>loop</code> will be called at a certain FPS. All script tasks are run at 1fps.</p>
+<p>Since the script is run as a seperate worker task, it must send IO errors to the main task so<br>the connection can be killed.</p>
+<pre><code><span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">var</span> deviceInfo = (<span class="hljs-keyword">await</span> ptp.getDeviceInfo()).resp;    
+} <span class="hljs-keyword">catch</span> (e) {
+    ui.log(<span class="hljs-string">"Error in demo task:"</span> + <span class="hljs-built_in">String</span>(e));
+    ptp.kill();
+}
+</code></pre>
+<p>After reporting a connection error, the task can end itself when the loop() function returns an error. If you want the task to stay alive,
+then be sure to check <code>ptp.activeConnection && ptp.ready</code> before running any PTP operations.</p>
+<p>ADB inspect element is enabled on release build. It can be accessed with <code>about://inspect</code> on Chromium based browsers.</p>
+
+<h2 id="-ptp-getdeviceinfo-"><code>ptp.getDeviceInfo()</code></h2>
+<p>Returns device info as JSON. Note that device info is stored in <code>ptp.info</code> when the device is connected.</p>
+
+<h2 id="-ptp-disconnect-"><code>ptp.disconnect()</code></h2>
+<p>Disconnects the device abruptly. All tasks should die after this.</p>
+
+<h2 id="-ptp-drivelens-"><code>ptp.driveLens()</code></h2>
+<p>Drives the lens, if possible. For EOS cameras, you can use range <code>-3</code>-<code>3</code></p>
+
+<h2 id="-ptp-getliveviewframe-"><code>ptp.getLiveViewFrame()</code></h2>
+<p>Internal function used by CamControl (Linux, Windows) to get JSON raw bytes from a liveview frame.
+This is done internally on the backend.</p>
+
+<h2 id="-ptp-getdevicetype-"><code>ptp.getDeviceType()</code></h2>
+<p>Returns the current device type - type enums are stored in <code>ptp.devs</code>:</p>
+<pre><code><span class="hljs-symbol">devs:</span> {
+<span class="hljs-symbol">    EMPTY:</span> <span class="hljs-number">0</span>,
+<span class="hljs-symbol">    EOS:</span> <span class="hljs-number">1</span>,
+<span class="hljs-symbol">    CANON:</span> <span class="hljs-number">2</span>,
+<span class="hljs-symbol">    NIKON:</span> <span class="hljs-number">3</span>,
+<span class="hljs-symbol">    SONY:</span> <span class="hljs-number">4</span>,
+<span class="hljs-symbol">    FUJI:</span> <span class="hljs-number">5</span>,
+<span class="hljs-symbol">    PANASONIC:</span> <span class="hljs-number">6</span>,
+},
+</code></pre>
+
+<h2 id="-ptp-getretcode-"><code>ptp.getRetCode()</code></h2>
+<p>Gets the return code from the last operation.</p>
+
+<h2 id="-ptp-getstorageids-"><code>ptp.getStorageIDs()</code></h2>
+<p>Return a list of storage IDs (32 bit integers) from the camera</p>
+
+<h2 id="-getstorageinfo-id-"><code>getStorageInfo(id)</code></h2>
+<p>Returns a JSON structure with information on the requested storage ID.</p>
+
+<h2 id="-ptp-getobjecthandles-id-root-"><code>ptp.getObjectHandles(id, root)</code></h2>
+<p>Returns a list of object handles from a storage ID. Root can either be 0 for the top directory, or a handle to a folder.</p>
+
+<h2 id="-ptp-getobjectinfo-"><code>ptp.getObjectInfo()</code></h2>
+<p>Gets information on a particular object. Could be a folder, file, or even an album.</p>
+
+<h2 id="-ptp-getevents-"><code>ptp.getEvents()</code></h2>
+<p>Used only by CamControl. Gets a list of changes the camera has made since the last call.</p>
+
+<h2 id="-ptp-customcmd-opcode-params-"><code>ptp.customCmd(opcode, params)</code></h2>
+<p><em>(Not implemented in v0.1.0)</em>
+Sends a custom command opcode (with no data phase) to the camera.</p>
+
+<h2><code>ptp.getPartialObject(handle, offset, max)</code></h2>
+<p>Data is returned in the same way that thumbnail JPEG data is returned.</p>
+
+</div>
+</body>
+</html>
+
