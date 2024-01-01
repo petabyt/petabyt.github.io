@@ -5,9 +5,10 @@ body, html {
 	background-color: #242424;
 	font-family: sans-serif;
 	color: white;
+	scroll-behavior: smooth;
 }
 
-#main {
+#big {
 	width: 100%;
 	height: 100%;
 	background-size: cover;
@@ -19,27 +20,17 @@ body, html {
 #text {
 	display: table-cell;
 	vertical-align: middle;
-	text-shadow: 3px 3px 1px black;	
 	text-align: center;
 }
 
 .title {
 	margin: 0;
 	font-size: 40px;
-	font-weight: normal;
 }
 
 .subtitle {
 	margin: 0;
 	font-size: 25px;
-}
-
-#buttons a.green {
-	background: #3f803f;
-}
-
-#buttons a.green:hover {
-	background: green;
 }
 
 #buttons a:hover {
@@ -56,43 +47,15 @@ body, html {
 	margin-top: 5px;
 }
 
-#second {
+#content {
 	padding: 30px 30px;
 	font-family: sans-serif;
+	max-width: 600px;
 }
 
-#second a {
-	color: lightblue;
-}
+#content a {color: lightblue;}
+#content a:visited {color: #719aa6;}
 
-#post {
-	background: darkgrey;
-	color: black;
+.email {vertical-align: middle;}
 
-	text-align: center;
-	padding: 10px;
-	margin: auto;
-	margin-top: 20px;
-}
-
-#post p {
-	font-size: 20px;
-}
-
-#post hr {
-	display: none;
-}
-
-.email {
-	vertical-align: middle;
-}
-
-.link-list li {
-	padding: 3px;
-}
-
-@media screen and (max-width: 992px) {
-	br {
-		display: none;
-	}
-}
+.link-list li {padding: 3px;}
