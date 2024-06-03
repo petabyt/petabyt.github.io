@@ -2,12 +2,11 @@ body, html {
 	width: 100%;
 	height: 100%;
 	margin: 0px;
+	overflow-x: hidden;
 	background-color: #242424;
 	font-family: sans-serif;
 	color: white;
-	scroll-behavior: smooth;
 }
-
 #big {
 	width: 100%;
 	height: 100%;
@@ -16,46 +15,37 @@ body, html {
 	background-image: url(images/nightsky.jpg);
 	display: table;
 }
-
 #text {
 	display: table-cell;
 	vertical-align: middle;
+	color: white;
+	text-shadow: 3px 3px 1px black;	
 	text-align: center;
 }
-
 .title {
 	margin: 0;
 	font-size: 40px;
+	font-weight: normal;
 }
-
 .subtitle {
 	margin: 0;
 	font-size: 25px;
 }
-
-#buttons a:hover {
-	background: rgb(70, 70, 70, 0.9);
-}
-
+#buttons a.green {background: #3f803f;}
+#buttons a.green:hover {background: green;}
+#buttons a:hover {background: #666565;}
 #buttons {
 	width: 300px;
 	margin: auto;
 }
-
 #buttons a {
 	display: inline-block;
 	margin-top: 5px;
 }
-
 #content {
 	padding: 30px 30px;
-	font-family: sans-serif;
 	max-width: 600px;
 }
-
 #content a {color: lightblue;}
 #content a:visited {color: #719aa6;}
-
-.email {vertical-align: middle;}
-
 .link-list li {padding: 3px;}
