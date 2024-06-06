@@ -67,16 +67,17 @@ def genMainPage():
     return template(
         getIndex(),
         posts=getPosts(),
-        title="Daniel's 'Stuff'"
+        title="Daniel's stuff",
+        header="Daniel's stuff"
     )
 
-def getPost(post):
-    title, content = getPost(post)
-    return template(
-        getIndex(),
-        posts=content,
-        title=title
-    )
+# def getPost(post):
+#     title, content = getPost(post)
+#     return template(
+#         getIndex(),
+#         posts=content,
+#         title=title
+#     )
 
 def genRss():
     domain = "https://danielc.dev/blog"
@@ -140,7 +141,8 @@ def genFiles():
         post = template(
             getIndex(),
             posts=content,
-            title=title
+            title=title,
+            header="Daniel's stuff"
         )
 
         os.mkdir("blog/" + url)

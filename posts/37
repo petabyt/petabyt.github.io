@@ -23,7 +23,8 @@ sudo apt install libgtk-3-dev
 Yeah, that's it. Assuming you have a C compiler, you're golden.
 
 Now that everything is set up, let's make a real small test file:
-```
+
+```c
 #include <gtk/gtk.h>
 
 int main(int argc, char *argv[]) {
@@ -44,16 +45,17 @@ int main(int argc, char *argv[]) {
 	gtk_main();
 }
 ```
+
 And to compile it:
-```
-gcc test.c \`pkg-config --libs gtk+-3.0 --cflags\`
+```c
+gcc test.c `pkg-config --libs gtk+-3.0 --cflags`
 ```
 Yay, you've made a *decent* application!
 
 Of course, you aren't going to write your UI in C, only an
 [idiot would do that](https://github.com/petabyt/mlinstall/blob/69ea49dbf5e9d9c4e2777729eafde21e7e4a9055/gtk.c#L383). Instead, you want to write it in
 some kind of markup language. Lucky for us, GTK has just that.
-```
+```c
 <?xml version="1.0"?>
 <interface>
   <object class="GtkApplicationWindow" id="window">
@@ -66,7 +68,7 @@ some kind of markup language. Lucky for us, GTK has just that.
 </interface>
 ```
 And some loader code:
-```
+```c
 int main(int argc, char *argv[]) {
 	gtk_init(&argc, &argv);
 
@@ -90,11 +92,11 @@ When it comes to loading this binary in, you have a few options:
 3. Just load the file in via path
 
 I'm gonna go with xxd.
-```
+```c
 xxd -i test.ui > test.h
 ```
 And some loader code:
-```
+```c
 #include <gtk/gtk.h>
 #include "test.h"
 
@@ -124,7 +126,7 @@ int main(int argc, char **argv) {
 The above code creates the same output as the first example.
 
 And now, for my final trick: **Easy cross compilation for Windows.**
-```
+```c
 CC=x86_64-w64-mingw32
 ZIP=win64-gtk-2021.zip
 

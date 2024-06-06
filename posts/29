@@ -36,7 +36,7 @@ After this, I came down to a grand total of 16 instructions. A perfect amount. D
 Of course it needed a name: CINS. Cryptic Instruction. The first programs were written directly in CINS. Here is the first program, counting A-Z.
 
 ```
-!\*++^!!%\*+++>!\*\*\*\*\*\*\*\*>\*<.<.>>-?
+!*++^!!%*+++>!********>*<.<.>>-?
 ```
 
 # The Assembler

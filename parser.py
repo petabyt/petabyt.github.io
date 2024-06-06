@@ -1,4 +1,5 @@
 import re, html
+import markdown
 
 def getMatch(a):
     return a.groups(0)[0]
@@ -45,44 +46,22 @@ def parse(text, showMore):
 
     text = text[offset:]
 
-    text = html.escape(text)
-    
     text = text.replace("\\`", "&#96;")
     text = text.replace("\\*", "&#42;")
 
     if showMore:
         text = text.replace("---", "<hr>")
     else:
-        text = re.sub(r"---(.+)", r"<a href='/blog/" + url + "'>Read more</a>", text, flags=re.S)
+        text = re.sub(r"---(.+)", r"<a href='" + url + "'>Read more</a>", text, flags=re.S)
 
-    text = re.sub(r"### (.+)", r"<h3>\1</h3>", text)
-    text = re.sub(r"## (.+)", r"<h2>\1</h2>", text)
-    text = re.sub(r"# (.+)", r"<h1>\1</h1>", text)
+    # images
+    text = re.sub(r"\!\[([^\n|\[\]\(\)]+)\]\(([^\n|\[\]\(\)]+)\)", r"<a href='\2'><img width='300' src='\2' alt='\1' title='\1'></a>", text)
 
-    text = re.sub(r"- (.+)", r"<br>- \1", text)
-
-    inBetween = "([^\n|\[\]\(\)]+)";
-
-    # Images
-    text = re.sub(r"\!\[([^\n|\[\]\(\)]+)\]\(([^\n|\[\]\(\)]+)\)",
-        r"<a href='\2'><img width='300' src='\2' alt='\1' title='\1'></a>", text)
-    
-    # Links
-    text = re.sub(r"(?!\!)\[([^\n|\[\]\(\)]+)\]\(([^\n|\[\]\(\)]+)\)",
-        r"<a href='\2'>\1</a>", text)
-    
     # Code blocks
-    text = re.sub(r"```\n([^```]+)```", r"<code class='long'>\1</code>", text)
-    
-    # Single code blocks
-    text = re.sub(r"\`([^\n`]+)\`", r"<code>\1</code>", text)
-    
-    # Bold, then italics
-    text = re.sub(r"\*\*([^\n\*]+)\*\*", r"<b>\1</b>", text)
-    text = re.sub(r"\*([^\n\*]+)\*", r"<i>\1</i>", text)
-    
-    text = text.replace("\n\n", "<br><br>")
-    
+#    text = re.sub(r"```\n([^```]+)```", r"<code class='long'>\1</code>", text)
+
+    text = markdown.markdown(text, extensions=['fenced_code'])
+
     text = "<h1>" + title + "</h1><p>" + dateStr + "</p>" + text
 
     return url, title, dateStr, text

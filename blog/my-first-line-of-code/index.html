@@ -8,89 +8,74 @@
 			font-family: sans-serif;
 			color: white;
 			background-color: #2d2e2e;
+			font-size: large;
 		}
-
-		a {color: #88c3bb;}
-		a:visited {color: #547b76;}
-
+		a {color: lightblue;}
+		a:visited {color: #719aa6;}
 		.post {
 			background-color: #474747;
-			padding: 5px 5px;
-			margin-bottom: 20px;
-			width: 70%;
+			max-width: 900px;
 			margin: auto;
 			margin-bottom: 20px;
+			padding: 10px;
 		}
 		.post h1 { margin: 0px; }
-
-		@media only screen and (max-width: 600px) {
-			.post {
-				width: 100%;
-			}
-			
-			.ad {
-				width: 100%;
-			}
-		}
-
 		.header {
 			text-align: center;
 			margin-bottom: 10px;
 		}
-		
 		.center {
 		    text-align: center;
 		}
-
 		.header h1 {
 			margin-bottom: 0px;
 		}
-
 		code {
+			display: inline-block;
 			background: #0b140b;
 			margin: 2px;
-			overflow-x: scroll;
-			padding: 3px;
+			padding: 2px;
 			white-space: break-spaces;
 		}
-
-		.long {
-			display: block;
-			padding: 10px;
-			margin: 10px;
-		}
-		
 		.back {
 			display: block;
 			width: 50px;
 			margin: auto;
 		}
+/*		img {
+			max-height: 300px;
+			vertical-align: top;
+		}*/
 	</style>
 </head>
 <body>
 	<div class="header">
-		<a href="."><h1>Daniel's Stuff</h1></a>
+		<a href="."><h1>Daniel&#039;s stuff</h1></a>
 		<a href="rss.xml">RSS</a><br>
-		<div class="ad" id="amzn-assoc-ad-94172efa-e524-41ae-b714-e1722b66759e"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=94172efa-e524-41ae-b714-e1722b66759e"></script>
 	</div>
-	<div class='post' title='Post #18'><h1>My First Line of Code</h1><p>October 13, 2019</p>I remember writing my first few lines of code. Not only do I remember doing it, but I also have the exact file, untouched since the day I created it. It&#x27;s not much, but pulling out a file I hadn&#x27;t seen in years really made me want to share it.
+	<div class='post' title='Post #18'><h1>My First Line of Code</h1><p>October 13, 2019</p><p>I remember writing my first few lines of code. Not only do I remember doing it, but I also have the exact file, untouched since the day I created it. It's not much, but pulling out a file I hadn't seen in years really made me want to share it.</p>
 <hr>
-At that time I had no idea what HTML meant, but the idea of writing actual code, (like a real hacker), really interested me. I was following a coding tutorial in a code book I got from the school fair. Here&#x27;s the entire file, named as &quot;goodgm.txt&quot;:<br><br><code class='long'>&lt;html&gt;
+<p>At that time I had no idea what HTML meant, but the idea of writing actual code, (like a real hacker), really interested me. I was following a coding tutorial in a code book I got from the school fair. Here's the entire file, named as "goodgm.txt":</p>
+<pre><code class="language-c">&lt;html&gt;
 &lt;center&gt;
-&lt;body style=&#x27;background-color:red&#x27;&gt;
-&lt;div style=&quot;width:400px;height:212px;border:1px solid #000;&quot;&gt;&lt;strong style=&#x27;color:yellow&#x27;&gt;SPEED OF NYAN CAT&lt;strong&gt;
+&lt;body style='background-color:red'&gt;
+&lt;div style=&quot;width:400px;height:212px;border:1px solid #000;&quot;&gt;&lt;strong style='color:yellow'&gt;SPEED OF NYAN CAT&lt;strong&gt;
 &lt;center&gt;Version 0.1 &lt;/center&gt;
-&lt;button style=&#x27;width:400px;height:40px&#x27;onclick=&quot;startgame()&quot;&gt;Start new game&lt;/button&gt;
-&lt;button style=&#x27;width:400px;height:40px&#x27;onclick=&#x27;alert(&quot;SPEED OF NYAN CAT was deleloped by Pufflegamerz Studios. Made using html and javascript.&quot;)&#x27; &gt;Credits&lt;/button&gt;
-&lt;center&gt;&lt;button style=&#x27;width:400px;height:40px&#x27;onclick=&#x27;alert(&quot;welcome to SPEED OF NYAN CAT in this game, it is just like flappy bird... but better!&quot;)&#x27; &gt;help&lt;/button&gt;
-&lt;a href=&#x27;http://pufflegamerzstudios.wix.com/home&#x27;&gt;&lt;strong&gt;visit my website&lt;strong&gt;&lt;/a&gt;<br><br>&lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;<br><br>&lt;script&gt;
+&lt;button style='width:400px;height:40px'onclick=&quot;startgame()&quot;&gt;Start new game&lt;/button&gt;
+&lt;button style='width:400px;height:40px'onclick='alert(&quot;SPEED OF NYAN CAT was deleloped by Pufflegamerz Studios. Made using html and javascript.&quot;)' &gt;Credits&lt;/button&gt;
+&lt;center&gt;&lt;button style='width:400px;height:40px'onclick='alert(&quot;welcome to SPEED OF NYAN CAT in this game, it is just like flappy bird... but better!&quot;)' &gt;help&lt;/button&gt;
+&lt;a href='http://pufflegamerzstudios.wix.com/home'&gt;&lt;strong&gt;visit my website&lt;strong&gt;&lt;/a&gt;
+
+&lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;
+
+&lt;script&gt;
 function startgame() {
     document.getElementById(&quot;demo&quot;).innerHTML = &quot;welcome to &quot;;
 }
-</code><br><br>I remember starting writing out with &lt;html&gt;, and pretty much the rest of the file I borrowed stole from code help sites. The idea of this game was to make a Nyan Cat Flappy Bird clone. Obviously, I failed. I didn&#x27;t even make it past a simple welcome menu.<br><br>In conclusion, this is my first ever line of JavaScript:
-<code class='long'>alert(&quot;SPEED OF NYAN CAT was deleloped by Pufflegamerz Studios. Made using html and javascript.&quot;)
-</code>
-</div><a class='back' href='.'>Back</a>
-	<p style='text-align: center;'>Contact me:<br><img src='../images/email.png'></p>
+</code></pre>
+<p>I remember starting writing out with <html>, and pretty much the rest of the file I borrowed stole from code help sites. The idea of this game was to make a Nyan Cat Flappy Bird clone. Obviously, I failed. I didn't even make it past a simple welcome menu.</p>
+<p>In conclusion, this is my first ever line of JavaScript:</p>
+<pre><code class="language-c">alert(&quot;SPEED OF NYAN CAT was deleloped by Pufflegamerz Studios. Made using html and javascript.&quot;)
+</code></pre></div><a class='back' href='.'>Back</a>
 </body>
 </html>

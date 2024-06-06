@@ -8,95 +8,87 @@
 			font-family: sans-serif;
 			color: white;
 			background-color: #2d2e2e;
+			font-size: large;
 		}
-
-		a {color: #88c3bb;}
-		a:visited {color: #547b76;}
-
+		a {color: lightblue;}
+		a:visited {color: #719aa6;}
 		.post {
 			background-color: #474747;
-			padding: 5px 5px;
-			margin-bottom: 20px;
-			width: 70%;
+			max-width: 900px;
 			margin: auto;
 			margin-bottom: 20px;
+			padding: 10px;
 		}
 		.post h1 { margin: 0px; }
-
-		@media only screen and (max-width: 600px) {
-			.post {
-				width: 100%;
-			}
-			
-			.ad {
-				width: 100%;
-			}
-		}
-
 		.header {
 			text-align: center;
 			margin-bottom: 10px;
 		}
-		
 		.center {
 		    text-align: center;
 		}
-
 		.header h1 {
 			margin-bottom: 0px;
 		}
-
 		code {
+			display: inline-block;
 			background: #0b140b;
 			margin: 2px;
-			overflow-x: scroll;
-			padding: 3px;
+			padding: 2px;
 			white-space: break-spaces;
 		}
-
-		.long {
-			display: block;
-			padding: 10px;
-			margin: 10px;
-		}
-		
 		.back {
 			display: block;
 			width: 50px;
 			margin: auto;
 		}
+/*		img {
+			max-height: 300px;
+			vertical-align: top;
+		}*/
 	</style>
 </head>
 <body>
 	<div class="header">
-		<a href="."><h1>Daniel's Stuff</h1></a>
+		<a href="."><h1>Daniel&#039;s stuff</h1></a>
 		<a href="rss.xml">RSS</a><br>
-		<div class="ad" id="amzn-assoc-ad-94172efa-e524-41ae-b714-e1722b66759e"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=94172efa-e524-41ae-b714-e1722b66759e"></script>
 	</div>
-	<div class='post' title='Post #20'><h1>What I Leaned from Working on a Programming Language for 3 Years</h1><p>Thursday, December 26, 2019</p>Corescript is a small &quot;programming language&quot; project I started in the summer of 2017. It was more of a hobby project that I made for fun rather than something somebody would seriously use. I worked on it until early 2019, abandoned it, then I started working on the Heb12 android app.
-The syntax for Corescript was meant to be very simple, and somewhat similar to MIT&#x27;s Scratch.
+	<div class='post' title='Post #20'><h1>What I Leaned from Working on a Programming Language for 3 Years</h1><p>Thursday, December 26, 2019</p><p>Corescript is a small "programming language" project I started in the summer of 2017. It was more of a hobby project that I made for fun rather than something somebody would seriously use. I worked on it until early 2019, abandoned it, then I started working on the Heb12 android app.
+The syntax for Corescript was meant to be very simple, and somewhat similar to MIT's Scratch.</p>
 <hr>
-This is a simple program:<br><br><code class='long'>var greeting = Good Morning
-input name = What&#x27;s your name?<br><br>print (greeting), (name)!
-</code><br><br>I thought this was the most simple way to write a program. 
-It took some syntax inspiration from BASIC and Microsoft Batch.<br><br>
-Also, I had a very simple and easy way to interpret Corescript code. 
-The code &quot;print Hello, World&quot; would simply be interpreted with code like this psudocode:<br><br><code class='long'>if line starts with &quot;print&quot;
+<p>This is a simple program:</p>
+<pre><code class="language-c">var greeting = Good Morning
+input name = What's your name?
+
+print (greeting), (name)!
+</code></pre>
+<p>I thought this was the most simple way to write a program. 
+It took some syntax inspiration from BASIC and Microsoft Batch.</p>
+<p>Also, I had a very simple and easy way to interpret Corescript code. 
+The code "print Hello, World" would simply be interpreted with code like this psudocode:</p>
+<pre><code class="language-c">if line starts with &quot;print&quot;
    remove first 6 characters of line
    return
-</code><br><br>I know, it wasn&#x27;t very efficient, but I made it work for a while. I also ended up writing many 
-programs in Corescript, such as a text adventure, a calculator, etc. I have somehow not released these yet.<br><br>In January of 2018 I decided to re-write Corescript, again. This time I wanted to make it much 
+</code></pre>
+<p>I know, it wasn't very efficient, but I made it work for a while. I also ended up writing many 
+programs in Corescript, such as a text adventure, a calculator, etc. I have somehow not released these yet.</p>
+<p>In January of 2018 I decided to re-write Corescript, again. This time I wanted to make it much 
 more complex, with syntax highlighting, custom commands, and learn 
 from the mistakes of my previous versions. 
-Even now, over a year later, I still find it impressive.<br><br><h1>New Plans For Corescript</h1><br><br>Over the past year, I have been thinking of ideas for a new Corescript. First, I want to completely redesign the parser. It would still be similar to the previous versions, but allow for more complex features, like functions.
-I also would like to design it to also parse different languages. For example, a Corescript Spanish program could look like this:<br><br><code class='long'>imprimir Buenos Dias!
+Even now, over a year later, I still find it impressive.</p>
+<h1>New Plans For Corescript</h1>
+<p>Over the past year, I have been thinking of ideas for a new Corescript. First, I want to completely redesign the parser. It would still be similar to the previous versions, but allow for more complex features, like functions.
+I also would like to design it to also parse different languages. For example, a Corescript Spanish program could look like this:</p>
+<pre><code class="language-c">imprimir Buenos Dias!
 *Sorry about my bad Spanish
-</code><br><br>This program would simply print &quot;Buenos Dias!&quot;. This could also work many different languages. 
-I could also have a program to translate the programs from different languages.<br><br>I&#x27;m not sure when I will start working on this, but at the time I am busy maintaining Heb12 Mobile. <br><br><h2>Why Corescript?</h2>
-In 2017 I did a lot of searching to see if &quot;Corescript&quot; was taken. I couldn&#x27;t find anything,
-with the exception of a Roblox CoreScript. But as far as I can tell, it just means a &quot;Core&quot; script.
+</code></pre>
+<p>This program would simply print "Buenos Dias!". This could also work many different languages. 
+I could also have a program to translate the programs from different languages.</p>
+<p>I'm not sure when I will start working on this, but at the time I am busy maintaining Heb12 Mobile. </p>
+<h2>Why Corescript?</h2>
+<p>In 2017 I did a lot of searching to see if "Corescript" was taken. I couldn't find anything,
+with the exception of a Roblox CoreScript. But as far as I can tell, it just means a "Core" script.
 You could point to https://github.com/stephanbruny/corescript and say that I copied that, but that project
-started in February 2018, while my Corescript started in April 2017. If anything, they copied me (although I highly doubt it)<br><br></div><a class='back' href='.'>Back</a>
-	<p style='text-align: center;'>Contact me:<br><img src='../images/email.png'></p>
+started in February 2018, while my Corescript started in April 2017. If anything, they copied me (although I highly doubt it)</p></div><a class='back' href='.'>Back</a>
 </body>
 </html>

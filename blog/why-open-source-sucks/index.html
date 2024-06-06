@@ -8,91 +8,85 @@
 			font-family: sans-serif;
 			color: white;
 			background-color: #2d2e2e;
+			font-size: large;
 		}
-
-		a {color: #88c3bb;}
-		a:visited {color: #547b76;}
-
+		a {color: lightblue;}
+		a:visited {color: #719aa6;}
 		.post {
 			background-color: #474747;
-			padding: 5px 5px;
-			margin-bottom: 20px;
-			width: 70%;
+			max-width: 900px;
 			margin: auto;
 			margin-bottom: 20px;
+			padding: 10px;
 		}
 		.post h1 { margin: 0px; }
-
-		@media only screen and (max-width: 600px) {
-			.post {
-				width: 100%;
-			}
-			
-			.ad {
-				width: 100%;
-			}
-		}
-
 		.header {
 			text-align: center;
 			margin-bottom: 10px;
 		}
-		
 		.center {
 		    text-align: center;
 		}
-
 		.header h1 {
 			margin-bottom: 0px;
 		}
-
 		code {
+			display: inline-block;
 			background: #0b140b;
 			margin: 2px;
-			overflow-x: scroll;
-			padding: 3px;
+			padding: 2px;
 			white-space: break-spaces;
 		}
-
-		.long {
-			display: block;
-			padding: 10px;
-			margin: 10px;
-		}
-		
 		.back {
 			display: block;
 			width: 50px;
 			margin: auto;
 		}
+/*		img {
+			max-height: 300px;
+			vertical-align: top;
+		}*/
 	</style>
 </head>
 <body>
 	<div class="header">
-		<a href="."><h1>Daniel's Stuff</h1></a>
+		<a href="."><h1>Daniel&#039;s stuff</h1></a>
 		<a href="rss.xml">RSS</a><br>
-		<div class="ad" id="amzn-assoc-ad-94172efa-e524-41ae-b714-e1722b66759e"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=94172efa-e524-41ae-b714-e1722b66759e"></script>
 	</div>
 	<div class='post' title='Post #44'><h1>Why open source sucks</h1><p>Jan 31 2023</p><hr>
-We’ve all seen the effects of the open source revolution <br>- operating systems, programming languages, cryptocurrency, social media.
+<p>We’ve all seen the effects of the open source revolution - operating systems, programming languages, cryptocurrency, social media.
 If you’re reading this, I’m sure you don’t need an introduction to what open source is, but after contributing to open source
-for over 6 years, I’m here to tell you it’s flawed.<br><br>I believe that in order to improve open source, we must realize its flaws. I know, at the very least, that it’s not perfect.
-It&#x27;s not ideological perfection. No model is perfect. I do know what it is though: <i>a great idea</i>. As great of an idea it is, it doesn’t work perfectly for everything.<br><br><h2>Open source doesn’t fill every gap</h2>
-The open source community struggles to fill in the gaps that closed source software does.
+for over 6 years, I’m here to tell you it’s flawed.</p>
+<p>I believe that in order to improve open source, we must realize its flaws. I know, at the very least, that it’s not perfect.
+It's not ideological perfection. No model is perfect. I do know what it is though: <em>a great idea</em>. As great of an idea it is, it doesn’t work perfectly for everything.</p>
+<h2>Open source doesn’t fill every gap</h2>
+<p>The open source community struggles to fill in the gaps that closed source software does.
 The biggest example of this is video games. After my years in the FOSS world, I can name about 10 open source games.
-In terms of closed source games, I can list about 100. On steam, there’s 50,000 titles as of 2022. <b>Why is this?</b><br><br>For free open source games, contributors have very little reason to set a high bar of quality, or work hard on making sure the game is entertaining and user friendly. There are absolutely cases where contributors have made something comparable to a typical commercial game, but it’s rare, and definitely not as common.<br><br>There’s also a little bit of culture involved. For games, people are always willing to pay up, and the customers set very high expectations. Even for free games, players set a high bar of quality, and this is why open source games are criticized harshly.<br><br>Making games and software that are entertaining and user friendly is an extremely difficult and tedious task, and sadly, most people do it for money.<br><br><h2>Open source software == freebie software</h2>
-There are some cases where open source software is sold successfully (Pixel Dungeon, Simple Mobile Tools), but the vast majority fail because people would rather grab a free binary somebody else uploaded, or compile the code themselves.<br><br>(Of course, this is ignoring the “open core” model, which is undoubtedly successful)<br><br>Most successful open source funding models are based on voluntary user and corporate donations. This causes a bias in sponsorships, since open source is a concept that only appeals mostly to nerds.<br><br>For example, most open source programming languages, javascript libraries, and developer tools receive enough in donations to pay a few programmers full time.
-In contrast, open source software like video editors and niche apps struggle to raise enough money to pay for server hosting costs.<br><br><h2>The responsibilities</h2>
-Most open source projects start out as products of recreational programming <br>- something we do for enjoyment and fun. Then, when we least expect it, it blows up.<br><br>In most scenarios, it wouldn’t be possible to monetize it since it’s open source, so it eventually gets abandoned due to burnout.
-Can somebody pick it back up and resurrect it? Yes. But that person will likely experience the same pain I felt, and abandon it.<br><br>I’ve personally seen <i>too</i> many open source projects that had to be abandoned solely because of overwhelming growth,
-with the maintainer receiving nothing but demands and stress from internet strangers in return.<br><br>People look at open source projects expecting the same luxuries they find in commercial software.
-Customer support, and the overall assumption that the developer is motivated to actually make the software useful for consumers.<br><br><h2>Conclusion</h2>
-I’ve always tried to convince myself the open source hobby projects I write are innovative and useful (and anybody who says otherwise is a jerk), but I’ve since realized that I was wrong. 95% of my open source projects are completely useless, and serve no purpose other than to amuse me.<br><br>In order to fix open source, we need to realize project and business models aren’t a “one size fits all”. Just because the open source model works great for Linux doesn’t mean it will work just as good for games. Instead of religiously sticking to one model, we should be open to different models and ways of organizing our projects.
+In terms of closed source games, I can list about 100. On steam, there’s 50,000 titles as of 2022. <strong>Why is this?</strong></p>
+<p>For free open source games, contributors have very little reason to set a high bar of quality, or work hard on making sure the game is entertaining and user friendly. There are absolutely cases where contributors have made something comparable to a typical commercial game, but it’s rare, and definitely not as common.</p>
+<p>There’s also a little bit of culture involved. For games, people are always willing to pay up, and the customers set very high expectations. Even for free games, players set a high bar of quality, and this is why open source games are criticized harshly.</p>
+<p>Making games and software that are entertaining and user friendly is an extremely difficult and tedious task, and sadly, most people do it for money.</p>
+<h2>Open source software == freebie software</h2>
+<p>There are some cases where open source software is sold successfully (Pixel Dungeon, Simple Mobile Tools), but the vast majority fail because people would rather grab a free binary somebody else uploaded, or compile the code themselves.</p>
+<p>(Of course, this is ignoring the “open core” model, which is undoubtedly successful)</p>
+<p>Most successful open source funding models are based on voluntary user and corporate donations. This causes a bias in sponsorships, since open source is a concept that only appeals mostly to nerds.</p>
+<p>For example, most open source programming languages, javascript libraries, and developer tools receive enough in donations to pay a few programmers full time.
+In contrast, open source software like video editors and niche apps struggle to raise enough money to pay for server hosting costs.</p>
+<h2>The responsibilities</h2>
+<p>Most open source projects start out as products of recreational programming - something we do for enjoyment and fun. Then, when we least expect it, it blows up.</p>
+<p>In most scenarios, it wouldn’t be possible to monetize it since it’s open source, so it eventually gets abandoned due to burnout.
+Can somebody pick it back up and resurrect it? Yes. But that person will likely experience the same pain I felt, and abandon it.</p>
+<p>I’ve personally seen <em>too</em> many open source projects that had to be abandoned solely because of overwhelming growth,
+with the maintainer receiving nothing but demands and stress from internet strangers in return.</p>
+<p>People look at open source projects expecting the same luxuries they find in commercial software.
+Customer support, and the overall assumption that the developer is motivated to actually make the software useful for consumers.</p>
+<h2>Conclusion</h2>
+<p>I’ve always tried to convince myself the open source hobby projects I write are innovative and useful (and anybody who says otherwise is a jerk), but I’ve since realized that I was wrong. 95% of my open source projects are completely useless, and serve no purpose other than to amuse me.</p>
+<p>In order to fix open source, we need to realize project and business models aren’t a “one size fits all”. Just because the open source model works great for Linux doesn’t mean it will work just as good for games. Instead of religiously sticking to one model, we should be open to different models and ways of organizing our projects.
 When closed source sucks, make it open source.
-When open source sucks, make it closed source.<br><br>This is not an attack on open source. I&#x27;ve contributed to open source for years, and will continue to do so.
-It&#x27;s simply just not the revolutionary idea I&#x27;ve been told it was. Yeah, it&#x27;s great and useful, it&#x27;s a good model,
-but I&#x27;ve been dissapointed too often.
-</div><a class='back' href='.'>Back</a>
-	<p style='text-align: center;'>Contact me:<br><img src='../images/email.png'></p>
+When open source sucks, make it closed source.</p>
+<p>This is not an attack on open source. I've contributed to open source for years, and will continue to do so.
+It's simply just not the revolutionary idea I've been told it was. Yeah, it's great and useful, it's a good model,
+but I've been dissapointed too often.</p></div><a class='back' href='.'>Back</a>
 </body>
 </html>

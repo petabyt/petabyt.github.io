@@ -8,85 +8,84 @@
 			font-family: sans-serif;
 			color: white;
 			background-color: #2d2e2e;
+			font-size: large;
 		}
-
-		a {color: #88c3bb;}
-		a:visited {color: #547b76;}
-
+		a {color: lightblue;}
+		a:visited {color: #719aa6;}
 		.post {
 			background-color: #474747;
-			padding: 5px 5px;
-			margin-bottom: 20px;
-			width: 70%;
+			max-width: 900px;
 			margin: auto;
 			margin-bottom: 20px;
+			padding: 10px;
 		}
 		.post h1 { margin: 0px; }
-
-		@media only screen and (max-width: 600px) {
-			.post {
-				width: 100%;
-			}
-			
-			.ad {
-				width: 100%;
-			}
-		}
-
 		.header {
 			text-align: center;
 			margin-bottom: 10px;
 		}
-		
 		.center {
 		    text-align: center;
 		}
-
 		.header h1 {
 			margin-bottom: 0px;
 		}
-
 		code {
+			display: inline-block;
 			background: #0b140b;
 			margin: 2px;
-			overflow-x: scroll;
-			padding: 3px;
+			padding: 2px;
 			white-space: break-spaces;
 		}
-
-		.long {
-			display: block;
-			padding: 10px;
-			margin: 10px;
-		}
-		
 		.back {
 			display: block;
 			width: 50px;
 			margin: auto;
 		}
+/*		img {
+			max-height: 300px;
+			vertical-align: top;
+		}*/
 	</style>
 </head>
 <body>
 	<div class="header">
-		<a href="."><h1>Daniel's Stuff</h1></a>
+		<a href="."><h1>Daniel&#039;s stuff</h1></a>
 		<a href="rss.xml">RSS</a><br>
-		<div class="ad" id="amzn-assoc-ad-94172efa-e524-41ae-b714-e1722b66759e"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=94172efa-e524-41ae-b714-e1722b66759e"></script>
 	</div>
 	<div class='post' title='Post #29'><h1>Creating My Own Architecture, Operating System, Assembler</h1><p>Feb 4 2021</p><hr>
-A BrainF&#42;ck operating system.<br><br>Every programmer eventually writes a BrainFuck interpreter. I decided to
-do it in the most difficult way possible.<br><br>I called it: &quot;CrypticOS&quot;.<br><br>First, some background knowledge. I named it CrypticOS after a Scratch OS project I helped out with in June of 2018. The main idea was a fully pen rendered system, with a built-in programming language. After the project died off in 2019, I went back to working on the Heb12 project. In August of 2020, I decided to pick up the name and use it for a new idea. <br><br><h1>The &quot;Architecture&quot;</h1><br><br>Within a few hours, I was easily able to get several BrainFuck instructions working in my bootable x86 prototype. I began to implement I/O, then pointer control, loops.<br><br>Suddenly I began to notice a major problem: BrainFuck doesn’t have functions. Of course it doesn’t, since there is no goto command, only a basic while not zero loop. After considering this problem (and a few others), I decided to start designing my own version of BrainFuck.<br><br>First, I had to scrap the [] loop, and implement an instruction that could be used to goto anywhere in the code. I couldn’t just make it jump to a specific character, as that would mean adding 1 character in the code would ruin everything. I eventually realized that a label could be its own “instruction”, and it could be jumped to by its occurrence.<br><br>I implemented a goto and an “if equal, then goto” instruction. After a while, I realized that 2 values could not be easily compared without copying these values somewhere else. In BrainFuck, you could do it like this:<br><br><code class='long'>[-&gt;+&gt;+&lt;&lt;]&gt;&gt;[-&lt;&lt;+&gt;&gt;]&lt;&lt;
-</code><br><br>Yeah, that’s great and all, but I ditched the handy [] loops. What now?<br><br>Then I had the idea to implement a second pointer. If I did this, it would open up a ton of new possibilities. Recursive function calling, easily copying cells, function parameters…<br><br>This second pointer would only require 4 extra instructions. Two to move it, and two to copy values back and forth.<br><br>After this, I came down to a grand total of 16 instructions. A perfect amount. Double that of BrainFuck, while still having the bare minimalism in mind. I finalized it in September 2020.<br><br>Of course it needed a name: CINS. Cryptic Instruction. The first programs were written directly in CINS. Here is the first program, counting A-Z.<br><br><code class='long'>!&#42;++^!!%&#42;+++&gt;!&#42;&#42;&#42;&#42;&#42;&#42;&#42;&#42;&gt;&#42;&lt;.&lt;.&gt;&gt;-?
-</code><br><br><h1>The Assembler</h1><br><br>Eventually, I realized how painful it was to write it that way. It hurt my head even more than BrainFuck. With that, I began to write an assembler that spits out CINS when given very basic NASM style code.
-<i>This proved to be a very difficult part of the project, it took almost a month to get the optimizations working.</i><br><br>I named the assembler CASM (Cryptic Assembly), and began writing programs in it. I started working on a kernel, pointer functionality, a graphics system, and even a program that translates CINS to x86 Assembly.<br><br><b>Why not Subleq?</b>
+<p>A BrainF&#42;ck operating system.</p>
+<p>Every programmer eventually writes a BrainFuck interpreter. I decided to
+do it in the most difficult way possible.</p>
+<p>I called it: "CrypticOS".</p>
+<p>First, some background knowledge. I named it CrypticOS after a Scratch OS project I helped out with in June of 2018. The main idea was a fully pen rendered system, with a built-in programming language. After the project died off in 2019, I went back to working on the Heb12 project. In August of 2020, I decided to pick up the name and use it for a new idea. </p>
+<h1>The "Architecture"</h1>
+<p>Within a few hours, I was easily able to get several BrainFuck instructions working in my bootable x86 prototype. I began to implement I/O, then pointer control, loops.</p>
+<p>Suddenly I began to notice a major problem: BrainFuck doesn’t have functions. Of course it doesn’t, since there is no goto command, only a basic while not zero loop. After considering this problem (and a few others), I decided to start designing my own version of BrainFuck.</p>
+<p>First, I had to scrap the [] loop, and implement an instruction that could be used to goto anywhere in the code. I couldn’t just make it jump to a specific character, as that would mean adding 1 character in the code would ruin everything. I eventually realized that a label could be its own “instruction”, and it could be jumped to by its occurrence.</p>
+<p>I implemented a goto and an “if equal, then goto” instruction. After a while, I realized that 2 values could not be easily compared without copying these values somewhere else. In BrainFuck, you could do it like this:</p>
+<pre><code>[-&gt;+&gt;+&lt;&lt;]&gt;&gt;[-&lt;&lt;+&gt;&gt;]&lt;&lt;
+</code></pre>
+<p>Yeah, that’s great and all, but I ditched the handy [] loops. What now?</p>
+<p>Then I had the idea to implement a second pointer. If I did this, it would open up a ton of new possibilities. Recursive function calling, easily copying cells, function parameters…</p>
+<p>This second pointer would only require 4 extra instructions. Two to move it, and two to copy values back and forth.</p>
+<p>After this, I came down to a grand total of 16 instructions. A perfect amount. Double that of BrainFuck, while still having the bare minimalism in mind. I finalized it in September 2020.</p>
+<p>Of course it needed a name: CINS. Cryptic Instruction. The first programs were written directly in CINS. Here is the first program, counting A-Z.</p>
+<pre><code>!*++^!!%*+++&gt;!********&gt;*&lt;.&lt;.&gt;&gt;-?
+</code></pre>
+<h1>The Assembler</h1>
+<p>Eventually, I realized how painful it was to write it that way. It hurt my head even more than BrainFuck. With that, I began to write an assembler that spits out CINS when given very basic NASM style code.
+<em>This proved to be a very difficult part of the project, it took almost a month to get the optimizations working.</em></p>
+<p>I named the assembler CASM (Cryptic Assembly), and began writing programs in it. I started working on a kernel, pointer functionality, a graphics system, and even a program that translates CINS to x86 Assembly.</p>
+<p><strong>Why not Subleq?</strong>
 Subleq was one of the things I considered before designing CINS. Besides the fact that there is already an operating system written in it (DawnOS), there are several reasons I never used it.
-<br>- It isn’t really “one instruction”
+- It isn’t really “one instruction”
 Sure, by definition, it is. But the thing is, the instructions are 32 bits wide, therefore having ~60 thousand possible combinations, while CINS instructions are 4 bits wide, giving 16 possible combinations (which happens to match up with the number of instructions).
-<br>- User can’t type code in.
+- User can’t type code in.
 In CINS, I can easily type in code using symbols.
 !%***.
-But in Subleq, you wouldn’t be able to do this without a special assembler. Sure, it would definitely be more flexible, but just not the same.<br><br><b>Why not BrainFuck?</b>
-Given the advantages that BrainFuck has over CINS, it still seems like a viable option. It has a large community around it, many complex programs written in it, and lots of neat algorithms. There may not be a decent BrainFuck OS, but there are tons of BrainFuck assemblers, emulators, and even compilers. I wanted to make something new, based on my own ideas.<br><br></div><a class='back' href='.'>Back</a>
-	<p style='text-align: center;'>Contact me:<br><img src='../images/email.png'></p>
+But in Subleq, you wouldn’t be able to do this without a special assembler. Sure, it would definitely be more flexible, but just not the same.</p>
+<p><strong>Why not BrainFuck?</strong>
+Given the advantages that BrainFuck has over CINS, it still seems like a viable option. It has a large community around it, many complex programs written in it, and lots of neat algorithms. There may not be a decent BrainFuck OS, but there are tons of BrainFuck assemblers, emulators, and even compilers. I wanted to make something new, based on my own ideas.</p></div><a class='back' href='.'>Back</a>
 </body>
 </html>

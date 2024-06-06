@@ -5,7 +5,7 @@ I remember writing my first few lines of code. Not only do I remember doing it, 
 ---
 At that time I had no idea what HTML meant, but the idea of writing actual code, (like a real hacker), really interested me. I was following a coding tutorial in a code book I got from the school fair. Here's the entire file, named as "goodgm.txt":
 
-```
+```c
 <html>
 <center>
 <body style='background-color:red'>
@@ -27,6 +27,6 @@ function startgame() {
 I remember starting writing out with <html>, and pretty much the rest of the file I borrowed stole from code help sites. The idea of this game was to make a Nyan Cat Flappy Bird clone. Obviously, I failed. I didn't even make it past a simple welcome menu.
 
 In conclusion, this is my first ever line of JavaScript:
-```
+```c
 alert("SPEED OF NYAN CAT was deleloped by Pufflegamerz Studios. Made using html and javascript.")
 ```

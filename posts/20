@@ -7,7 +7,7 @@ The syntax for Corescript was meant to be very simple, and somewhat similar to M
 ---
 This is a simple program:
 
-```
+```c
 var greeting = Good Morning
 input name = What's your name?
 
@@ -21,7 +21,7 @@ It took some syntax inspiration from BASIC and Microsoft Batch.
 Also, I had a very simple and easy way to interpret Corescript code. 
 The code "print Hello, World" would simply be interpreted with code like this psudocode:
 
-```
+```c
 if line starts with "print"
    remove first 6 characters of line
    return
@@ -40,7 +40,7 @@ Even now, over a year later, I still find it impressive.
 Over the past year, I have been thinking of ideas for a new Corescript. First, I want to completely redesign the parser. It would still be similar to the previous versions, but allow for more complex features, like functions.
 I also would like to design it to also parse different languages. For example, a Corescript Spanish program could look like this:
 
-```
+```c
 imprimir Buenos Dias!
 *Sorry about my bad Spanish
 ```

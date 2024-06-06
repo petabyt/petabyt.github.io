@@ -8,130 +8,132 @@
 			font-family: sans-serif;
 			color: white;
 			background-color: #2d2e2e;
+			font-size: large;
 		}
-
-		a {color: #88c3bb;}
-		a:visited {color: #547b76;}
-
+		a {color: lightblue;}
+		a:visited {color: #719aa6;}
 		.post {
 			background-color: #474747;
-			padding: 5px 5px;
-			margin-bottom: 20px;
-			width: 70%;
+			max-width: 900px;
 			margin: auto;
 			margin-bottom: 20px;
+			padding: 10px;
 		}
 		.post h1 { margin: 0px; }
-
-		@media only screen and (max-width: 600px) {
-			.post {
-				width: 100%;
-			}
-			
-			.ad {
-				width: 100%;
-			}
-		}
-
 		.header {
 			text-align: center;
 			margin-bottom: 10px;
 		}
-		
 		.center {
 		    text-align: center;
 		}
-
 		.header h1 {
 			margin-bottom: 0px;
 		}
-
 		code {
+			display: inline-block;
 			background: #0b140b;
 			margin: 2px;
-			overflow-x: scroll;
-			padding: 3px;
+			padding: 2px;
 			white-space: break-spaces;
 		}
-
-		.long {
-			display: block;
-			padding: 10px;
-			margin: 10px;
-		}
-		
 		.back {
 			display: block;
 			width: 50px;
 			margin: auto;
 		}
+/*		img {
+			max-height: 300px;
+			vertical-align: top;
+		}*/
 	</style>
 </head>
 <body>
 	<div class="header">
-		<a href="."><h1>Daniel's Stuff</h1></a>
+		<a href="."><h1>Daniel&#039;s stuff</h1></a>
 		<a href="rss.xml">RSS</a><br>
-		<div class="ad" id="amzn-assoc-ad-94172efa-e524-41ae-b714-e1722b66759e"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=94172efa-e524-41ae-b714-e1722b66759e"></script>
 	</div>
 	<div class='post' title='Post #45'><h1>2 Years of Fujihack</h1><p>July 10 2023</p><hr>
-It&#x27;s now been <a href='https://github.com/fujihack/fujihack/commit/0bba55714fa3a9ff4e9c65156448f0145d95cdc6'>two years</a> since I started Fujihack, my project aiming to reverse-engineer and improve the firmware in Fujifilm&#x27;s digital cameras.<br><br>Since the <a href='https://danielc.dev/blog/what-i-learned-after-a-year-of-reverse-engineering'>last writeup</a>, I&#x27;ve admittedly made little visible progress.
-Only two supported models, no custom film simulations, no hacks without a custom firmware, and no RAW video. Why?<br><br>I&#x27;ll answer that in the end. First, let&#x27;s go over the little progress I made.<br><br><h2>X-A2 port</h2>
-Last December, I found a really cheap X-A2 on Ebay, with a broken shutter button. Knowing I could fix this with code,
-I bought it with the help of some coffee money, and <a href='https://twitter.com/petabyte_/status/1614741135225667584?s=20'>quickly ported</a> my firmware patch to it.<br><br>Button remapping turned out to be pretty easy, Fujifilm has a nice function to press a key from a string ID (no keycodes!).
-This helped &#x27;fix&#x27; the camera, so that it can take pictures again.<br><br>I also managed to extend the 14:59 hardcoded record limit to any number I want, although the video from the X-A2 isn&#x27;t
-very good compared to a modern phone (although good for 2015).<br><br><h2>Firmware Patches</h2>
-Sadly, around 50% of Fujifilm&#x27;s firmware is compressed (decompression is done on boot-time).
-The part of the firmware that&#x27;s compressed seems to be at random across models, but the PTP/USB code always seems to be the victim.
-That&#x27;s the part that my <a href='https://github.com/fujihack/fujihack/blob/master/patch/ptp.S'>USB code execution patch</a> relies on. For my <a href='https://danielc.dev/blog/what-i-learned-after-a-year-of-reverse-engineering'>XF1 hack</a>, I wrote a &quot;memcpy() + PTP/USB syncing memory dumper&quot;.
-For the X-A2, I decided to write a &quot;cleaner&quot; <a href='https://github.com/fujihack/fujihack/blob/master/patch/debug.S'>brute-force RAM-searching patcher</a>. This helped me find the USB/PTP functions, and patch them on runtime.<br><br>I&#x27;ve been very hesitant to recommend patched firmware to anybody, and generally have recommended that you shouldn&#x27;t try it unless
-you want to risk your camera. If the patching is done perfectly in <i>every</i> step, then it&#x27;s pretty safe. If there is any mistake, then it
-means game over. I&#x27;ve done everything I can to make the <a href='https://wiki.fujihack.org/patcher/'>patcher</a> as failproof as possible, but it can
-never be safe. And when most Fujifilm cameras are $1000-2000, I don&#x27;t want to be the bad guy that recommended risky hacks.<br><br><h2>DOOM Port</h2>
-<a href='https://fujihack.org/img/doom.png'><img width='300' src='https://fujihack.org/img/doom.png' alt='doom screenshot' title='doom screenshot'></a><br><br>On April 1st this year, I published a <a href='https://www.youtube.com/watch?v=BiV-0dywRjk'>completely real, half-baked, 10fps port of DOOM for the Fujifilm X-A2</a>.
-This wasn&#x27;t just a publicity stunt (although it did get on Hackaday :)), but it was necessary to find instability
-in Fujihack&#x27;s codebase. The port required a POSIX-compliant compatibility layer over Fujifilm&#x27;s weird RTOS API, as well as
+<p>It's now been <a href="https://github.com/fujihack/fujihack/commit/0bba55714fa3a9ff4e9c65156448f0145d95cdc6">two years</a> since I started Fujihack, my project aiming to reverse-engineer and improve the firmware in Fujifilm's digital cameras.</p>
+<p>Since the <a href="https://danielc.dev/blog/what-i-learned-after-a-year-of-reverse-engineering">last writeup</a>, I've admittedly made little visible progress.
+Only two supported models, no custom film simulations, no hacks without a custom firmware, and no RAW video. Why?</p>
+<p>I'll answer that in the end. First, let's go over the little progress I made.</p>
+<h2>X-A2 port</h2>
+<p>Last December, I found a really cheap X-A2 on Ebay, with a broken shutter button. Knowing I could fix this with code,
+I bought it with the help of some coffee money, and <a href="https://twitter.com/petabyte_/status/1614741135225667584?s=20">quickly ported</a> my firmware patch to it.</p>
+<p>Button remapping turned out to be pretty easy, Fujifilm has a nice function to press a key from a string ID (no keycodes!).
+This helped 'fix' the camera, so that it can take pictures again.</p>
+<p>I also managed to extend the 14:59 hardcoded record limit to any number I want, although the video from the X-A2 isn't
+very good compared to a modern phone (although good for 2015).</p>
+<h2>Firmware Patches</h2>
+<p>Sadly, around 50% of Fujifilm's firmware is compressed (decompression is done on boot-time).
+The part of the firmware that's compressed seems to be at random across models, but the PTP/USB code always seems to be the victim.
+That's the part that my <a href="https://github.com/fujihack/fujihack/blob/master/patch/ptp.S">USB code execution patch</a> relies on. For my <a href="https://danielc.dev/blog/what-i-learned-after-a-year-of-reverse-engineering">XF1 hack</a>, I wrote a "memcpy() + PTP/USB syncing memory dumper".
+For the X-A2, I decided to write a "cleaner" <a href="https://github.com/fujihack/fujihack/blob/master/patch/debug.S">brute-force RAM-searching patcher</a>. This helped me find the USB/PTP functions, and patch them on runtime.</p>
+<p>I've been very hesitant to recommend patched firmware to anybody, and generally have recommended that you shouldn't try it unless
+you want to risk your camera. If the patching is done perfectly in <em>every</em> step, then it's pretty safe. If there is any mistake, then it
+means game over. I've done everything I can to make the <a href="https://wiki.fujihack.org/patcher/">patcher</a> as failproof as possible, but it can
+never be safe. And when most Fujifilm cameras are $1000-2000, I don't want to be the bad guy that recommended risky hacks.</p>
+<h2>DOOM Port</h2>
+<p><a href='https://fujihack.org/img/doom.png'><img width='300' src='https://fujihack.org/img/doom.png' alt='doom screenshot' title='doom screenshot'></a></p>
+<p>On April 1st this year, I published a <a href="https://www.youtube.com/watch?v=BiV-0dywRjk">completely real, half-baked, 10fps port of DOOM for the Fujifilm X-A2</a>.
+This wasn't just a publicity stunt (although it did get on Hackaday :)), but it was necessary to find instability
+in Fujihack's codebase. The port required a POSIX-compliant compatibility layer over Fujifilm's weird RTOS API, as well as
 stable graphics drawing, memory allocation, IO, and fast execution without slowing down any of the other tasks.
 The DOOM port helped test all of these things extensively, and helped me find several bugs that could have otherwise been
-overlooked.<br><br><h2>&#x27;Frontier&#x27;</h2>
-Eventually, I realized that the hack needed a custom menu/UI, embedded ELF linker, module support, and a memory patching system.
-Instead of writing all this from scratch specifically for the Fujihack project, I started a new project called &#x27;Frontier&#x27; to provide
-all these things not only to Fujihack, but a basic ARM emulator.<br><br>Starting a new project provides the following benefits:
-<br>- If the Fujihack project dies or gets taken down, the Frontier project should survive
-<br>- Testing the same code on two different backends can help find undefined behavior
-<br>- It makes testing code much faster and easier
-<br>- I can use the portable Frontier code elsewhere (such as a GoPro, maybe...)<br><br><a href='https://camo.githubusercontent.com/3a3dd55383176071fcd89548544291ef7e3ccd17ec5e58931eb632552e17f3da/68747470733a2f2f6567676e6f672e64616e69656c632e6465762f662f37342d66696e6d766477696c71696275676d3061753577693032693967363432372e706e67'><img width='300' src='https://camo.githubusercontent.com/3a3dd55383176071fcd89548544291ef7e3ccd17ec5e58931eb632552e17f3da/68747470733a2f2f6567676e6f672e64616e69656c632e6465762f662f37342d66696e6d766477696c71696275676d3061753577693032693967363432372e706e67' alt='frontier vs fuji' title='frontier vs fuji'></a><br><br><h2>Custom menus</h2>
-Starting the &#x27;Frontier&#x27; project ended up being a good decision! It helped me write and test a basic UI, linker, and JS engine
-on my camera. Currently, I have a patch set up to load and run Fujihack from a binary when I press an option in the menu.<br><br>Loading Fujihack onto the camera is even easier than running it. All I need to do is plug in a USB cable, and run a script that
-loads the binary onto USB. This makes it quick and easy to tweak things on the fly.<br><br>Also, A few other things:
-<br>- Complete ROM dump (although it&#x27;s not very interesting)
-<br>- SD Card speed tests (capped at 35mbps)<br><br><h2>WiFi protocol</h2>
-Lately I&#x27;ve been tinkering with another project, a WiFi app to communicate with Fuji cameras. It&#x27;s a complete
-reimplementation of Fujifilm&#x27;s superset of PTP/IP. That project is separate from this one, but you can read more
-about it <a href='https://github.com/petabyt/fujiapp'>here</a>.<br><br><h2>Why little progress</h2>
-In the last writeup, I said that reverse-engineering Fujifilm&#x27;s firmware was difficult. That was an understatement. I&#x27;ve peeked at a lot of
-firmware for different devices (Canon, Nikon, GoPro, Printers, etc) and I&#x27;ve never seen a firmware as obscure as Fujifilm&#x27;s. It has maybe <i>10</i> useful
-debug logs. There&#x27;s also maybe a hundred obscure shortened log names in Fujifilm&#x27;s proprietary &#x27;Syslog&#x27; (for example, it logs &#x27;DECE_W2&#x27;). This is nowhere near
-as simple as Canon, where there are hundreds or thousands of useful debug strings, or like GoPro, where there are 10s of thousands.<br><br>Not only that, but the code architecture isn&#x27;t easy to navigate. Almost all functionality is connected through task events and semaphores. In order to figure out
-what triggers around 50% of functions, you&#x27;ll have to navigate through a <i>table of function tables</i>, which each function has an ID (and an ID describing which table it&#x27;s in),
-which is called by a <i>table of function tables caller</i>. This caller is then called by several huge if/else that switch an <i>event ID</i> (sometimes recursively), which is called indefinitely
-by a task waiting for events.<br><br>This is actually a <i>somewhat</i> common way of writing code, and it wouldn&#x27;t be all so bad for me if the firmware had debug strings everywhere. But it doesn&#x27;t,
-so many things are <i>impossible</i> to reverse-engineer or understand. Fortunately, reverse-engineering is the closest thing we have to magic, so perhaps there is a way.<br><br>Despite all this, us programmers <i>like</i> difficult challenges. Especially the weird obscure challenges. I like obscure weird things.
-This is an obscure firmware of a niche company with obscure design techniques. Doesn&#x27;t that sound interesting?<br><br><h2>What&#x27;s next</h2>
+overlooked.</p>
+<h2>'Frontier'</h2>
+<p>Eventually, I realized that the hack needed a custom menu/UI, embedded ELF linker, module support, and a memory patching system.
+Instead of writing all this from scratch specifically for the Fujihack project, I started a new project called 'Frontier' to provide
+all these things not only to Fujihack, but a basic ARM emulator.</p>
+<p>Starting a new project provides the following benefits:
+- If the Fujihack project dies or gets taken down, the Frontier project should survive
+- Testing the same code on two different backends can help find undefined behavior
+- It makes testing code much faster and easier
+- I can use the portable Frontier code elsewhere (such as a GoPro, maybe...)</p>
+<p><a href='https://camo.githubusercontent.com/3a3dd55383176071fcd89548544291ef7e3ccd17ec5e58931eb632552e17f3da/68747470733a2f2f6567676e6f672e64616e69656c632e6465762f662f37342d66696e6d766477696c71696275676d3061753577693032693967363432372e706e67'><img width='300' src='https://camo.githubusercontent.com/3a3dd55383176071fcd89548544291ef7e3ccd17ec5e58931eb632552e17f3da/68747470733a2f2f6567676e6f672e64616e69656c632e6465762f662f37342d66696e6d766477696c71696275676d3061753577693032693967363432372e706e67' alt='frontier vs fuji' title='frontier vs fuji'></a></p>
+<h2>Custom menus</h2>
+<p>Starting the 'Frontier' project ended up being a good decision! It helped me write and test a basic UI, linker, and JS engine
+on my camera. Currently, I have a patch set up to load and run Fujihack from a binary when I press an option in the menu.</p>
+<p>Loading Fujihack onto the camera is even easier than running it. All I need to do is plug in a USB cable, and run a script that
+loads the binary onto USB. This makes it quick and easy to tweak things on the fly.</p>
+<p>Also, A few other things:
+- Complete ROM dump (although it's not very interesting)
+- SD Card speed tests (capped at 35mbps)</p>
+<h2>WiFi protocol</h2>
+<p>Lately I've been tinkering with another project, a WiFi app to communicate with Fuji cameras. It's a complete
+reimplementation of Fujifilm's superset of PTP/IP. That project is separate from this one, but you can read more
+about it <a href="https://github.com/petabyt/fujiapp">here</a>.</p>
+<h2>Why little progress</h2>
+<p>In the last writeup, I said that reverse-engineering Fujifilm's firmware was difficult. That was an understatement. I've peeked at a lot of
+firmware for different devices (Canon, Nikon, GoPro, Printers, etc) and I've never seen a firmware as obscure as Fujifilm's. It has maybe <em>10</em> useful
+debug logs. There's also maybe a hundred obscure shortened log names in Fujifilm's proprietary 'Syslog' (for example, it logs 'DECE_W2'). This is nowhere near
+as simple as Canon, where there are hundreds or thousands of useful debug strings, or like GoPro, where there are 10s of thousands.</p>
+<p>Not only that, but the code architecture isn't easy to navigate. Almost all functionality is connected through task events and semaphores. In order to figure out
+what triggers around 50% of functions, you'll have to navigate through a <em>table of function tables</em>, which each function has an ID (and an ID describing which table it's in),
+which is called by a <em>table of function tables caller</em>. This caller is then called by several huge if/else that switch an <em>event ID</em> (sometimes recursively), which is called indefinitely
+by a task waiting for events.</p>
+<p>This is actually a <em>somewhat</em> common way of writing code, and it wouldn't be all so bad for me if the firmware had debug strings everywhere. But it doesn't,
+so many things are <em>impossible</em> to reverse-engineer or understand. Fortunately, reverse-engineering is the closest thing we have to magic, so perhaps there is a way.</p>
+<p>Despite all this, us programmers <em>like</em> difficult challenges. Especially the weird obscure challenges. I like obscure weird things.
+This is an obscure firmware of a niche company with obscure design techniques. Doesn't that sound interesting?</p>
+<h2>What's next</h2>
 <h3>Emulator</h3>
-Although an emulator would be a big undertaking, it would greatly help with understanding and improving the firmware.
-Since I have a ROM dump (it&#x27;s just the firmware payload + EEPROM + internal storage filesystem), it should be possible to
-throw it in a QEMU fork, and slowly implement the IO.<br><br><h3>Boot ROM</h3>
-Almost all Fujifilm cameras have a button shortcut that sends the camera into a low-power state, exposing a USB interface,
+<p>Although an emulator would be a big undertaking, it would greatly help with understanding and improving the firmware.
+Since I have a ROM dump (it's just the firmware payload + EEPROM + internal storage filesystem), it should be possible to
+throw it in a QEMU fork, and slowly implement the IO.</p>
+<h3>Boot ROM</h3>
+<p>Almost all Fujifilm cameras have a button shortcut that sends the camera into a low-power state, exposing a USB interface,
 all from the boot ROM burned into the SoC. Dumping this ROM would require either extracting it from the silicon, or connecting
-to the camera&#x27;s debug pins (I think it&#x27;s JTAG, but not 100% sure). Most of the hardware I work on is cars and engines, so tiny delicate
-probes and microsoldering isn&#x27;t something I&#x27;m fit for or am interested in at the moment. Nonetheless, the boot ROM could allow a
-bricked camera to be recovered, and possibly allow early code execution and control over the entire device.<br><br>Other opportunities for code execution are buffer overflow exploits in PTP/USB (I already know of one) and the <a href='https://wiki.fujihack.org/exif/'>S3 file</a>
-(which is executed by usbcont task, don&#x27;t know much more than that).<br><br><h2>Conclusion</h2>
-When I started this project, I knew it would eventually die. I didn&#x27;t know how long it would last, or how much I would accomplish,
-but I knew it would one day die and I would move on to something else. I don&#x27;t have plans to abandon Fujihack, but it needs to be
-mentioned that this is a hobby project, and I&#x27;m just doing it for fun. This is my favorite project to work on, but I don&#x27;t want to put any
-pressure on myself to work on it any more than I want to, even though it has a lot of potential.
-</div><a class='back' href='.'>Back</a>
-	<p style='text-align: center;'>Contact me:<br><img src='../images/email.png'></p>
+to the camera's debug pins (I think it's JTAG, but not 100% sure). Most of the hardware I work on is cars and engines, so tiny delicate
+probes and microsoldering isn't something I'm fit for or am interested in at the moment. Nonetheless, the boot ROM could allow a
+bricked camera to be recovered, and possibly allow early code execution and control over the entire device.</p>
+<p>Other opportunities for code execution are buffer overflow exploits in PTP/USB (I already know of one) and the <a href="https://wiki.fujihack.org/exif/">S3 file</a>
+(which is executed by usbcont task, don't know much more than that).</p>
+<h2>Conclusion</h2>
+<p>When I started this project, I knew it would eventually die. I didn't know how long it would last, or how much I would accomplish,
+but I knew it would one day die and I would move on to something else. I don't have plans to abandon Fujihack, but it needs to be
+mentioned that this is a hobby project, and I'm just doing it for fun. This is my favorite project to work on, but I don't want to put any
+pressure on myself to work on it any more than I want to, even though it has a lot of potential.</p></div><a class='back' href='.'>Back</a>
 </body>
 </html>
