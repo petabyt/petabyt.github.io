@@ -106,13 +106,13 @@ Thus, I can spoof Fuji's own software and try and match the behavior of my app w
 
 ![Fujis Camera Remote connected to a vcam server running on my laptop](https://danielc.dev/images/Screenshot_20240402-140041.png)  
 
-It also helps a ton with testing Fudge since I don't need to mess with a real camera (and keep it charged) when testing and debugging Fudge.
+It also helps a ton with testing Fudge since I don't need to keep resetting a real camera (and keep it charged) when testing and debugging.
 
 ## Code
 Also I thought briefly going over the codebase might be interesting?
 
 - Fudge currently only supports Android. There's code for a CLI/desktop app, but this was mainly written for CI.
-- Fudge is mostly C. TCP and USB-OTG communication is done through `read`/`write`/`ioctl`, with some Java glue to set things up. This makes it fairly fast compared to Java, and portable.
+- Fudge is mostly C. TCP and USB-OTG communication is done through `read`/`write`/`ioctl`, with some Java glue to set things up. This makes it fairly fast compared to Java alone, and portable.
 - The frontend is Java and native activities.
 - Lua is included, as well as UI and PTP bindings.
 
@@ -135,7 +135,7 @@ Okay, it's barely working and doesn't have a UI, but it's a decent PoC. I don't 
 [SimpleBLE](https://github.com/OpenBluetoothToolbox/SimpleBLE) looks like a good option as a cross-platform BLE library, at least when their [Android port](https://github.com/OpenBluetoothToolbox/SimpleBLE/tree/feature/android) is finished.
 
 ### PC AUTO SAVE
-'PC AUTO SAVE' is a long-standing Fuji feature (2014-2022) where a Fuji camera and [Fujifilm's software](https://fujifilm-dsc.com/en/pc_autosave/download.html) to a WiFi network,
+'PC AUTO SAVE' is a long-standing Fuji feature (2014-2022) where a Fuji camera and [Fujifilm's software](https://fujifilm-dsc.com/en/pc_autosave/download.html) connect to a WiFi network,
 the software discovers the camera over SSDP and can then download raws, jpegs, and mov files over PTP. This functionality can easily be implemented in Fudge.
 
 ### USB
