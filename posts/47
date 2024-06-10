@@ -30,7 +30,7 @@ new app looks more modern and is more responsive, but still receives complaints:
 
 *Side note: 'all the time' approximate location permissions are [required](https://developer.android.com/develop/connectivity/wifi/wifi-scan#wifi-scan-permissions) for scanning wireless access points or bluetooth devices.*
 
-Means most Fuji customers still have to use the old 'Camera Remote' app. This includes me, as I own an X-A2 and X-H1.
+Most Fuji customers still have to use the old 'Camera Remote' app. This includes me, as I own an X-A2 and X-H1.
 
 So, [one year ago](https://github.com/petabyt/fudge/commit/b282b6a8ff5f88c51e1b72333d447b71077545ea), I got to work on a new app to see if I
 could do better than Fujifilm and fix any of these pain points.
