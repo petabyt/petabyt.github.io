@@ -6,8 +6,13 @@
             <description>Mostly for write-ups</description>
             <generator>Tinyblog</generator>
             <language>en</language>
-            <lastBuildDate>2024-06-05</lastBuildDate>
+            <lastBuildDate>2024-06-10</lastBuildDate>
     
+            <item>
+            <title>Fudge 1 year writeup</title>
+            <pubDate>June 9 2024</pubDate>
+            <link>https://danielc.dev/blog/fudge1</link>
+            </item>
             <item>
             <title>Open-source funding models</title>
             <pubDate>21 July 2023</pubDate>
