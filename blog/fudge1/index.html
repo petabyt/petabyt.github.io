@@ -55,13 +55,13 @@
 	</div>
 	<div class='post' title='Post #47'><h1>Fudge 1 year writeup</h1><p>June 9 2024</p><hr>
 <p>Fudge is an unofficial app that can pair with Fujifilm cameras.
-It's an open-source reimplementation of Fuji's official app, 'Camera Connect' and their 'Xapp'.
+It's an open-source reimplementation of Fuji's official apps, 'Camera Connect' and their 'Xapp'.
 The project is one year old today, and is worthy of a writeup.</p>
 <p>First of all, let's take a look at Fuji's apps.<br />
 <a href="https://play.google.com/store/apps/details?id=com.fujifilm_dsc.app.remoteshooter">FUJIFILM Camera Remote on Google Play</a><br />
 <a href="https://apps.apple.com/us/app/fujifilm-camera-remote/id793063045">FUJIFILM Camera Remote on the App Store</a>  </p>
-<p>The operation of the app is pretty typical of IoT pairing apps. You go through the WiFi on your camera, follow the instructions on your phone,
-and you have access to liveview, remote shoot, and all your photos. Pretty nifty. But the ratings...</p>
+<p>The operation of the app is pretty typical of IoT pairing apps. You go through the WiFi setup menu on your camera, follow the instructions on your phone,
+and you have access to liveview, remote shoot, and all your photos. Sounds pretty nitfy, but the ratings 'Camera Remote' <a href="https://www.thephoblographer.com/2023/01/11/the-fujifilm-app-is-awful-and-we-didnt-need-a-nintendo-switch-app/">tell</a> <a href="https://www.reddit.com/r/FujifilmX/comments/v81awq/fujifilm_camera_remote_app_is_it_really_that_bad/">a</a> <a href="https://www.dpreview.com/forums/thread/4691446">different</a> <a href="https://www.reddit.com/r/fujifilm/comments/yqmoef/why_is_fujis_cam_remote_app_so_godawful_terrible/">story</a>.</p>
 <p>Here's a list of common compliants:</p>
 <ul>
 <li>The app needs 'all the time' location permissions to work</li>
@@ -72,13 +72,13 @@ and you have access to liveview, remote shoot, and all your photos. Pretty nifty
 <p>Fuji tried to solve these problems with their new app, called '<a href="https://play.google.com/store/apps/details?id=com.fujifilm.xapp&amp;hl=en_US">Xapp</a>'. This
 new app looks more modern and is more responsive, but still receives complaints:</p>
 <ul>
-<li>Sometimes doesn't work</li>
+<li>Buggy, sometimes doesn't work</li>
 <li>Some functionality still requires 'all the time' location permissions</li>
 <li>Only supports a small selection of Fuji's newest cameras</li>
 <li>Minor grievance: Xapp apk is 200mb and requires Android 11+</li>
 </ul>
 <p><em>Side note: 'all the time' approximate location permissions are <a href="https://developer.android.com/develop/connectivity/wifi/wifi-scan#wifi-scan-permissions">required</a> for scanning wireless access points or bluetooth devices.</em></p>
-<p>Means most Fuji customers still have to use the old 'Camera Remote' app. This includes me, I own an X-A2 and X-H1.</p>
+<p>Means most Fuji customers still have to use the old 'Camera Remote' app. This includes me, as I own an X-A2 and X-H1.</p>
 <p>So, <a href="https://github.com/petabyt/fudge/commit/b282b6a8ff5f88c51e1b72333d447b71077545ea">one year ago</a>, I got to work on a new app to see if I
 could do better than Fujifilm and fix any of these pain points.</p>
 <h2>The PTP Protocol</h2>
