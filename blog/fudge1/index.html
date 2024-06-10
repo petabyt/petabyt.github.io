@@ -83,10 +83,10 @@ new app looks more modern and is more responsive, but still receives complaints:
 could do better than Fujifilm and fix any of these pain points.</p>
 <h2>The PTP Protocol</h2>
 <p>To transfer photos, run a liveview, and alter camera settings, Fuji cameras expose a WiFi access point with a PTP/IP server running at <code>192.168.0.1</code>.
-I had previously written my own PTP library, so I had a great starting point already.</p>
-<p>At some point, I was recommended to use <a href="https://fujifilm-x.com/global/special/camera-control-sdk/">Fujfilm's SDK</a>, which supports PTP over TCP and USB.
-Other than only being offered on x86_64 MacOS and Windows, it only supports a small range of Fuji's latest cameras (15 models to be exact).</p>
-<p><em>To be specific they actually use a non-standard version of PTP/IP where they send/receive ISO-compliant PTP/IP REQ/ACK packets,
+I had previously written my own <a href="https://github.com/petabyt/camlib">PTP library</a>, so I had a great starting point already.</p>
+<p>At some point, I looked into using <a href="https://fujifilm-x.com/global/special/camera-control-sdk/">Fujfilm's SDK</a>, which supports PTP and PTP/IP.
+Other than binaries only being offered on x86_64 MacOS and Windows, it only supports a small range of Fuji's latest cameras (15 to be exact).</p>
+<p><em>To be specific Fuji uses a non-standard version of PTP/IP where they send/receive ISO-compliant PTP/IP REQ/ACK packets,
 but use USB-style PTP packets for everything else. They simply forked their MTP codebase and made it work over TCP.</em></p>
 <p>Within a few days, I was able to get a basic Android PoC working on my X-A2:</p>
 <p><a href='https://danielc.dev/images/Fy2atQiWcAEyBm6.jpg'><img width='300' src='https://danielc.dev/images/Fy2atQiWcAEyBm6.jpg' alt='fujiapp screenshot' title='fujiapp screenshot'></a>
