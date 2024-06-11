@@ -10,15 +10,16 @@ First of all, let's take a look at Fuji's apps.
 [FUJIFILM Camera Remote on Google Play](https://play.google.com/store/apps/details?id=com.fujifilm_dsc.app.remoteshooter)  
 [FUJIFILM Camera Remote on the App Store](https://apps.apple.com/us/app/fujifilm-camera-remote/id793063045)  
 
-The operation of the app is pretty typical of IoT pairing apps. You go through the WiFi setup menu on your camera, follow the instructions on your phone,
-and you have access to liveview, remote shoot, and all your photos. Sounds pretty nitfy, but the ratings on 'Camera Remote' [tell](https://www.thephoblographer.com/2023/01/11/the-fujifilm-app-is-awful-and-we-didnt-need-a-nintendo-switch-app/) [a](https://www.reddit.com/r/FujifilmX/comments/v81awq/fujifilm_camera_remote_app_is_it_really_that_bad/) [different](https://www.dpreview.com/forums/thread/4691446) [story](https://www.reddit.com/r/fujifilm/comments/yqmoef/why_is_fujis_cam_remote_app_so_godawful_terrible/).
+The operation of the 'Camera Remote' is pretty typical of IoT pairing apps. You go through the WiFi setup menu on your camera,
+follow the instructions on your phone, and you have access to liveview, remote shoot, and all your photos.
+Sounds pretty nitfy, but the ratings for this app [tell](https://www.thephoblographer.com/2023/01/11/the-fujifilm-app-is-awful-and-we-didnt-need-a-nintendo-switch-app/) [a](https://www.reddit.com/r/FujifilmX/comments/v81awq/fujifilm_camera_remote_app_is_it_really_that_bad/) [different](https://www.dpreview.com/forums/thread/4691446) [story](https://www.reddit.com/r/fujifilm/comments/yqmoef/why_is_fujis_cam_remote_app_so_godawful_terrible/).
 
 Here's a list of common compliants:
 
 - The app needs 'all the time' location permissions to work
 - Confusing
 - Somtimes doesn't work
-- Awful UI
+- Unresponsive janky UI
 
 Fuji tried to solve these problems with their new app, called '[Xapp](https://play.google.com/store/apps/details?id=com.fujifilm.xapp&hl=en_US)'. This
 new app looks more modern and is more responsive, but still receives complaints:
@@ -28,7 +29,7 @@ new app looks more modern and is more responsive, but still receives complaints:
 - Only supports a small selection of Fuji's newest cameras
 - Minor grievance: Xapp apk is 200mb and requires Android 11+
 
-*Side note: 'all the time' approximate location permissions are [required](https://developer.android.com/develop/connectivity/wifi/wifi-scan#wifi-scan-permissions) for scanning wireless access points or bluetooth devices.*
+*Side note: 'all the time' approximate location permissions in Android are [required](https://developer.android.com/develop/connectivity/wifi/wifi-scan#wifi-scan-permissions) for scanning wireless access points or bluetooth devices.*
 
 Most Fuji customers still have to use the old 'Camera Remote' app. This includes me, as I own an X-A2 and X-H1.
 
@@ -39,11 +40,9 @@ could do better than Fujifilm and fix any of these pain points.
 To transfer photos, run a liveview, and alter camera settings, Fuji cameras expose a WiFi access point with a PTP/IP server running at `192.168.0.1`.
 I had previously written my own [PTP library](https://github.com/petabyt/camlib), so I had a great starting point already.
 
-At some point, I looked into using [Fujfilm's SDK](https://fujifilm-x.com/global/special/camera-control-sdk/), which supports PTP and PTP/IP.
+Fujifilm actually offers a [developer SDK](https://fujifilm-x.com/global/special/camera-control-sdk/), which supports PTP and PTP/IP.
 Other than binaries only being offered on x86_64 MacOS and Windows, it only supports a small range of Fuji's latest cameras (15 to be exact).
-
-*To be specific Fuji uses a non-standard version of PTP/IP where they send/receive ISO-compliant PTP/IP REQ/ACK packets,
-but use USB-style PTP packets for everything else. They simply forked their MTP codebase and made it work over TCP.*
+The SDK also hot a lot of [heat](https://news.ycombinator.com/item?id=30792661) for voiding warranties, so I felt it's probably best to avoid it altogether.
 
 Within a few days, I was able to get a basic Android PoC working on my X-A2:
 
@@ -66,21 +65,22 @@ This is the process of downloading those photos that follows the previously ment
 - Get PtpObjectInfo for object ID 1
 - Download file with PtpGetPartialObject with max 0x100000 (can't be any other number)
 - Once the entire file is downloaded, the camera will swap object ID 1 with the next in the list
-- If we are at the end of the list, camera will close the socket and kill communication
+- If we are at the end of the list, camera will kill communication
 - Repeat loop
+
+*Note: In PTP, 'objects' are images/files/folders, and `PtpObjectInfo` is a structure describing an object.*
 
 In later cameras, Fuji added what I call 'remote mode'. Entering remote mode (and setting up liveview/event sockets) seems to be necessary to continue with
 doing anything else (downloading thumbnails/photos). This mode has a more tricky setup process:
 
-- Check EventList, check that the camera state allows remote mode
-- Set a bunch of version properties
-- Determine what mode to put the camera into based on some simple logic
+- Check `EventsList`, check that the camera state allows remote mode
+- Set a few version properties
+- Set client mode to remote mode
 - (The camera will not respond to the previous request until the user presses 'OK')
 - Setup remote version properties
-- Get and parse the FujiDeviceInfo data structure
-- Run PtpOpenCapture which tells the camera to open a MJPEG liveview socket and an event socket
-- Establish a connection to both sockets
-- Run PtpTerminateOpenCapture
+- Run `PtpOpenCapture` - this tells the camera to open a MJPEG liveview socket and an event socket
+- Client must establish a connection to both sockets
+- Run `PtpTerminateOpenCapture`
 - Set version properties for the image downloading behavior
 - Set the camera's mode to 'remote image viewer'
 - Start downloading thumbnails/photos
@@ -93,8 +93,12 @@ Overall, Fuji's PTP/IP has several notable client modes:
 - Remote mode (liveview) and old remote mode
 - Remote photo viewing mode
 - A few modes for Xapp/bluetooth handoff, which I haven't looked into yet
+- Error mode - just to show an error message on the camera's screen
 
-I recommend checking out [`lib/fuji.c`](https://github.com/petabyt/fudge/blob/master/lib/fuji.c) which describes the setup process for most of these modes.
+I recommend checking out [`lib/fuji.c`](https://github.com/petabyt/fudge/blob/master/lib/fuji.c) which describes how most of these modes are setup or how they work.
+
+*To be specific Fuji uses a non-standard version of PTP/IP where they send/receive ISO-compliant PTP/IP REQ/ACK packets,
+but use USB-style PTP packets for everything else. They simply forked their MTP codebase and made it work over TCP.*
 
 ## vcam
 Understanding Fuji's protocols by disassembling their app seems... pretty lame. So I needed a better way to help develop Fudge
