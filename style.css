@@ -2,7 +2,6 @@ body, html {
 	width: 100%;
 	height: 100%;
 	margin: 0px;
-	overflow-x: hidden;
 	background-color: #242424;
 	font-family: sans-serif;
 	color: white;
@@ -50,3 +49,29 @@ body, html {
 #content a {color: lightblue;}
 #content a:visited {color: #719aa6;}
 .link-list li {padding: 3px;}
+
+.proj-list a {
+	text-decoration: none;
+}
+.proj-item:hover {
+	background: black;
+}
+.proj-item {
+	background: #101010;
+	padding: 10px;
+	margin: 5px;
+	color: white;
+}
+.proj-item h3 {
+	font-size: 30px;
+	display: block;
+	margin: 0px;
+	margin-bottom: 10px;
+	font-weight: normal;
+}
+.proj-h {
+	font-size: 30px;
+	display: block;
+	margin-bottom: 10px;
+}
+
