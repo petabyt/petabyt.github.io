@@ -33,7 +33,7 @@ body, html {
 }
 #buttons a.green {background: #3f803f;}
 #buttons a.green:hover {background: green;}
-#buttons a:hover {background: #666565;}
+#buttons a:hover {background: rgb(10 10 10 / 46%);}
 #buttons {
 	width: 300px;
 	margin: auto;
@@ -41,6 +41,7 @@ body, html {
 #buttons a {
 	display: inline-block;
 	margin-top: 5px;
+	padding: 5px;
 }
 #content {
 	padding: 30px 30px;
