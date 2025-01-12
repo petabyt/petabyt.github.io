@@ -6,7 +6,7 @@
             <description>Mostly for write-ups</description>
             <generator>Tinyblog</generator>
             <language>en</language>
-            <lastBuildDate>2024-06-13</lastBuildDate>
+            <lastBuildDate>2025-01-12</lastBuildDate>
     
             <item>
             <title>Fudge 1 year writeup</title>
@@ -89,11 +89,6 @@
             <link>https://danielc.dev/blog/roblox-scams</link>
             </item>
             <item>
-            <title>Tips from a 5 year YouTuber</title>
-            <pubDate>Aug 1 2020</pubDate>
-            <link>https://danielc.dev/blog/video-tips</link>
-            </item>
-            <item>
             <title>New Testing Post.</title>
             <pubDate>April 23 2020</pubDate>
             <link>https://danielc.dev/blog/new-testing-post</link>
@@ -102,16 +97,6 @@
             <title>Test post.</title>
             <pubDate>April 23 2020</pubDate>
             <link>https://danielc.dev/blog/test-post</link>
-            </item>
-            <item>
-            <title>Past Usernames</title>
-            <pubDate>Monday, March 23, 2020</pubDate>
-            <link>https://danielc.dev/blog/past-usernames</link>
-            </item>
-            <item>
-            <title>Only Screenshot of my old Doodlekit Website</title>
-            <pubDate>Sunday, December 29, 2019</pubDate>
-            <link>https://danielc.dev/blog/doodlekit</link>
             </item>
             <item>
             <title>What I Leaned from Working on a Programming Language for 3 Years</title>
@@ -127,16 +112,6 @@
             <title>My First Line of Code</title>
             <pubDate>October 13, 2019</pubDate>
             <link>https://danielc.dev/blog/my-first-line-of-code</link>
-            </item>
-            <item>
-            <title>3 Years on Roblox</title>
-            <pubDate>December 20, 2018</pubDate>
-            <link>https://danielc.dev/blog/3-years-on-roblox</link>
-            </item>
-            <item>
-            <title>Homemade Computer Case</title>
-            <pubDate>June 15 2018</pubDate>
-            <link>https://danielc.dev/blog/homemade-computer-case</link>
             </item>
             <item>
             <title>My New PC</title>
