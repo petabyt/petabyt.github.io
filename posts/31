@@ -42,13 +42,13 @@ version is printed in hex. Yep, that means when you download firmware version
 number "1.22", you are getting 1.32 in base 10. I confirmed this with a simple
 "1337" test:
 
-![1337](https://eggnog.theres.life/f/30-8kzf51c2grdyawmk6lhc3rihfu91yf.png)
+![1337](https://danielc.dev/images/30-8kzf51c2grdyawmk6lhc3rihfu91yf.png)
 
 After fully understanding how this worked, I changed the firmware version from 1.4 to 1.5
 and tried it. Amazingly, it installed perfectly. And a bonus: it doesn't increment the system's
 firmware version counter. Now, all I need to do is figure out the firmware payload.
 
-![binvis.io](https://eggnog.theres.life/f/31-8kzf51c2grdyawmk6lhc3rihfu91yf.png)
+![binvis.io](https://danielc.dev/images/31-8kzf51c2grdyawmk6lhc3rihfu91yf.png)
 
 It doesn't look encrypted or compressed, so this one should be relatively easy to
 solve. The [people at CHDK have already gotten this far](https://chdk.setepontos.com/index.php?topic=6484.msg88507#msg88507): the firmware is XORed with 0xff.
@@ -67,12 +67,12 @@ After a few *very* risky firmware update tests, it turns out it is just a simple
 all the bytes and make sure it equals X." I had confirmed this by reversing a word
 in the firmware.
 
-![backwards](https://eggnog.theres.life/f/32-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG)
+![backwards](https://danielc.dev/images/32-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG)
 
 In order to inject my own custom text, all I had to do was subtract the checksum of
 both files and then change the header checksum accordingly.
 
-![hacked by dan](https://eggnog.theres.life/f/33-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG)
+![hacked by dan](https://danielc.dev/images/33-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG)
 
 ## Getting the Correct Disassembly
 Completely hacked right? Well, custom code injection would be nice. Since the strings
@@ -129,7 +129,7 @@ And indeed, it was. Whenever I took a picture, I could run my own custom assembl
 and output 29 bytes of whatever I want. Here's a screenshot where I tested how
 many bytes I could output:
 
-![hack](https://eggnog.theres.life/f/34-8kzf51c2grdyawmk6lhc3rihfu91yf.png)
+![hack](https://danielc.dev/images/34-8kzf51c2grdyawmk6lhc3rihfu91yf.png)
 
 ## A Conclusion
 So what's next?

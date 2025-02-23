@@ -86,11 +86,11 @@ risky, but I was willing to do it since I bought the camera specifically for hac
 version is printed in hex. Yep, that means when you download firmware version
 number "1.22", you are getting 1.32 in base 10. I confirmed this with a simple
 "1337" test:</p>
-<p><a href='https://eggnog.theres.life/f/30-8kzf51c2grdyawmk6lhc3rihfu91yf.png'><img width='300' src='https://eggnog.theres.life/f/30-8kzf51c2grdyawmk6lhc3rihfu91yf.png' alt='1337' title='1337'></a></p>
+<p><a href='https://danielc.dev/images/30-8kzf51c2grdyawmk6lhc3rihfu91yf.png'><img width='300' src='https://danielc.dev/images/30-8kzf51c2grdyawmk6lhc3rihfu91yf.png' alt='1337' title='1337'></a></p>
 <p>After fully understanding how this worked, I changed the firmware version from 1.4 to 1.5
 and tried it. Amazingly, it installed perfectly. And a bonus: it doesn't increment the system's
 firmware version counter. Now, all I need to do is figure out the firmware payload.</p>
-<p><a href='https://eggnog.theres.life/f/31-8kzf51c2grdyawmk6lhc3rihfu91yf.png'><img width='300' src='https://eggnog.theres.life/f/31-8kzf51c2grdyawmk6lhc3rihfu91yf.png' alt='binvis.io' title='binvis.io'></a></p>
+<p><a href='https://danielc.dev/images/31-8kzf51c2grdyawmk6lhc3rihfu91yf.png'><img width='300' src='https://danielc.dev/images/31-8kzf51c2grdyawmk6lhc3rihfu91yf.png' alt='binvis.io' title='binvis.io'></a></p>
 <p>It doesn't look encrypted or compressed, so this one should be relatively easy to
 solve. The <a href="https://chdk.setepontos.com/index.php?topic=6484.msg88507#msg88507">people at CHDK have already gotten this far</a>: the firmware is XORed with 0xff.
 All I had to do was go write a program to go through the file and invert all the bits. Easy.</p>
@@ -104,10 +104,10 @@ would I recreate it?</p>
 <p>After a few <em>very</em> risky firmware update tests, it turns out it is just a simple case of "add up
 all the bytes and make sure it equals X." I had confirmed this by reversing a word
 in the firmware.</p>
-<p><a href='https://eggnog.theres.life/f/32-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG'><img width='300' src='https://eggnog.theres.life/f/32-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG' alt='backwards' title='backwards'></a></p>
+<p><a href='https://danielc.dev/images/32-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG'><img width='300' src='https://danielc.dev/images/32-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG' alt='backwards' title='backwards'></a></p>
 <p>In order to inject my own custom text, all I had to do was subtract the checksum of
 both files and then change the header checksum accordingly.</p>
-<p><a href='https://eggnog.theres.life/f/33-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG'><img width='300' src='https://eggnog.theres.life/f/33-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG' alt='hacked by dan' title='hacked by dan'></a></p>
+<p><a href='https://danielc.dev/images/33-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG'><img width='300' src='https://danielc.dev/images/33-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG' alt='hacked by dan' title='hacked by dan'></a></p>
 <h2>Getting the Correct Disassembly</h2>
 <p>Completely hacked right? Well, custom code injection would be nice. Since the strings
 won't correctly reference to the code, I had no idea where a good place to
@@ -153,7 +153,7 @@ firmware file, I was confident this was a safe place to test my code.</p>
 <p>And indeed, it was. Whenever I took a picture, I could run my own custom assembly
 and output 29 bytes of whatever I want. Here's a screenshot where I tested how
 many bytes I could output:</p>
-<p><a href='https://eggnog.theres.life/f/34-8kzf51c2grdyawmk6lhc3rihfu91yf.png'><img width='300' src='https://eggnog.theres.life/f/34-8kzf51c2grdyawmk6lhc3rihfu91yf.png' alt='hack' title='hack'></a></p>
+<p><a href='https://danielc.dev/images/34-8kzf51c2grdyawmk6lhc3rihfu91yf.png'><img width='300' src='https://danielc.dev/images/34-8kzf51c2grdyawmk6lhc3rihfu91yf.png' alt='hack' title='hack'></a></p>
 <h2>A Conclusion</h2>
 <p>So what's next?</p>
 <p>Of course, writing custom firmwares to ROM is very dangerous, especially
