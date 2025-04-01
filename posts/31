@@ -67,12 +67,12 @@ After a few *very* risky firmware update tests, it turns out it is just a simple
 all the bytes and make sure it equals X." I had confirmed this by reversing a word
 in the firmware.
 
-![backwards](https://danielc.dev/images/32-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG)
+![backwards](https://danielc.dev/images/32-8kzf51c2grdyawmk6lhc3rihfu91yf.jpg)
 
 In order to inject my own custom text, all I had to do was subtract the checksum of
 both files and then change the header checksum accordingly.
 
-![hacked by dan](https://danielc.dev/images/33-8kzf51c2grdyawmk6lhc3rihfu91yf.JPG)
+![hacked by dan](https://danielc.dev/images/33-8kzf51c2grdyawmk6lhc3rihfu91yf.jpg)
 
 ## Getting the Correct Disassembly
 Completely hacked right? Well, custom code injection would be nice. Since the strings

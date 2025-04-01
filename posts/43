@@ -26,7 +26,9 @@ From my basic code execution hack, I was able to brute force search through RAM 
 - the address of a memcpy() function
 
 Therefore, here was my plan:
-![plan for memcpy syncing RAM dump](https://eggnog.theres.life/f/57-sneev9dijeax76e74a4fbclitviq04.png)
+
+![plan for memcpy syncing RAM dump](https://danielc.dev/images/57-sneev9dijeax76e74a4fbclitviq04.png)
+
 A memcpy() + PTP/USB syncing memory dumper.
 
 It took several days of testing, updating firmware, battery pulling, but eventually:
@@ -131,7 +133,7 @@ In terms of drawing to the screen, I've found 3 methods:
 - Guessing screen buffer address and writing to it
 - [Creating rasterizer objects](https://github.com/fujihack/fujihack/blob/a15934157293ffc20987ca5265a0d60c65ed634f/src/rst.h#L11)
 
-![creating a transparent rst object](https://eggnog.theres.life/f/59-b1jsff7nt7tiep1mngnur6nt4x2vxq.jpg)
+![creating a transparent rst object](https://danielc.dev/images/59-b1jsff7nt7tiep1mngnur6nt4x2vxq.jpg)
 
 As for button presses, I was able to figure out an IO table after reverse engineering some menu code. Seems to include a bunch of IO stuff, including accelerometer and gyroscope.
 
@@ -142,11 +144,14 @@ These findings led to the first ever custom "menu":
 Ever since 2010, Fujifilm cameras have been shipped with SQLite. It's probably used to store some camera settings, but I'm not entirely sure. It seems like SQLite doesn't start up when the camera is turned on, but around 10 minutes later.
 
 After reverse engineering the SQLite initialization process, I figured out how to start SQLite and execute some SQL:
-![image of basic SQL code running](https://eggnog.theres.life/f/58-5w6nr77t4lpmjcno3oun2lxqgmw324.jpg)
+
+![image of basic SQL code running](https://danielc.dev/images/58-5w6nr77t4lpmjcno3oun2lxqgmw324.jpg)
 
 ## Organization
 Eventually, I decided to rename the project to "FujiHack", and made a quick logo in GIMP:
-![fujihack logo](https://eggnog.theres.life/f/56-mes2055fpsqga6cr0lt7h7a07h1txj.png)
+
+![fujihack logo](https://danielc.dev/images/56-mes2055fpsqga6cr0lt7h7a07h1txj.png)
+
 I also created a [Wiki](https://fujihack.github.io/) packed with information, and wrote a basic [web based firmware patcher/unpacker](https://fujihack.github.io/patcher/) in Javascript.
 
 ## Conclusion
@@ -155,6 +160,7 @@ I've also learned a ton about linkers, ARM Assembly, makefiles, operating system
 It's been a great learning experience, and I don't regret getting into it.
 
 Moving on, here are some clear goals I have in mind:
+
 - Stable firmware patch
 - Dump ROM, study bootloader
 - Figure out the "IMFIDIX" SREC files

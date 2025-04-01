@@ -77,9 +77,9 @@ but my attempts were unsuccessful.</p>
 <p>From my basic code execution hack, I was able to brute force search through RAM and find these things:
 - "fujifilm.co.jp; ", a string returned by GetDeviceInfo in PTP/USB
 - the address of a memcpy() function</p>
-<p>Therefore, here was my plan:
-<a href='https://eggnog.theres.life/f/57-sneev9dijeax76e74a4fbclitviq04.png'><img width='300' src='https://eggnog.theres.life/f/57-sneev9dijeax76e74a4fbclitviq04.png' alt='plan for memcpy syncing RAM dump' title='plan for memcpy syncing RAM dump'></a>
-A memcpy() + PTP/USB syncing memory dumper.</p>
+<p>Therefore, here was my plan:</p>
+<p><a href='https://danielc.dev/images/57-sneev9dijeax76e74a4fbclitviq04.png'><img width='300' src='https://danielc.dev/images/57-sneev9dijeax76e74a4fbclitviq04.png' alt='plan for memcpy syncing RAM dump' title='plan for memcpy syncing RAM dump'></a></p>
+<p>A memcpy() + PTP/USB syncing memory dumper.</p>
 <p>It took several days of testing, updating firmware, battery pulling, but eventually:
 <a href="https://diode.zone/w/t5qGaAkZVwZN4ChkFXcSNi">https://diode.zone/w/t5qGaAkZVwZN4ChkFXcSNi</a></p>
 <p>After getting a 200kb memory dump, I was able to find all the addresses of the PTP functions
@@ -163,27 +163,29 @@ fuji_zero();
 - <a href="https://github.com/fujihack/fujihack/blob/a15934157293ffc20987ca5265a0d60c65ed634f/src/fujifilm.h#L16">fuji_screen_write</a>, which writes UTF8 rows to the screen
 - Guessing screen buffer address and writing to it
 - <a href="https://github.com/fujihack/fujihack/blob/a15934157293ffc20987ca5265a0d60c65ed634f/src/rst.h#L11">Creating rasterizer objects</a></p>
-<p><a href='https://eggnog.theres.life/f/59-b1jsff7nt7tiep1mngnur6nt4x2vxq.jpg'><img width='300' src='https://eggnog.theres.life/f/59-b1jsff7nt7tiep1mngnur6nt4x2vxq.jpg' alt='creating a transparent rst object' title='creating a transparent rst object'></a></p>
+<p><a href='https://danielc.dev/images/59-b1jsff7nt7tiep1mngnur6nt4x2vxq.jpg'><img width='300' src='https://danielc.dev/images/59-b1jsff7nt7tiep1mngnur6nt4x2vxq.jpg' alt='creating a transparent rst object' title='creating a transparent rst object'></a></p>
 <p>As for button presses, I was able to figure out an IO table after reverse engineering some menu code. Seems to include a bunch of IO stuff, including accelerometer and gyroscope.</p>
 <p>These findings led to the first ever custom "menu":
 <a href="https://www.youtube.com/watch?v=E62S_GleN6M">https://www.youtube.com/watch?v=E62S_GleN6M</a></p>
 <h2>SQLite</h2>
 <p>Ever since 2010, Fujifilm cameras have been shipped with SQLite. It's probably used to store some camera settings, but I'm not entirely sure. It seems like SQLite doesn't start up when the camera is turned on, but around 10 minutes later.</p>
-<p>After reverse engineering the SQLite initialization process, I figured out how to start SQLite and execute some SQL:
-<a href='https://eggnog.theres.life/f/58-5w6nr77t4lpmjcno3oun2lxqgmw324.jpg'><img width='300' src='https://eggnog.theres.life/f/58-5w6nr77t4lpmjcno3oun2lxqgmw324.jpg' alt='image of basic SQL code running' title='image of basic SQL code running'></a></p>
+<p>After reverse engineering the SQLite initialization process, I figured out how to start SQLite and execute some SQL:</p>
+<p><a href='https://danielc.dev/images/58-5w6nr77t4lpmjcno3oun2lxqgmw324.jpg'><img width='300' src='https://danielc.dev/images/58-5w6nr77t4lpmjcno3oun2lxqgmw324.jpg' alt='image of basic SQL code running' title='image of basic SQL code running'></a></p>
 <h2>Organization</h2>
-<p>Eventually, I decided to rename the project to "FujiHack", and made a quick logo in GIMP:
-<a href='https://eggnog.theres.life/f/56-mes2055fpsqga6cr0lt7h7a07h1txj.png'><img width='300' src='https://eggnog.theres.life/f/56-mes2055fpsqga6cr0lt7h7a07h1txj.png' alt='fujihack logo' title='fujihack logo'></a>
-I also created a <a href="https://fujihack.github.io/">Wiki</a> packed with information, and wrote a basic <a href="https://fujihack.github.io/patcher/">web based firmware patcher/unpacker</a> in Javascript.</p>
+<p>Eventually, I decided to rename the project to "FujiHack", and made a quick logo in GIMP:</p>
+<p><a href='https://danielc.dev/images/56-mes2055fpsqga6cr0lt7h7a07h1txj.png'><img width='300' src='https://danielc.dev/images/56-mes2055fpsqga6cr0lt7h7a07h1txj.png' alt='fujihack logo' title='fujihack logo'></a></p>
+<p>I also created a <a href="https://fujihack.github.io/">Wiki</a> packed with information, and wrote a basic <a href="https://fujihack.github.io/patcher/">web based firmware patcher/unpacker</a> in Javascript.</p>
 <h2>Conclusion</h2>
 <p>In the past year, working on and off on this project, I've made a lot of progress.
 I've also learned a ton about linkers, ARM Assembly, makefiles, operating systems, SQLite, PTP/USB, SoCs...
 It's been a great learning experience, and I don't regret getting into it.</p>
-<p>Moving on, here are some clear goals I have in mind:
-- Stable firmware patch
-- Dump ROM, study bootloader
-- Figure out the "IMFIDIX" SREC files
-- Make some video bit rate tweaks
-- Remove 30 minute video timer</p></div><a class='back' href='.'>Back</a>
+<p>Moving on, here are some clear goals I have in mind:</p>
+<ul>
+<li>Stable firmware patch</li>
+<li>Dump ROM, study bootloader</li>
+<li>Figure out the "IMFIDIX" SREC files</li>
+<li>Make some video bit rate tweaks</li>
+<li>Remove 30 minute video timer</li>
+</ul></div><a class='back' href='.'>Back</a>
 </body>
 </html>
