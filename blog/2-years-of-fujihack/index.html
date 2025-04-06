@@ -60,7 +60,7 @@ Only two supported models, no custom film simulations, no hacks without a custom
 <p>I'll answer that in the end. First, let's go over the little progress I made.</p>
 <h2>X-A2 port</h2>
 <p>Last December, I found a really cheap X-A2 on Ebay, with a broken shutter button. Knowing I could fix this with code,
-I bought it with the help of some coffee money, and <a href="https://twitter.com/petabyte_/status/1614741135225667584?s=20">quickly ported</a> my firmware patch to it.</p>
+I bought it with the help of some donation money, and <a href="https://twitter.com/petabyte_/status/1614741135225667584?s=20">quickly ported</a> my firmware patch to it.</p>
 <p>Button remapping turned out to be pretty easy, Fujifilm has a nice function to press a key from a string ID (no keycodes!).
 This helped 'fix' the camera, so that it can take pictures again.</p>
 <p>I also managed to extend the 14:59 hardcoded record limit to any number I want, although the video from the X-A2 isn't
@@ -83,15 +83,9 @@ stable graphics drawing, memory allocation, IO, and fast execution without slowi
 The DOOM port helped test all of these things extensively, and helped me find several bugs that could have otherwise been
 overlooked.</p>
 <h2>'Frontier'</h2>
-<p>Eventually, I realized that the hack needed a custom menu/UI, embedded ELF linker, module support, and a memory patching system.
+<p>Eventually, I realized that the hack needed a custom menu/UI, ELF loader, module support, and a memory patching system.
 Instead of writing all this from scratch specifically for the Fujihack project, I started a new project called 'Frontier' to provide
-all these things not only to Fujihack, but a basic ARM emulator.</p>
-<p>Starting a new project provides the following benefits:
-- If the Fujihack project dies or gets taken down, the Frontier project should survive
-- Testing the same code on two different backends can help find undefined behavior
-- It makes testing code much faster and easier
-- I can use the portable Frontier code elsewhere (such as a GoPro, maybe...)</p>
-<p><a href='https://camo.githubusercontent.com/3a3dd55383176071fcd89548544291ef7e3ccd17ec5e58931eb632552e17f3da/68747470733a2f2f6567676e6f672e64616e69656c632e6465762f662f37342d66696e6d766477696c71696275676d3061753577693032693967363432372e706e67'><img width='300' src='https://camo.githubusercontent.com/3a3dd55383176071fcd89548544291ef7e3ccd17ec5e58931eb632552e17f3da/68747470733a2f2f6567676e6f672e64616e69656c632e6465762f662f37342d66696e6d766477696c71696275676d3061753577693032693967363432372e706e67' alt='frontier vs fuji' title='frontier vs fuji'></a></p>
+all these things not only to Fujihack, but other ARM devices, such as an emulator.</p>
 <h2>Custom menus</h2>
 <p>Starting the 'Frontier' project ended up being a good decision! It helped me write and test a basic UI, linker, and JS engine
 on my camera. Currently, I have a patch set up to load and run Fujihack from a binary when I press an option in the menu.</p>
@@ -129,11 +123,6 @@ to the camera's debug pins (I think it's JTAG, but not 100% sure). Most of the h
 probes and microsoldering isn't something I'm fit for or am interested in at the moment. Nonetheless, the boot ROM could allow a
 bricked camera to be recovered, and possibly allow early code execution and control over the entire device.</p>
 <p>Other opportunities for code execution are buffer overflow exploits in PTP/USB (I already know of one) and the <a href="https://wiki.fujihack.org/exif/">S3 file</a>
-(which is executed by usbcont task, don't know much more than that).</p>
-<h2>Conclusion</h2>
-<p>When I started this project, I knew it would eventually die. I didn't know how long it would last, or how much I would accomplish,
-but I knew it would one day die and I would move on to something else. I don't have plans to abandon Fujihack, but it needs to be
-mentioned that this is a hobby project, and I'm just doing it for fun. This is my favorite project to work on, but I don't want to put any
-pressure on myself to work on it any more than I want to, even though it has a lot of potential.</p></div><a class='back' href='.'>Back</a>
+(which is executed by usbcont task, don't know much more than that).</p></div><a class='back' href='.'>Back</a>
 </body>
 </html>
