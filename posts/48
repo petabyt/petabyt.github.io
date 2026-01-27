@@ -3,7 +3,7 @@ Why Rockchip Sucks
 November 13 2025
 ---
 
-*Context: This is concluded from the my time at FUTO working on [bare metal rockchip code](https://github.com/petabyt/rk)*
+*Context: This is concluded from my time at FUTO working on [bare metal rockchip code](https://github.com/petabyt/rk)*
 
 ## Documentation
 - In both the RK3399 and RK3588, exactly **67%** of subsystems[^1] on the chip are documented[^2]
