@@ -60,7 +60,7 @@ def parse(text, showMore):
     # Code blocks
 #    text = re.sub(r"```\n([^```]+)```", r"<code class='long'>\1</code>", text)
 
-    text = markdown.markdown(text, extensions=['fenced_code'])
+    text = markdown.markdown(text, extensions=['fenced_code', 'footnotes'])
 
     text = "<h1>" + title + "</h1><p>" + dateStr + "</p>" + text
 

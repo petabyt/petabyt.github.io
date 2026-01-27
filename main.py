@@ -68,7 +68,8 @@ def genMainPage():
         getIndex(),
         posts=getPosts(),
         title="Daniel's stuff",
-        header="Daniel's stuff"
+        header="Daniel's stuff",
+        top_level=".",
     )
 
 # def getPost(post):
@@ -142,7 +143,8 @@ def genFiles():
             getIndex(),
             posts=content,
             title=title,
-            header="Daniel's stuff"
+            header="Daniel's stuff",
+            top_level="..",
         )
 
         os.mkdir("blog/" + url)
