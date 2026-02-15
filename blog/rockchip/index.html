@@ -55,10 +55,12 @@
 	</div>
 	<div class='post' title='Post #48'><h1>Why Rockchip Sucks</h1><p>November 13 2025</p><hr>
 
-<p><em>Context: This is concluded from my time at FUTO working on <a href="https://github.com/petabyt/rk">bare metal rockchip code</a></em></p>
+<p>Context: Over the course of 2 years at <a href="https://futo.org/">FUTO</a> I worked with Rockchip's documentation and open-source code to develop a <a href="https://github.com/petabyt/rk">minimal bootloader</a>
+for the RK3399 and RK3588. This is my overall conclusion of Rockchip as a company, and the products and services they provide.</p>
 <h2>Documentation</h2>
 <ul>
-<li>In both the RK3399 and RK3588, exactly <strong>67%</strong> of subsystems<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> on the chip are documented<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup><ul>
+<li>Context: Rockchip is commonly referred to as an 'open-source SoC company'</li>
+<li>In both the RK3399 and RK3588 TRMs<sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup>, exactly <strong>67%</strong> of subsystems<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> on the chip are documented<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup><ul>
 <li>RK3399 TRM only covers 33 out of 49 subsystems</li>
 <li>RK3588 TRM only covers 89 out of 132 subsystems</li>
 </ul>
@@ -88,7 +90,7 @@ in order to get a framebuffer working.</li>
 <li><strong>Most board vendors do the bare minimum for people to buy their product and leave their customers in the dark after that</strong></li>
 </ul>
 </li>
-<li><em>"I was told Rockchip no longer considers RK3588 to be an “open source” chip. In practice, that means Rockchip no longer contributes RK3588 code to open-source projects and they also decided not to sell RK3588 directly to SBC vendors."</em><sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup><ul>
+<li><em>"I was told Rockchip no longer considers RK3588 to be an "open source" chip. In practice, that means Rockchip no longer contributes RK3588 code to open-source projects and they also decided not to sell RK3588 directly to SBC vendors."</em><sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup><ul>
 <li>Rockchip is still consistently contributing RK3588 code to the kernel</li>
 <li>Rockchip has refused to make <em>any</em> documentation at all available for the RK3588 <sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></li>
 <li>Opinion: Rockchip is insane if they ever considered RK3588 'open source' in the first place</li>
@@ -131,6 +133,9 @@ in order to get a framebuffer working.</li>
 </li>
 <li id="fn:9">
 <p>Search 'rk3588' on https://opensource.rock-chips.com/&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>Technical Reference Manual (embedded programmer's guide)&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div></div><a class='back' href='.'>Back</a>

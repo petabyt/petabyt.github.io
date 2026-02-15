@@ -3,10 +3,12 @@ Why Rockchip Sucks
 November 13 2025
 ---
 
-*Context: This is concluded from my time at FUTO working on [bare metal rockchip code](https://github.com/petabyt/rk)*
+Context: Over the course of 2 years at [FUTO](https://futo.org/) I worked with Rockchip's documentation and open-source code to develop a [minimal bootloader](https://github.com/petabyt/rk)
+for the RK3399 and RK3588. This is my overall conclusion of Rockchip as a company, and the products and services they provide.
 
 ## Documentation
-- In both the RK3399 and RK3588, exactly **67%** of subsystems[^1] on the chip are documented[^2]
+- Context: Rockchip is commonly referred to as an 'open-source SoC company'
+- In both the RK3399 and RK3588 TRMs[^10], exactly **67%** of subsystems[^1] on the chip are documented[^2]
 	- RK3399 TRM only covers 33 out of 49 subsystems
 	- RK3588 TRM only covers 89 out of 132 subsystems
 - Rockchip's SGRF[^3] is the most important register file that is undocumented. Configuring it is necessary in order to enable shared memory, which is needed
@@ -28,7 +30,7 @@ in order to get a framebuffer working.
 	- Rockchip refuses to adopt standards properly or upstream hardware support
 	- Board vendors refuse to offer assistance to the community working on their hardware for free
 	- **Most board vendors do the bare minimum for people to buy their product and leave their customers in the dark after that**
-- *"I was told Rockchip no longer considers RK3588 to be an “open source” chip. In practice, that means Rockchip no longer contributes RK3588 code to open-source projects and they also decided not to sell RK3588 directly to SBC vendors."*[^8]
+- *"I was told Rockchip no longer considers RK3588 to be an "open source" chip. In practice, that means Rockchip no longer contributes RK3588 code to open-source projects and they also decided not to sell RK3588 directly to SBC vendors."*[^8]
 	- Rockchip is still consistently contributing RK3588 code to the kernel
 	- Rockchip has refused to make *any* documentation at all available for the RK3588 [^9]
 	- Opinion: Rockchip is insane if they ever considered RK3588 'open source' in the first place
@@ -47,3 +49,4 @@ in order to get a framebuffer working.
 [^7]: https://www.myirtech.com/news_list.asp?id=930
 [^8]: https://x.com/geerlingguy/status/1870959892242342030
 [^9]: Search 'rk3588' on https://opensource.rock-chips.com/
+[^10]: Technical Reference Manual (embedded programmer's guide)
