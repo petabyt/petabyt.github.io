@@ -22,7 +22,8 @@ def post(post):
         getIndex(),
         posts=content,
         title=title,
-        header="Daniel's stuff"
+        header="Daniel's stuff",
+        tags=""
     )
 
 @route("/rss.xml")

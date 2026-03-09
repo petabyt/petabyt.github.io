@@ -14,25 +14,36 @@ def sanitizeTitle(title):
 # Parse as tbmd, a very special version of markdown
 # return url, date, text
 def parse(text, showMore):
-    url = ""
-    dateStr = ""
+    output = {
+        "url": None,
+        "title": "",
+        "date": "",
+        "image": None,
+        "text": "",
+    }
 
     lines = text.split("\n")
 
     # post metadata length in lines
     metadataLength = 0
 
-    # Parse custom url if present
-    if text[0] == ":":
-        url = lines[0][1:]
+    # First few lines of text can have metadata properties
+    for i in range(2):
+        if lines[i][0] == ":":
+            output["url"] = lines[i][1:]
+        elif lines[i][0:4] == "img:":
+           output["image"] = lines[i][4:]
+        else:
+            break
         metadataLength += 1
-    else:
-        url = sanitizeTitle(lines[metadataLength])
-    
-    title = lines[metadataLength]
+
+    # Require title and date line after metadata
+    output["title"] = lines[metadataLength]
+    if output["url"] == None:
+        output["url"] = sanitizeTitle(output["title"])
     metadataLength += 1
 
-    dateStr = lines[metadataLength]
+    output["date"] = lines[metadataLength]
     metadataLength += 1
 
     # Set offset to whatever is after metadata
@@ -52,7 +63,7 @@ def parse(text, showMore):
     if showMore:
         text = text.replace("---", "<hr>")
     else:
-        text = re.sub(r"---(.+)", r"<a href='" + url + "'>Read more</a>", text, flags=re.S)
+        text = re.sub(r"---(.+)", r"<a href='" + output["url"] + "'>Read more</a>", text, flags=re.S)
 
     # images
     text = re.sub(r"\!\[([^\n|\[\]\(\)]+)\]\(([^\n|\[\]\(\)]+)\)", r"<a href='\2'><img width='300' src='\2' alt='\1' title='\1'></a>", text)
@@ -62,6 +73,6 @@ def parse(text, showMore):
 
     text = markdown.markdown(text, extensions=['fenced_code', 'footnotes'])
 
-    text = "<h1>" + title + "</h1><p>" + dateStr + "</p>" + text
+    output["text"] = "<h1>" + output["title"] + "</h1><p>" + output["date"] + "</p>" + text
 
-    return url, title, dateStr, text
+    return output

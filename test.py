@@ -1,8 +1,13 @@
-import markdown
-print(markdown.markdown(
-'''
+from parser import parse
+print(parse(
+''':asd
+img:../images/rockchip.jpg
+Title
+Date
+---
 ```
 #include 
 ```
 '''
-,extensions=['fenced_code']))
+, True))
+

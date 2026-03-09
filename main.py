@@ -4,8 +4,11 @@ import os, html, re
 import io
 from datetime import date
 from bottle import *
-
 from parser import parse
+
+DOMAIN = "https://danielc.dev/blog"
+TITLE = "Daniel's Blog"
+DESC = "Mostly for write-ups"
 
 def getIndex():
     fp = open("blog-index.html", "r")
@@ -25,9 +28,9 @@ def getPosts():
         if post[0:5] == ":skip":
             continue
 
-        url, title, dateStr, post = parse(post, False)
+        output = parse(post, False)
 
-        content += "<div class='post' title='Post #" + str(i) + "'>" + post + "</div>"
+        content += "<div class='post' title='Post #" + str(i) + "'>" + output["text"] + "</div>"
     return content
 
 def getPost(name):
@@ -42,9 +45,9 @@ def getPost(name):
         if post[0:5] == ":skip":
             continue
 
-        url, title, dateStr, post = parse(post, True)
-        if url == name:
-            return title, "<div class='post' title='Post #" + str(i) + "'>" + post + "</div><a class='back' href='.'>Back</a>"
+        output = parse(post, True)
+        if output["url"] == name:
+            return title, "<div class='post' title='Post #" + str(i) + "'>" + output["text"] + "</div><a class='back' href='.'>Back</a>"
     return "Post not found", "<p class='center'>Post not found.</p>"
 
 def getPostByID(num):
@@ -60,8 +63,8 @@ def getPostByID(num):
     if post[0:5] == ":skip":
         return "404"
 
-    url, title, dateStr, post = parse(post, True)
-    return url
+    output = parse(post, True)
+    return output["url"]
 
 def genMainPage():
     return template(
@@ -70,6 +73,7 @@ def genMainPage():
         title="Daniel's stuff",
         header="Daniel's stuff",
         top_level=".",
+        tags = "",
     )
 
 # def getPost(post):
@@ -81,16 +85,12 @@ def genMainPage():
 #     )
 
 def genRss():
-    domain = "https://danielc.dev/blog"
-    title = "Daniel's Blog"
-    desc = "Mostly for write-ups"
-
     content = """<?xml version="1.0" encoding="UTF-8"?>
     <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
         <channel>
-          <title>""" + title + """</title>
-            <link>""" + domain + """</link>
-            <description>""" + desc + """</description>
+          <title>""" + TITLE + """</title>
+            <link>""" + DOMAIN + """</link>
+            <description>""" + DESC + """</description>
             <generator>Tinyblog</generator>
             <language>en</language>
             <lastBuildDate>""" + date.today().strftime("%Y-%m-%d") + """</lastBuildDate>
@@ -106,13 +106,13 @@ def genRss():
         if post[0:5] == ":skip":
             continue
 
-        url, title, dateStr, post = parse(post, False)
+        output = parse(post, False)
 
         content += """
             <item>
-            <title>""" + title + """</title>
-            <pubDate>""" + dateStr + """</pubDate>
-            <link>""" + domain + """/""" + url + """</link>
+            <title>""" + output["title"] + """</title>
+            <pubDate>""" + output["date"] + """</pubDate>
+            <link>""" + DOMAIN + """/""" + output["url"] + """</link>
             </item>"""
     content += """
         </channel>
@@ -136,19 +136,28 @@ def genFiles():
         if post[0:5] == ":skip":
             continue
 
-        url, title, dateStr, post = parse(post, True)
-        content = "<div class='post' title='Post #" + str(i) + "'>" + post + "</div><a class='back' href='.'>Back</a>"
+        output = parse(post, True)
+        content = "<div class='post' title='Post #" + str(i) + "'>" + output["text"] + "</div><a class='back' href='.'>Back</a>"
+
+        tags = ""
+
+        tags += '<meta name="twitter:creator" content="@danielcdev"><meta name="twitter:site" content="@danielcdev">\n'
+
+        if output["image"] != None:
+            tags += '<meta name="twitter:image" content="' + output["image"] + '">'
+            tags += '<meta property="og:image" content="' + output["image"] + '">'
 
         post = template(
             getIndex(),
-            posts=content,
-            title=title,
-            header="Daniel's stuff",
-            top_level="..",
+            posts = content,
+            title = output["title"],
+            header = TITLE,
+            tags = tags,
+            top_level = "..",
         )
 
-        os.mkdir("blog/" + url)
-        with open("blog/" + url + "/index.html", "w") as f:
+        os.mkdir("blog/" + output["url"])
+        with open("blog/" + output["url"] + "/index.html", "w") as f:
             f.write(post)
 
 os.system("rm -rf blog")
