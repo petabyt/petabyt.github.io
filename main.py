@@ -7,7 +7,7 @@ from bottle import *
 from parser import parse
 
 DOMAIN = "https://danielc.dev/blog"
-TITLE = "Daniel's Blog"
+TITLE = "Daniel Cook"
 DESC = "Mostly for write-ups"
 
 def getIndex():
@@ -70,8 +70,8 @@ def genMainPage():
     return template(
         getIndex(),
         posts=getPosts(),
-        title="Daniel's stuff",
-        header="Daniel's stuff",
+        title=TITLE,
+        header=TITLE,
         top_level=".",
         tags = "",
     )
@@ -141,6 +141,8 @@ def genFiles():
 
         tags = ""
 
+        tags += '<meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="' + output["url"] + '">\n'
+        tags += '<meta name="twitter:title" content="' + output["title"] + '">\n'
         tags += '<meta name="twitter:creator" content="@danielcdev"><meta name="twitter:site" content="@danielcdev">\n'
 
         if output["image"] != None:
