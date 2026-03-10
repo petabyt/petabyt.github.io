@@ -143,6 +143,7 @@ def genFiles():
 
         tags += '<meta name="twitter:card" content="summary_large_image"><meta name="twitter:url" content="' + output["url"] + '">\n'
         tags += '<meta name="twitter:title" content="' + output["title"] + '">\n'
+        tags += '<meta name="twitter:description" content="' + output["title"] + '">\n'
         tags += '<meta name="twitter:creator" content="@danielcdev"><meta name="twitter:site" content="@danielcdev">\n'
 
         if output["image"] != None:
