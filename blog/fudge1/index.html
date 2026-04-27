@@ -47,10 +47,11 @@
 			width: 50px;
 			margin: auto;
 		}
-/*		img {
-			max-height: 300px;
+		img {
+			max-height: 500px;
+			max-width: 100%;
 			vertical-align: top;
-		}*/
+		}
 	</style>
 </head>
 <body>
@@ -58,7 +59,7 @@
 		<a href=".."><h1>Daniel Cook</h1></a>
 		<a href="../rss.xml">RSS</a><br>
 	</div>
-	<div class='post' title='Post #47'><h1>Fudge 1 year writeup</h1><p>June 9 2024</p><hr>
+	<div class='post' title='Post #47'><h1>Fudge 1 year writeup</h1><p>June 9 2024</p><hr />
 <p>Fudge is an unofficial app that can pair with Fujifilm cameras.
 It's an open-source reimplementation of Fuji's official apps, 'Camera Connect' and their 'Xapp'.
 The project is one year old today, and is worthy of a writeup.</p>
@@ -94,8 +95,8 @@ I had previously written my own <a href="https://github.com/petabyt/camlib">PTP 
 Other than binaries only being offered on x86_64 MacOS and Windows, it only supports a small range of Fuji's latest cameras (15 to be exact).
 The SDK also hot a lot of <a href="https://news.ycombinator.com/item?id=30792661">heat</a> for voiding warranties, so I felt it's probably best to avoid it altogether.</p>
 <p>Within a few days, I was able to get a basic Android PoC working on my X-A2:</p>
-<p><a href='https://danielc.dev/images/Fy2atQiWcAEyBm6.jpg'><img width='300' src='https://danielc.dev/images/Fy2atQiWcAEyBm6.jpg' alt='fujiapp screenshot' title='fujiapp screenshot'></a>
-<a href='https://danielc.dev/images/Fy2atb6WcAQzGSk.jpg'><img width='300' src='https://danielc.dev/images/Fy2atb6WcAQzGSk.jpg' alt='fujiapp screenshot 2' title='fujiapp screenshot 2'></a></p>
+<p><img alt="fujiapp screenshot" src="https://danielc.dev/images/Fy2atQiWcAEyBm6.jpg" />
+<img alt="fujiapp screenshot 2" src="https://danielc.dev/images/Fy2atb6WcAQzGSk.jpg" /></p>
 <p>The trickiest part here is the setup process. Once connected to the access point, you connect to a PTP/IP server on port <code>55740</code>.
 Communication starts with a typical REQ/ACK, after that the client runs a <code>PtpOpenSession</code> command. Everything that follows is Fuji's proprietary setup:</p>
 <p>For connecting to older Fuji cameras to download photos:</p>
@@ -149,7 +150,7 @@ that would help speed up development.</p>
 <p><a href="https://github.com/petabyt/vcam">vcam</a> is a complete reimplementation of Fuji's PTP wireless backend
 (and Canon too). With a modern WiFi card, it can perfectly emulate a Fuji WiFi access point that is indistinguishable from the one that a real camera would expose.
 Thus, I can spoof Fuji's own software and try and match the behavior of my app with theirs.</p>
-<p><a href='https://danielc.dev/images/Screenshot_20240402-140041.png'><img width='300' src='https://danielc.dev/images/Screenshot_20240402-140041.png' alt='Fujis Camera Remote connected to a vcam server running on my laptop' title='Fujis Camera Remote connected to a vcam server running on my laptop'></a>  </p>
+<p><img alt="Fujis Camera Remote connected to a vcam server running on my laptop" src="https://danielc.dev/images/Screenshot_20240402-140041.png" />  </p>
 <p>It also helps a ton with testing Fudge since I don't need to keep resetting a real camera (and keep it charged) when testing and debugging.</p>
 <h2>Code</h2>
 <p>Also I thought briefly going over the codebase might be interesting?</p>
@@ -164,10 +165,10 @@ This is to allow C/C++ or Lua code to create/alter UI. As a side effect, the sam
 <h2>Roadmap</h2>
 <h3>Liveview</h3>
 <p>I'm slowly working on implementing a liveview with libjpeg-turbo, with the ability to change common camera settings.
-<a href='https://danielc.dev/images/Screenshot_20240609-224515.png'><img width='300' src='https://danielc.dev/images/Screenshot_20240609-224515.png' alt='horizontal fudge liveview' title='horizontal fudge liveview'></a></p>
+<img alt="horizontal fudge liveview" src="https://danielc.dev/images/Screenshot_20240609-224515.png" /></p>
 <h3>iOS</h3>
 <p>Surprise! Fudge works on iOS!</p>
-<p><a href='https://danielc.dev/images/IMG_0003.PNG'><img width='300' src='https://danielc.dev/images/IMG_0003.PNG' alt='png' title='png'></a></p>
+<p><img alt="png" src="https://danielc.dev/images/IMG_0003.PNG" /></p>
 <p>Okay, it's barely working and doesn't have a UI, but it's a decent PoC. I don't know if I have the time to finish an iOS port, but at least I had the chance to try Objective-C for the first time :)</p>
 <h3>Bluetooth</h3>
 <p><a href="https://github.com/OpenBluetoothToolbox/SimpleBLE">SimpleBLE</a> looks like a good option as a cross-platform BLE library, at least when their <a href="https://github.com/OpenBluetoothToolbox/SimpleBLE/tree/feature/android">Android port</a> is finished.</p>

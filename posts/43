@@ -85,7 +85,7 @@ LABEL lab
 LABEL end
 ```
 Seems pretty basic. What struck me was how similar this was to the scripting language I designed many years ago.
-Here is the same program, but in [Corescript](https://corescript-lang.github.io/):
+Here is the same program, but in [Corescript](https://danielc.dev/corescript/):
 ```
 var i = 0
 :countLoop
@@ -129,6 +129,7 @@ fuji_zero();
 - I figured out how to play beeps and light the LED, which I thought would have gotten me closer to UI code, but It didn't lead me anywhere.
 
 In terms of drawing to the screen, I've found 3 methods:
+
 - [fuji_screen_write](https://github.com/fujihack/fujihack/blob/a15934157293ffc20987ca5265a0d60c65ed634f/src/fujifilm.h#L16), which writes UTF8 rows to the screen
 - Guessing screen buffer address and writing to it
 - [Creating rasterizer objects](https://github.com/fujihack/fujihack/blob/a15934157293ffc20987ca5265a0d60c65ed634f/src/rst.h#L11)

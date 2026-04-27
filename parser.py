@@ -61,17 +61,11 @@ def parse(text, showMore):
     text = text.replace("\\*", "&#42;")
 
     if showMore:
-        text = text.replace("---", "<hr>")
+        text = text.replace("^---\n", "<hr>")
     else:
-        text = re.sub(r"---(.+)", r"<a href='" + output["url"] + "'>Read more</a>", text, flags=re.S)
+        text = re.sub(r"^---\n(.+)", r"<a href='" + output["url"] + "'>Read more</a>", text, flags=re.MULTILINE|re.DOTALL)
 
-    # images
-    text = re.sub(r"\!\[([^\n|\[\]\(\)]+)\]\(([^\n|\[\]\(\)]+)\)", r"<a href='\2'><img width='300' src='\2' alt='\1' title='\1'></a>", text)
-
-    # Code blocks
-#    text = re.sub(r"```\n([^```]+)```", r"<code class='long'>\1</code>", text)
-
-    text = markdown.markdown(text, extensions=['fenced_code', 'footnotes'])
+    text = markdown.markdown(text, extensions=['fenced_code', 'footnotes', 'tables'])
 
     output["text"] = "<h1>" + output["title"] + "</h1><p>" + output["date"] + "</p>" + text
 

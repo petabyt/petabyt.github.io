@@ -6,8 +6,13 @@
             <description>Mostly for write-ups</description>
             <generator>Tinyblog</generator>
             <language>en</language>
-            <lastBuildDate>2026-03-18</lastBuildDate>
+            <lastBuildDate>2026-04-26</lastBuildDate>
     
+            <item>
+            <title>The world has failed you, but also hates you</title>
+            <pubDate>April 2026</pubDate>
+            <link>https://danielc.dev/blog/genz</link>
+            </item>
             <item>
             <title>Why Rockchip Sucks</title>
             <pubDate>November 13 2025</pubDate>

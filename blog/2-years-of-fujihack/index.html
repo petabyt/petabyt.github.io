@@ -47,10 +47,11 @@
 			width: 50px;
 			margin: auto;
 		}
-/*		img {
-			max-height: 300px;
+		img {
+			max-height: 500px;
+			max-width: 100%;
 			vertical-align: top;
-		}*/
+		}
 	</style>
 </head>
 <body>
@@ -58,7 +59,7 @@
 		<a href=".."><h1>Daniel Cook</h1></a>
 		<a href="../rss.xml">RSS</a><br>
 	</div>
-	<div class='post' title='Post #45'><h1>2 Years of Fujihack</h1><p>July 10 2023</p><hr>
+	<div class='post' title='Post #45'><h1>2 Years of Fujihack</h1><p>July 10 2023</p><hr />
 <p>It's now been <a href="https://github.com/fujihack/fujihack/commit/0bba55714fa3a9ff4e9c65156448f0145d95cdc6">two years</a> since I started Fujihack, my project aiming to reverse-engineer and improve the firmware in Fujifilm's digital cameras.</p>
 <p>Since the <a href="https://danielc.dev/blog/what-i-learned-after-a-year-of-reverse-engineering">last writeup</a>, I've admittedly made little visible progress.
 Only two supported models, no custom film simulations, no hacks without a custom firmware, and no RAW video. Why?</p>
@@ -80,7 +81,7 @@ you want to risk your camera. If the patching is done perfectly in <em>every</em
 means game over. I've done everything I can to make the <a href="https://wiki.fujihack.org/patcher/">patcher</a> as failproof as possible, but it can
 never be safe. And when most Fujifilm cameras are $1000-2000, I don't want to be the bad guy that recommended risky hacks.</p>
 <h2>DOOM Port</h2>
-<p><a href='https://fujihack.org/img/doom.png'><img width='300' src='https://fujihack.org/img/doom.png' alt='doom screenshot' title='doom screenshot'></a></p>
+<p><img alt="doom screenshot" src="https://fujihack.org/img/doom.png" /></p>
 <p>On April 1st this year, I published a <a href="https://www.youtube.com/watch?v=BiV-0dywRjk">completely real, half-baked, 10fps port of DOOM for the Fujifilm X-A2</a>.
 This wasn't just a publicity stunt (although it did get on Hackaday :)), but it was necessary to find instability
 in Fujihack's codebase. The port required a POSIX-compliant compatibility layer over Fujifilm's weird RTOS API, as well as
