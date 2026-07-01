@@ -6,7 +6,7 @@
             <description>Mostly for write-ups</description>
             <generator>Tinyblog</generator>
             <language>en</language>
-            <lastBuildDate>2026-04-26</lastBuildDate>
+            <lastBuildDate>2026-07-01</lastBuildDate>
     
             <item>
             <title>The world has failed you and also hates you</title>
@@ -62,11 +62,6 @@
             <title>Writing TINY Desktop Apps in C and GTK3</title>
             <pubDate>Jan 15 2022</pubDate>
             <link>https://danielc.dev/blog/tiny-windows-linux-gtk-apps</link>
-            </item>
-            <item>
-            <title>Using GNU m4 for basic stuff</title>
-            <pubDate>Dec 24 2021</pubDate>
-            <link>https://danielc.dev/blog/using-gnu-m4-for-basic-stuff</link>
             </item>
             <item>
             <title>I Hate Notifications</title>
