@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{{ partial "blog-header.html" . }}
+</head>
+<body>
+	<div class="header">
+		<a href="{{ "blog/" | relURL }}"><h1>Daniel Cook</h1></a>
+		<a href="{{ "rss.xml" | relURL }}">RSS</a><br>
+	</div>
+	{{ range .Pages }}
+	<div class="post preview">
+		<h1>{{ .Title }}</h1>
+		<p><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time></p>
+		<p>{{ .Summary }}</p>
+		<p><a href="{{ .Permalink }}">Read More</a></p>
+	</div>
+	{{ end }}
+</body>
+</html>

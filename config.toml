@@ -1,0 +1,8 @@
+baseURL = "https://danielc.dev/"
+title = "Daniel Cook"
+locale = "en-us"
+contentDir = "content"
+
+[outputFormats]
+  [outputFormats.RSS]
+    baseName = "rss"

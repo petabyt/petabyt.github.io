@@ -1,1 +1,0 @@
-static personal site

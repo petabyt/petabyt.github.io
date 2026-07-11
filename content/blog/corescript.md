@@ -1,0 +1,11 @@
+---
+title: "Corescript"
+date: 2017-10-09
+draft: false
+---
+
+For the past couple of months, I have been working on Corescript. I have just released 7.1, which you can access here. 
+I started Corescript about 7 Months ago. The GUI has changed a lot. This new update mainly includes bug fixes. 
+
+P.S. I lost the password to my X10Hosting website, so I will be moving everything to Github.
+

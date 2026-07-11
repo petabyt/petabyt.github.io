@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ .Site.Title }}</title>
+	<link rel="icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">
+	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div id="content">
+	{{ if .Title }}
+	<h1>{{ .Title }}</h1>
+	<hr>
+	{{ else }}
+	{{ end }}
+	<p>{{ .Content }}</p>
+</div>
+</body>
+</html>

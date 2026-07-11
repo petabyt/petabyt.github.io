@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{ .Site.Title }}</title>
+	<meta charset="UTF-8">
+	<link rel="icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">
+	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="c,astronomer,programmer,pufflegamerz,brikbusters,danielcdev,petabyte">
+	<meta name="author" content="Daniel Cook">
+</head>
+<body>
+	{{ block "main" . }}{{ end }}
+</body>
+</html>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{{title}}</title>
-	{{!tags}}
+	<title>{{ .Site.Title }}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<link rel="icon" href="{{ "favicon.ico" | relURL }}" type="image/x-icon">
 	<style>
 		body, html {
 			font-family: serif;
@@ -52,9 +53,14 @@
 </head>
 <body>
 	<div class="header">
-		<a href="{{top_level}}"><h1>{{header}}</h1></a>
-		<a href="{{top_level}}/rss.xml">RSS</a><br>
+		<a href="{{ "blog/" | relURL }}"><h1>Daniel Cook</h1></a>
+		<a href="{{ "rss.xml" | relURL }}">RSS</a><br>
 	</div>
-	{{!posts}}
+	<div class="post">
+		<h1>{{ .Title }}</h1>
+		<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+		<hr>
+		<p>{{ .Content }}</p>
+	</div>
 </body>
 </html>
