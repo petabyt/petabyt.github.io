@@ -105,9 +105,9 @@ and a reference to the string "out of memory".
 Now, all I had to do was look at references to sqlite3DbMallocZero() and find
 a call that looked like this:
 ```
-pIdxInfo = sqlite3DbMallocZero(pParse->db, sizeof(\*pIdxInfo)
-                       + (sizeof(\*pIdxCons) + sizeof(\*pUsage))\*nTerm
-                       + sizeof(\*pIdxOrderBy)\*nOrderBy + sizeof(\*pHidden) );
+pIdxInfo = sqlite3DbMallocZero(pParse->db, sizeof(*pIdxInfo)
+                       + (sizeof(*pIdxCons) + sizeof(*pUsage))*nTerm
+                       + sizeof(*pIdxOrderBy)*nOrderBy + sizeof(*pHidden) );
 if( pIdxInfo==0 ){
   sqlite3ErrorMsg(pParse, "out of memory");
   return 0;
@@ -123,7 +123,7 @@ usable disassembly.
 
 ## Code Injection
 Now, that I had the strings correctly referenced, I needed to pick a place to inject
-my code. My first idea was to hijack the image saving process. I opened up a JPEG image,
+my code. My first idea was to hijack the image saving process. I opened up a JPEG image in a hex editor,
 and looked around for some interesting things I could possibly hijack.
 
 The first thing I saw was "PrintIM". I searched it in my disassembly, and went to its
