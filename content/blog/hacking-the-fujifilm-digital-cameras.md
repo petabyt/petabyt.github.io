@@ -115,7 +115,7 @@ if( pIdxInfo==0 ){
 ```
 Eventually, I found something in the Ghidra decompiler that looked like a worthy candidate:
 ```
-FUN_0047e7e8(\*param_1, iVar32 \* 0x14 + 0x2c + iVar20 \* 8);
+FUN_0047e7e8(*param_1, iVar32 * 0x14 + 0x2c + iVar20 * 8);
 ```
 After a bit of poking around, everything seemed to match up. Now that I had the
 correct offset, I wrote a program to copy the strings over, and I finally got a
