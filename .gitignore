@@ -1,1 +1,3 @@
 __pycache__
+.hugo_build.lock
+public
