@@ -25,46 +25,47 @@ Your ability to go to Best Buy and buy a new radio for your new car is gone, jus
 ### It's **2015**.
 Car parts are starting to become *VIN-locked*. This means you can't swap in scrapyard parts anymore. A transmission will have a computer glued to it
 that *physically prevents shifting* if it doesn't match VIN numbers with the ECU.
-- Remember when you could do an [automatic -> manual swap](https://www.youtube.com/watch?v=AUd59hYsCAM) on your project car? Yeah, that's **basically impossible now**.
+- Remember when you could do an [automatic -> manual swap](https://www.youtube.com/watch?v=AUd59hYsCAM)? Yeah, that's **practically impossible on new cars**.
 - It's for your safety though! Automakers don't want you doing any *unauthorized repairs* that could be **dangerous**. You should bring your car to a dealership repair shop instead.
   - <small>Need to disable a warning on the dash? No worries, we just plug in this little USB tool and press two buttons. That'll be $1500.</small>
 
-![](/images/50/valve-body.jpg)
+![locked transmissions](/images/50/valve-body.jpg)
 
 ### It's **2023**.
 Automakers don't even care anymore. Here's a [subscription](https://www.theverge.com/2022/7/12/23204950/bmw-subscriptions-microtransactions-heated-seats-feature) for the
 seat warmers. Here's a mandatory [software update](https://www.reddit.com/r/Ford/comments/1dxng6l/got_stranded_at_1030pm_forcing_me_my_girlfriend/) at 6am right before your commute.
 Oh yeah and they also replaced all the mechanical links with electronics.
 Electronic pedals, steer-by-wire, gear shift buttons. You're driving a computer, not a car.
-- Self driving is here tho! No, you can't buy it or own it. It's $99 a month to activate the hardware.
-  - But definitely start using it so you can become dependent on it. It's safer this way!
+- Self driving is here! No, you can't buy it or own it. It's $99 a month to activate the hardware.
+  - But definitely start using it so you can become dependent on it. It's safer than a human!
 - <small>Hmm. What if the CIA didn't like me and has complete access over my steering/drivetrain through a backdoor?</small>
 - Look at the cybertruck turning radius though! That's real progress. A steering column could never.
 
-![](/images/50/Screenshot_20260723_012602.png)
+![subscriptions](/images/50/Screenshot_20260723_012602.png)
 
 ### It's **2026**.
 The government is mandating *anti-drunk driving detection technology*.[^1] Your car will stop itself if it thinks you're drunk. Or the government can just remotely shut down your car.
 - Hmm. What if I need to swerve around some potholes. Will the software report me?
 - What if I want to get blasted with my buddies and run a car into the ground on my ranch?
-- **Woah, this is so dystopian! Nobody could have ever seen this coming!**
 
-What are you gonna do about it? We also set up a [trillion cameras](https://www.miamiherald.com/news/local/community/miami-dade/article316540585.html) everywhere so we can surveil
-you driving older cars, or just [in general](https://www.reddit.com/r/Pflugerville/comments/1r17ys9/flock_camera_watching_playground_we_need_to/).
+The government is installing a [trillion cameras](https://www.miamiherald.com/news/local/community/miami-dade/article316540585.html) everywhere so they can see everywhere you drive.
+Or so they can just watch you [in general](https://www.reddit.com/r/Pflugerville/comments/1r17ys9/flock_camera_watching_playground_we_need_to/).
+
+**Woah, everything is so dystopian! Nobody could have ever seen this coming!**
 
 # It's **2030**.
 - No you can't drive your car, you have to use our proprietary self driving technology.
 - You need to pay for premium to disable the ads.
-- No, you can't drive there, that's off limits. It's for your safety.
+- No, the car can't drive you there, that's off limits. It's for your safety.
 - If you disobey our lawful orders, the car doors lock shut and it drives you straight to the police station.
 
 ---
 
 Technological progress is amazing! It's great everything is more centralized and unified, it's way better for the consumer and the economy.
-We may be sacrificing a few niche freedoms but it's way safer this way, and that's really what matters.
+We may be sacrificing a few niche freedoms but it's safer this way, and that's really what matters.
 
-The critics really don't understand that technology is fundamentally good and we need to accelerate to achieve prosperity and happiness.
-Let's accelerate harder!
+The critics really don't understand that technology is fundamentally good and we need to accelerate it to achieve prosperity and happiness.
+Progress is so exciting! Lets accelerate harder!
 
 ---
 
@@ -86,8 +87,8 @@ You're fired or promoted to AI agent conductor. No, don't read the code it gener
 - The more dependent you are on AI, the better. You don't want to fall behind, do you?
 
 # It's **2030**.
-- Want to get a job? All companies now require canidates to have **the AI brain implant**.
-- The **AI brain implant** makes you 100x smarter and more 100x intellegent! We'll never go back to hiring unmodified humans.
+- Want to get a job? All companies now require canidates to have the **AI brain implant**.
+- The **AI brain implant** makes you 100x smarter and 100x more intellegent! We'll never go back to hiring unmodified humans.
 - "Sorry Jim, without the brain chip you aren't useful to the **new world**. Cyborg humans are 1000x more productive and never make mistakes. It's much safer this way."
 - However, you can sell your autonomy to the corporation and receive the AI brain implant for free, as long as you consent to thought control. :)
 

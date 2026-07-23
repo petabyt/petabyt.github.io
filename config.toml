@@ -6,3 +6,8 @@ contentDir = "content"
 [outputFormats]
   [outputFormats.RSS]
     baseName = "rss"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
