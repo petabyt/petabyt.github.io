@@ -38,7 +38,7 @@ Oh yeah and they also replaced all the mechanical links with electronics.
 Electronic pedals, steer-by-wire, gear shift buttons. You're driving a computer, not a car.
 - Self driving is here! No, you can't buy it or own it. It's $99 a month to activate the hardware.
   - But definitely start using it so you can become dependent on it. It's safer than a human!
-- <small>Hmm. What if the CIA didn't like me and has complete access over my steering/drivetrain through a backdoor?</small>
+- <small>Hmm. What if the CIA doesn't like me and has complete access over my steering/drivetrain through a backdoor?</small>
 - Look at the cybertruck turning radius though! That's real progress. A steering column could never.
 
 ![subscriptions](/images/50/Screenshot_20260723_012602.png)
