@@ -22,10 +22,12 @@ in order to get a framebuffer working.
 ## Design
 - RK3588 GRF, CRU, and PMU is split into a dozen different register files and not organized in any way or set up for strided access
 	- Offsets and bitfields have to be hardcoded in a map in order to setup PLLs and change iomux settings
-- Why does VOP2 need 2 different layer systems? What does 'ESMART' stand for? Why is the TRM so vague?
+- Why does VOP2 need 2 different layer systems? What does 'ESMART' stand for? Why is the TRM so vague?[^11]
 - It's impossible to configure iomux for a rockchip i2c controller to be used for HDMI. Instead, a completely separate DesignWare I2C driver has to be written specifically for HDMI
 - HDMI 2.1 DesignWare IP is used - supports a lot of features and is difficult to get working
-- RK3588 has a ton of variants and derivatives (RK3588S/RK3588J/RK3576...) and supporting them all is hard
+- RK3588 has PCI & GIC ITS quirks that make it hard to implement support in the mainline kernel
+- Supporting all the RK3588 power management features is difficult - still not completed in upstream kernel 
+- RK3588 has a ton of variants and derivatives (RK3588S/RK3588J/RK3576...) and supporting them all can be hard
 
 ## Ecosystem
 - Joshua Reik burned out from working on ubuntu-rockchip for various reasons, but mainly because he couldn't get in touch with Rockchip for assistance[^5], after working on Rockchip boards for free
@@ -40,9 +42,16 @@ in order to get a framebuffer working.
 	- Leaked RK3588 TRMs were uploaded to [Github](https://github.com/axlrose/rkdocs). Shoutout to Axl Rose.
 - Rockchip and their vendors (Orange Pi, Banana Pi, Radxa, Cool-Pi, etc) release boards and products with subpar hardware support
 	- Some boards require custom kernels and bootloaders
-	- Some boards use nonstandard hardware that requires additional kernel work to get working
+	- Some boards use nonstandard hardware that requires additional kernel work and testing to get working
 - Rockchip employees are *still* working on upstreaming support for RK3588, years after release [^6]
 - Rockchip is shifting focus to Edge AI, Automotive, Robotics, and smart audio solutions [^7]
+
+# Conclusion
+- Rockchip makes best-in-class high-performance SoCs at a hard to beat price.
+- Rockchip is not an open-source company, but is still more "open" than most. They aren't known for sending legal takedown requests
+or making you to sing your rights away, but they indirectly make the lives of OSS devs harder.
+- The RK3588 is the most "open" high-performance SoC on the market right now, and probably will be for a long time.
+- Their SoCs are difficult to work with, enough so that the cost of maintaining/adding support may outweigh the benefits and low price.
 
 [^1]: I count each separate register file as a 'subsystem', excluding duplicates
 [^2]: 'documented' only means it has the register file defined. It may not have all the information needed to write a driver.
@@ -53,4 +62,5 @@ in order to get a framebuffer working.
 [^7]: https://www.myirtech.com/news_list.asp?id=930
 [^8]: https://x.com/geerlingguy/status/1870959892242342030
 [^9]: Search 'rk3588' on https://opensource.rock-chips.com/
-[^10]: Technical Reference Manual (embedded programmer's guide)
+[^10]: Technical Reference Manual (embedded programmer's manual for writing drivers)
+[^11]: One minute it's telling you what 'CPU' stands for, next it's on about the most obscure thing nobody knows about
