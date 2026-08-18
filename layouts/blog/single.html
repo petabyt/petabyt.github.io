@@ -3,6 +3,15 @@
 <head>
 	<title>{{ .Title }}</title>
 	{{ partial "blog-header.html" . }}
+
+	{{ if .Params.images }}
+	  <meta name="twitter:card" content="summary_large_image">
+	  <meta name="twitter:title" content="{{ .Title }}">
+	  <meta name="twitter:description" content="{{ .Description | default .Summary }}">
+	  <meta name="twitter:image" content="{{ index .Params.images 0 | absURL }}">
+	{{ else }}
+	  <meta name="twitter:card" content="summary">
+	{{ end }}
 </head>
 <body>
 	<div class="header">
