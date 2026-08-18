@@ -6,12 +6,16 @@
 
 	{{ if .Params.images }}
 	  <meta name="twitter:card" content="summary_large_image">
-	  <meta name="twitter:title" content="{{ .Title }}">
-	  <meta name="twitter:description" content="{{ .Description | default .Summary }}">
 	  <meta name="twitter:image" content="{{ index .Params.images 0 | absURL }}">
+	  <meta name="og:image" content="{{ index .Params.images 0 | absURL }}">
 	{{ else }}
 	  <meta name="twitter:card" content="summary">
 	{{ end }}
+      <meta name="og:url" content="{{ .Permalink }}">
+	  <meta name="twitter:title" content="{{ .Title }}">
+	  <meta name="twitter:description" content="{{ .Description | default .Summary }}">
+	  <meta name="twitter:creator" content="@danielcdev">
+	  <meta name="twitter:site" content="@danielcdev">
 </head>
 <body>
 	<div class="header">
