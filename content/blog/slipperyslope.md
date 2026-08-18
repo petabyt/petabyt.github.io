@@ -39,14 +39,14 @@ Electronic pedals, steer-by-wire, gear shift buttons. You're driving a computer,
 - <small>Hmm. What if the CIA doesn't like me and has complete access over my steering/drivetrain through a backdoor?</small>
 - Look at the cybertruck turning radius though! That's real progress. A steering column could never.
 - Full self driving is here! You should try it and become dependent on it. It's safer than a human!
-  - No LOL you can't buy it or own it. It's $99 a month to activate the hardware you paid for.
+  - No LOL you can't buy it or own it. It's $99 a month to activate the hardware already you paid for.
 - Download the app and get remote start and unlock from anywhere in the world! It's only $16/mo for the full plan.
 - The future is here! So exciting!
 
 ![subscriptions](/images/50/Screenshot_20260723_012602.png)
 
 ### It's **2026**.
-The government is mandating *anti-drunk driving detection technology*.[^1] Your car will stop itself if it thinks you're drunk. Or the government can just remotely shut down your car.
+The government is mandating *anti-drunk driving detection technology*. Your car will stop itself if it thinks you're drunk. Or the government can just remotely shut down your car.
 - <small>Hmm. What if I need to swerve around some potholes. Will the software report me?</small>
 - <small>What if I want to get blasted with my buddies and run a car into the ground on my ranch?</small>
 - It's for the greater good though! Congress is willing to forgo a few of your freedoms to help protect the children.
@@ -95,7 +95,4 @@ You're fired or promoted to AI agent conductor. No, don't read the code it gener
 
 Escape the permanent underclass for free! Or you can just stay in the amish village making chairs for the rest of your life.
 
-But you don't want to be left behind, do you?
-
-[^1]: It's not like US politicians even try to solve DUIs. Because of zoning laws bars and clubs can't even be within walking distance of homes. What do they expect,
-people will park in the parking lot, get drunk at the club, then be a good boy and pay $30 to uber home?
+You don't want to be left behind, do you?
