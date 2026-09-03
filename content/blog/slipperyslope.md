@@ -2,7 +2,7 @@
 title: "Technology is a slippery slope"
 date: 2026-07-23
 draft: false
-summary: ""
+summary: "Chevy introduces OnStar, a telematics system that transmits your vehicle's location to Chevy and remotely receives commands..."
 ---
 <!--more-->
 

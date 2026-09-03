@@ -3,6 +3,7 @@ title: "Why Rockchip Sucks"
 date: 2025-11-13
 draft: false
 images: ["/images/rockchip.jpg"]
+summary: "Rockchip is commonly referred to as an 'open-source SoC company'"
 ---
 <!--more-->
 
